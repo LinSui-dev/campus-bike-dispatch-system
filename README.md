@@ -19,6 +19,8 @@ cd campus-bike-dispatch-system
 git switch -c feat/a-engine
 ```
 
+完成后提交并推送到本人的固定分支：A `feat/a-engine`、B `feat/b-dispatch`、C `feat/c-frontend`、D `feat/d-map`、E `test/e-integration`、F `docs/f-delivery`。自测、handoff和推送核验步骤见[协作规范](docs/11-并行开发与集成规范.md)。个人交付不直接推送main，统一交E复验集成。
+
 ## 目录
 
 `backend/app` 后端与独立引擎；`frontend` Vue；`contracts` 公共契约与Mock；`data/fixtures` 虚拟夹具；`data/campus` 正式数据；`tests/integration` 公共测试；`scripts` 检查；`docs/roles` 六份智能体任务书。

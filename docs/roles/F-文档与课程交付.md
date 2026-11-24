@@ -41,3 +41,22 @@ python scripts/check_baseline.py
 给E source/final/INDEX路径、打开编辑方式、渲染工具与结果、课程逐项清单、图表和版本来源；组号姓名或评分未确认必须写未完成，不能虚构。
 
 复制docs/handoffs/TEMPLATE.md到自己的目录。先draft，自测达到本次AC后ready；E复验填accepted或returned。退回只修自己范围，更新同一报告并再次交接；新代码不得沿用旧验收结论。给F的材料来自真实实现与执行结果。
+
+## 完成后提交到远程分支
+
+你的固定交付分支为`docs/f-delivery`，对应https://github.com/LinSui-dev/campus-bike-dispatch-system/tree/docs/f-delivery。开工按11从origin/main创建同名本地分支；已经存在则切换并继续，不重复创建、不在main开发。
+
+完成本次范围后：执行上面的自测与AC → 只暂存本人文件并提交代码 → 同步main并复验 → 填写docs/handoffs/F/报告、记录被测代码SHA并提交报告 → 推送本人分支 → 核对远程SHA → 将分支链接、远程HEAD、被测SHA、报告路径和实际结果交E。完整提交/冲突/核验步骤见11，不跳过handoff或把本地提交当作远程交接。
+
+```powershell
+if ((git branch --show-current) -ne 'docs/f-delivery') { throw 'Switch to your assigned role branch first.' }
+git status --short
+# 确认本次代码、证据和报告已提交后再推送
+git push -u origin docs/f-delivery
+if ($LASTEXITCODE -ne 0) { throw 'Push failed; do not report success.' }
+git rev-parse HEAD
+git ls-remote origin refs/heads/docs/f-delivery
+# 对照本地和远程SHA必须一致；完整自动核验片段见11
+```
+
+用户已授权向本人的该分支推送成果，无需完成后再次询问个人分支推送许可。不得把个人交付直接推main、强推或覆盖其他人的分支。退回修复继续提交到同一分支，更新报告后重新交接。draft备份可推送但不能宣称ready；main集成仍由E按验收流程执行。

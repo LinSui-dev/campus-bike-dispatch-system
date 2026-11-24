@@ -13,3 +13,5 @@ contracts/是v1公共契约，E维护。变更通过docs/integration/requests/<�
 所有成员还须读docs/13-验收矩阵.md。docs/10的唯一文件归属表优先于任务书摘要；分发前准备工作由当前协调者统一更新基线，正式六人开工后执行各自归属。按docs/handoffs/TEMPLATE.md交接，ready不代表accepted。E可在各报告的接收结论节填写复验结果，其余正文由对应成员维护。
 
 常规检查不含scaffold和acceptance；骨架诊断仅显式运行，业务实现后无需继续保持501。正式验收用scripts/check.ps1 -Acceptance，未建立测试视为未验收，不得放过退出码5。测试替身仅用于模块自测，不能导入生产代码。
+
+完成明确交接范围、自测并填写handoff后，提交并推送到docs/10规定的本人分支：A=feat/a-engine，B=feat/b-dispatch，C=feat/c-frontend，D=feat/d-map，E=test/e-integration，F=docs/f-delivery。用户已授权这些个人分支的成果推送，无需再次确认；核对origin与当前分支，只暂存本人文件，推送后核对远程SHA并返回分支链接。禁止个人交付直接推main或force push；E仍按11承担公共集成。
