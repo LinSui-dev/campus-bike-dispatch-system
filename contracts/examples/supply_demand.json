@@ -1,0 +1,47 @@
+{
+  "estimator_version": "fluid-v1",
+  "now_sec": 0,
+  "horizon_sec": 1800,
+  "stations": [
+    {
+      "station_id": "s1",
+      "expected_borrow": 0,
+      "expected_served_borrow": 0,
+      "expected_return": 0,
+      "target": 5,
+      "effective_stock": 10,
+      "supply": 5,
+      "demand": 0
+    },
+    {
+      "station_id": "s2",
+      "expected_borrow": 0,
+      "expected_served_borrow": 0,
+      "expected_return": 0,
+      "target": 5,
+      "effective_stock": 10,
+      "supply": 5,
+      "demand": 0
+    },
+    {
+      "station_id": "s3",
+      "expected_borrow": 0,
+      "expected_served_borrow": 0,
+      "expected_return": 0,
+      "target": 5,
+      "effective_stock": 10,
+      "supply": 5,
+      "demand": 0
+    },
+    {
+      "station_id": "s4",
+      "expected_borrow": 0,
+      "expected_served_borrow": 0,
+      "expected_return": 0,
+      "target": 5,
+      "effective_stock": 10,
+      "supply": 5,
+      "demand": 0
+    }
+  ]
+}

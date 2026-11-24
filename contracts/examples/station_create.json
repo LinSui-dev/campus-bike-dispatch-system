@@ -1,0 +1,11 @@
+{
+  "id": "s1",
+  "name": "虚拟主校宿舍",
+  "campus": "main",
+  "zone": "dorm",
+  "x": 100,
+  "y": 200,
+  "capacity": 20,
+  "initial_stock": 10,
+  "active": true
+}

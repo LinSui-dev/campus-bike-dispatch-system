@@ -1,0 +1,54 @@
+[
+  {
+    "id": "s1",
+    "name": "虚拟主校宿舍",
+    "campus": "main",
+    "zone": "dorm",
+    "x": 100,
+    "y": 200,
+    "capacity": 20,
+    "initial_stock": 10,
+    "road_edge_id": "e1",
+    "road_offset": 0,
+    "active": true
+  },
+  {
+    "id": "s2",
+    "name": "虚拟主校教学",
+    "campus": "main",
+    "zone": "teaching",
+    "x": 350,
+    "y": 200,
+    "capacity": 20,
+    "initial_stock": 10,
+    "road_edge_id": "e1",
+    "road_offset": 1,
+    "active": true
+  },
+  {
+    "id": "s3",
+    "name": "虚拟东校宿舍",
+    "campus": "east",
+    "zone": "dorm",
+    "x": 650,
+    "y": 200,
+    "capacity": 20,
+    "initial_stock": 10,
+    "road_edge_id": "e3",
+    "road_offset": 0,
+    "active": true
+  },
+  {
+    "id": "s4",
+    "name": "虚拟东校教学",
+    "campus": "east",
+    "zone": "teaching",
+    "x": 900,
+    "y": 200,
+    "capacity": 20,
+    "initial_stock": 10,
+    "road_edge_id": "e3",
+    "road_offset": 1,
+    "active": true
+  }
+]

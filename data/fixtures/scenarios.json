@@ -1,0 +1,138 @@
+[
+  {
+    "id": "morning",
+    "name": "早课",
+    "start_minute": 420,
+    "duration_min": 120,
+    "description": "虚拟联调需求，不是校园调查；午餐站点仅作字段替身",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "s1",
+        "destination_id": "s2",
+        "rate_per_min": 0.2,
+        "periods": [
+          {
+            "start_min": 0,
+            "end_min": 30,
+            "multiplier": 2
+          }
+        ]
+      },
+      {
+        "origin_id": "s3",
+        "destination_id": "s4",
+        "rate_per_min": 0.2,
+        "periods": [
+          {
+            "start_min": 0,
+            "end_min": 30,
+            "multiplier": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lunch",
+    "name": "午餐",
+    "start_minute": 660,
+    "duration_min": 120,
+    "description": "虚拟联调需求，不是校园调查；午餐站点仅作字段替身",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "s2",
+        "destination_id": "s1",
+        "rate_per_min": 0.2,
+        "periods": [
+          {
+            "start_min": 0,
+            "end_min": 30,
+            "multiplier": 2
+          }
+        ]
+      },
+      {
+        "origin_id": "s4",
+        "destination_id": "s3",
+        "rate_per_min": 0.2,
+        "periods": [
+          {
+            "start_min": 0,
+            "end_min": 30,
+            "multiplier": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "evening",
+    "name": "返寝",
+    "start_minute": 1230,
+    "duration_min": 120,
+    "description": "虚拟联调需求，不是校园调查；午餐站点仅作字段替身",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "s2",
+        "destination_id": "s1",
+        "rate_per_min": 0.2,
+        "periods": [
+          {
+            "start_min": 0,
+            "end_min": 30,
+            "multiplier": 2
+          }
+        ]
+      },
+      {
+        "origin_id": "s4",
+        "destination_id": "s3",
+        "rate_per_min": 0.2,
+        "periods": [
+          {
+            "start_min": 0,
+            "end_min": 30,
+            "multiplier": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "offpeak",
+    "name": "平峰",
+    "start_minute": 840,
+    "duration_min": 120,
+    "description": "虚拟联调需求，不是校园调查；午餐站点仅作字段替身",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "s1",
+        "destination_id": "s4",
+        "rate_per_min": 0.2,
+        "periods": [
+          {
+            "start_min": 0,
+            "end_min": 30,
+            "multiplier": 2
+          }
+        ]
+      },
+      {
+        "origin_id": "s4",
+        "destination_id": "s1",
+        "rate_per_min": 0.2,
+        "periods": [
+          {
+            "start_min": 0,
+            "end_min": 30,
+            "multiplier": 2
+          }
+        ]
+      }
+    ]
+  }
+]

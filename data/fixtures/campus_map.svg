@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="400" viewBox="0 0 1000 400">
+  <rect width="1000" height="400" fill="#f3f6fa"/>
+  <rect x="30" y="70" width="390" height="260" rx="20" fill="#dcebdd"/>
+  <rect x="580" y="70" width="390" height="260" rx="20" fill="#dce5f1"/>
+  <path d="M100 200 H900" stroke="#fff" stroke-width="24"/>
+  <path d="M350 200 H650" stroke="#8c9cae" stroke-width="3" stroke-dasharray="9 6"/>
+  <g fill="#294665" font-family="sans-serif" font-size="24">
+    <text x="75" y="125">虚拟主校区</text><text x="625" y="125">虚拟东校区</text>
+    <text x="270" y="365">虚拟联调地图 · 非校园实测 · 4站40车</text>
+  </g>
+  <g fill="#2378bd"><circle cx="100" cy="200" r="9"/><circle cx="350" cy="200" r="9"/><circle cx="650" cy="200" r="9"/><circle cx="900" cy="200" r="9"/></g>
+</svg>

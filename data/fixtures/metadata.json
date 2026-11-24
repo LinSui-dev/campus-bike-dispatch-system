@@ -1,0 +1,10 @@
+{
+  "profile": "fixture",
+  "image_file": "campus_map.svg",
+  "width": 1000,
+  "height": 400,
+  "network_version": "fixture-v1",
+  "synthetic": true,
+  "snap_tolerance_px": 40,
+  "source": "项目自建虚拟联调图，不是校园地图"
+}

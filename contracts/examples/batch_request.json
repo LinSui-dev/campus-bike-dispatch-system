@@ -1,0 +1,41 @@
+{
+  "request_id": "example-batch",
+  "scenario_ids": [
+    "morning",
+    "lunch",
+    "evening",
+    "offpeak"
+  ],
+  "algorithms": [
+    "none",
+    "greedy",
+    "min_cost_flow"
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "params": {
+    "duration_min": 120,
+    "step_sec": 60,
+    "ride_speed_kmh": 12,
+    "dispatch_speed_kmh": 10,
+    "speed": 60,
+    "horizon_min": 30,
+    "safety_stock": 5,
+    "max_dispatch": 50
+  },
+  "dispatch_times_sec": [
+    0,
+    900,
+    1800,
+    2700,
+    3600,
+    4500,
+    5400,
+    6300
+  ]
+}
