@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>北京交通大学校园地图预览</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; height: 100dvh; display: grid; grid-template-rows: auto 1fr; color: #243529; background: #edf1e8; font: 15px system-ui, sans-serif; }
+  header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 24px; padding: 14px 20px; background: #fff; border-bottom: 1px solid #d6ded2; }
+  h1 { margin: 0; font-size: 19px; }
+  p { margin: 4px 0 0; color: #4e6655; }
+  nav { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  button, label { color: inherit; background: #fff; border: 1px solid #b9c9bb; border-radius: 6px; padding: 6px 11px; cursor: pointer; font: inherit; }
+  output { min-width: 4em; text-align: center; }
+  #viewport { position: relative; overflow: hidden; cursor: grab; touch-action: none; }
+  #viewport.dragging { cursor: grabbing; }
+  #map, #labeled-map, #road-numbers, #station-layer { position: absolute; max-width: none; transform-origin: top left; user-select: none; pointer-events: none; }
+  #message { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; pointer-events: none; }
+  #viewport.review-active #map, #viewport.review-active #labeled-map, #viewport.review-active #road-numbers { filter: grayscale(1); opacity: .65; }
+  #review-marker { position:absolute; left:0; top:0; width:4500px; height:3163px; transform-origin:top left; pointer-events:none; }
+  #review-tools, #station-tools { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  #review-tools[hidden], #station-tools[hidden], #review-marker[hidden] { display:none; }
+  #review-description { color:#624323; }
+  #message[hidden] { display: none; }
+</style>
+<header>
+  <div><h1>北京交通大学校园地图</h1><p>青绿色路线 · 主校区南门经上园村路至东校区小西门</p></div>
+  <nav aria-label="地图操作"><a href="map-preview.html">全图</a><a href="map-preview.html?detail">跨校区局部</a>
+    <input id="file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+    <button id="toggle-stations" aria-pressed="false">已选站点</button>
+    <button id="toggle-review" aria-pressed="false">待审阅路段</button>
+    <button id="toggle-roads" aria-pressed="false">道路编号</button>
+    <button id="select">选择地图</button>
+    <button id="out" aria-label="缩小">−</button>
+    <output id="level">100%</output>
+    <button id="in" aria-label="放大">+</button>
+    <button id="fit">适应窗口</button>
+  </nav>
+  <div id="review-tools" hidden>
+    <label for="review-edge">定位待审阅边</label><select id="review-edge"></select>
+    <span id="review-description" aria-live="polite"></span>
+  </div>
+  <div id="station-tools" hidden>
+    <label for="station-select">定位已选站</label><select id="station-select"></select>
+    <span id="station-description" aria-live="polite"></span><span>空心点为圈注位置，实心点为道路接入点</span>
+  </div>
+</header>
+<main id="viewport" tabindex="0" aria-label="校园地图，方向键平移，滚轮缩放">
+  <img id="map" alt="北京交通大学主校区与东校区 2.5D 示意图" draggable="false">
+  <img id="labeled-map" alt="" aria-hidden="true" draggable="false" hidden>
+  <img id="road-numbers" alt="" aria-hidden="true" draggable="false" hidden>
+  <img id="station-layer" alt="" aria-hidden="true" draggable="false" hidden>
+  <svg id="review-marker" viewBox="0 0 1800 1265" aria-hidden="true" hidden>
+    <polyline id="review-line" fill="none" stroke="#db2525" stroke-width="7" stroke-linecap="round"/>
+    <circle id="review-pin" r="10" fill="none" stroke="#db2525" stroke-width="4"/>
+  </svg>
+  <div id="message">请选择本地校园手绘地图图片。</div>
+</main>
+<script src="road-review-items.js"></script>
+<script src="station-review-items.js"></script>
+<script>
+  const viewport = document.getElementById('viewport');
+  const map = document.getElementById('map');
+  const message = document.getElementById('message');
+  const file = document.getElementById('file');
+  const level = document.getElementById('level');
+  const params = new URLSearchParams(location.search);
+  const isDetail = params.has('detail');
+  const roadNumbers = document.getElementById('road-numbers');
+  const roadToggle = document.getElementById('toggle-roads');
+  roadToggle.hidden = isDetail;
+  let showRoadNumbers = params.has('roads');
+  if (!isDetail) roadNumbers.src = 'campus-road-numbers.svg';
+  const labeledMap = document.getElementById("labeled-map");
+  if (!isDetail) labeledMap.src = 'campus-map-labels.svg';
+  let useCampusLayers = !isDetail;
+  const reviewTools = document.getElementById('review-tools');
+  const reviewToggle = document.getElementById('toggle-review');
+  const reviewSelect = document.getElementById('review-edge');
+  const reviewMarker = document.getElementById('review-marker');
+  const reviewItems = window.roadReviewItems || [];
+  reviewToggle.hidden = isDetail || !reviewItems.length;
+  let selectedReview = null;
+  let locateAfterLoad = !isDetail && params.has('review');
+  const reviewGroups = {
+    pending_location: '跨区转弯与过街',
+    short_geometry_only: '极短绘图边 · 缺少实地依据',
+    unmatched_online: '在线道路未匹配',
+    ambiguous_online_match: '在线道路匹配有歧义'
+  };
+  for (const [method,title] of Object.entries(reviewGroups)) {
+    const items = reviewItems.filter(item => item.method === method);
+    if (!items.length) continue;
+    const group = document.createElement('optgroup');
+    group.label = title + '（' + items.length + '）';
+    for (const item of items) {
+      group.append(new Option(item.id + (item.roads.length ? ' · 道路 ' + item.roads.join('／') : ''), item.id));
+    }
+    reviewSelect.append(group);
+  }
+  const stationLayer = document.getElementById('station-layer');
+  const stationToggle = document.getElementById('toggle-stations');
+  const stationSelect = document.getElementById('station-select');
+  const stationTools = document.getElementById('station-tools');
+  const stations = window.stationReviewItems || [];
+  stationToggle.hidden = isDetail || !stations.length;
+  let showStations = !isDetail && params.has('stations') && Boolean(stations.length);
+  stationTools.hidden = !showStations;
+  if (!isDetail && stations.length) stationLayer.src = 'campus-station-proposals.svg';
+  stationSelect.add(new Option('双校区总览',''));
+  for (const station of stations) {
+    stationSelect.add(new Option(station.id + ' ' + station.landmark, station.id));
+  }
+  let x = 0, y = 0, scale = 1, fitScale = 1, drag, localUrl;
+
+  function render() {
+    const limit = (position, content, available) => content <= available
+      ? (available - content) / 2
+      : Math.min(0, Math.max(available - content, position));
+    x = limit(x, map.naturalWidth * scale, viewport.clientWidth);
+    y = limit(y, map.naturalHeight * scale, viewport.clientHeight);
+    map.style.transform = 'translate(' + x + 'px, ' + y + 'px) scale(' + scale + ')';
+    level.value = Math.round(scale / fitScale * 100) + '%';
+    const cellPixels = scale * map.naturalWidth / 1800;
+    labeledMap.style.transform = map.style.transform;
+    labeledMap.hidden = !(useCampusLayers && cellPixels >= 1.55 && labeledMap.naturalWidth);
+    stationLayer.style.transform = map.style.transform;
+    stationLayer.hidden = !(useCampusLayers && showStations && stationLayer.naturalWidth);
+    stationToggle.setAttribute('aria-pressed',String(useCampusLayers && showStations));
+    roadNumbers.style.transform = map.style.transform;
+    roadNumbers.hidden = !(useCampusLayers && showRoadNumbers && roadNumbers.naturalWidth);
+    roadToggle.setAttribute('aria-pressed', String(useCampusLayers && showRoadNumbers));
+    reviewMarker.style.transform = map.style.transform;
+    reviewMarker.toggleAttribute('hidden', !selectedReview);
+    viewport.classList.toggle('review-active', Boolean(selectedReview));
+    map.style.visibility = labeledMap.hidden ? 'visible' : 'hidden';
+  }
+
+  function fit() {
+    if (!map.naturalWidth || !viewport.clientHeight) return;
+    fitScale = Math.min(viewport.clientWidth / map.naturalWidth, viewport.clientHeight / map.naturalHeight);
+    scale = fitScale;
+    render();
+  }
+
+  function zoom(factor, px = viewport.clientWidth / 2, py = viewport.clientHeight / 2) {
+    if (!map.naturalWidth) return;
+    const next = Math.max(fitScale, Math.min(fitScale * 8, scale * factor));
+    x = px - (px - x) * next / scale;
+    y = py - (py - y) * next / scale;
+    scale = next;
+    render();
+  }
+
+  function focusSvg(u,v) {
+    scale = fitScale * 4;
+    x = viewport.clientWidth / 2 - u / 1800 * map.naturalWidth * scale;
+    y = viewport.clientHeight / 2 - v / 1265 * map.naturalHeight * scale;
+    render();
+  }
+
+  stationToggle.onclick = () => {
+    showStations = !showStations;
+    stationTools.hidden = !showStations;
+    if (showStations && !reviewTools.hidden) toggleReview();
+    if (!showStations) stationSelect.value = '';
+    fit();
+  };
+  function locateStation() {
+    const station = stations.find(item => item.id === stationSelect.value);
+    document.getElementById('station-description').textContent = station
+      ? station.zone + '站 · 接入边 ' + station.road_edge_id + '（道路 ' + station.preferred_svg_roads.join('／') + '）' + (station.selection_source === 'initial_proposal' ? ' · 待确认' : ' · 圈注位置已录入')
+      : '';
+    if (station && map.naturalWidth) focusSvg(...station.xy_svg);
+    else fit();
+  }
+  stationSelect.onchange = locateStation;
+  stationLayer.onload = () => { if (map.naturalWidth) render(); };
+
+  function locateReview() {
+    selectedReview = reviewItems.find(item => item.id === reviewSelect.value);
+    if (!selectedReview || !map.naturalWidth) return;
+    const { x: u, y: v, method, roads, points } = selectedReview;
+    document.getElementById('review-pin').setAttribute('cx',u);
+    document.getElementById('review-pin').setAttribute('cy',v);
+    document.getElementById('review-line').setAttribute('points',points.map(p => p.join(',')).join(' '));
+    document.getElementById('review-description').textContent = method === 'pending_location'
+      ? '请核对门前接入、转弯或过街位置。'
+      : '道路 ' + roads.join('／') + '。请确认实际道路和两端接点是否存在。';
+    focusSvg(u,v);
+  }
+  function toggleReview() {
+    reviewTools.hidden = !reviewTools.hidden;
+    reviewToggle.setAttribute('aria-pressed',String(!reviewTools.hidden));
+    if (reviewTools.hidden) {
+      selectedReview = null;
+      fit();
+    } else {
+      showStations = false;
+      stationTools.hidden = true;
+      locateReview();
+    }
+  }
+  reviewToggle.onclick = toggleReview;
+  reviewSelect.onchange = locateReview;
+  map.onload = () => {
+    message.hidden = true;
+    fit();
+    if (locateAfterLoad && reviewItems.length) {
+      locateAfterLoad = false;
+      toggleReview();
+    }
+  };
+  labeledMap.onload = () => { if (map.naturalWidth) render(); };
+  roadNumbers.onload = () => { if (map.naturalWidth) render(); };
+  roadToggle.onclick = () => { showRoadNumbers = !showRoadNumbers; render(); };
+  map.onerror = () => { message.hidden = false; };
+  document.getElementById('select').onclick = () => file.click();
+  file.onchange = () => {
+    if (!file.files.length) return;
+    useCampusLayers = false;
+    stationToggle.hidden = true;
+    stationTools.hidden = true;
+    stationLayer.hidden = true;
+    showStations = false;
+    roadToggle.hidden = true;
+    reviewToggle.hidden = true;
+    reviewTools.hidden = true;
+    selectedReview = null;
+    reviewMarker.setAttribute('hidden', '');
+    viewport.classList.remove('review-active');
+    locateAfterLoad = false;
+    roadNumbers.hidden = true;
+    labeledMap.hidden = true;
+    map.style.visibility = "visible";
+    if (localUrl) URL.revokeObjectURL(localUrl);
+    localUrl = URL.createObjectURL(file.files[0]);
+    map.src = localUrl;
+  };
+  document.getElementById('in').onclick = () => zoom(1.25);
+  document.getElementById('out').onclick = () => zoom(0.8);
+  document.getElementById('fit').onclick = fit;
+  new ResizeObserver(() => { fit(); if (selectedReview) locateReview(); else if (showStations && stationSelect.value) locateStation(); }).observe(viewport);
+  viewport.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    const bounds = viewport.getBoundingClientRect();
+    zoom(event.deltaY < 0 ? 1.15 : 1 / 1.15, event.clientX - bounds.left, event.clientY - bounds.top);
+  }, { passive: false });
+
+  viewport.onpointerdown = (event) => {
+    if (!map.naturalWidth || event.button !== 0 || drag) return;
+    drag = { id: event.pointerId, x: event.clientX, y: event.clientY };
+    viewport.setPointerCapture(drag.id);
+    viewport.classList.add('dragging');
+  };
+  viewport.onpointermove = (event) => {
+    if (drag?.id !== event.pointerId) return;
+    x += event.clientX - drag.x;
+    y += event.clientY - drag.y;
+    drag.x = event.clientX;
+    drag.y = event.clientY;
+    render();
+  };
+  viewport.onlostpointercapture = (event) => {
+    if (drag?.id !== event.pointerId) return;
+    drag = undefined;
+    viewport.classList.remove('dragging');
+  };
+  viewport.onkeydown = (event) => {
+    if (!map.naturalWidth) return;
+    const offsets = { ArrowLeft: [48, 0], ArrowRight: [-48, 0], ArrowUp: [0, 48], ArrowDown: [0, -48] };
+    if (!Object.hasOwn(offsets, event.key)) return;
+    event.preventDefault();
+    const [dx, dy] = offsets[event.key];
+    x += dx;
+    y += dy;
+    render();
+  };
+
+  map.src = isDetail ? 'connection-study.svg' : 'campus-map.svg';
+</script>
+</html>

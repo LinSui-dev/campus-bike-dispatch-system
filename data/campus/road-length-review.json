@@ -1,0 +1,1070 @@
+{
+  "status": "review_estimates",
+  "osm_source": "https://api.openstreetmap.org/api/0.6/map?bbox=116.328,39.9435,116.344,39.9545",
+  "osm_snapshot_sha256": "e971f94ead7c8d008a7489ceb5428f90689e08ae0b4ce7e299d260c5940b20d7",
+  "attribution": "© OpenStreetMap contributors",
+  "calibration": {
+    "main": {
+      "meters_per_svg_unit": 0.8453,
+      "rotation_deg": -0.06,
+      "control_ways": {
+        "思源楼": "276199049",
+        "思源西楼": "276199074",
+        "思源东楼": "276198909",
+        "科学会堂": "276199032",
+        "主校区图书馆": "188600671",
+        "9号教学楼": "276202113",
+        "8号教学楼": "276198844",
+        "运输设备教学馆": "287663142",
+        "天佑会堂": "276201140",
+        "20号楼": "287662861",
+        "22号楼": "287662019"
+      },
+      "loo_mean_error_m": 6.3,
+      "loo_max_error_m": 13.1
+    },
+    "east": {
+      "meters_per_svg_unit": 1.0925,
+      "rotation_deg": 6.86,
+      "control_ways": {
+        "东校区食堂": "265006297",
+        "东校区体育馆": "265006298",
+        "东5学生宿舍楼": "421408341",
+        "东3学生宿舍楼": "421408345",
+        "东1学生宿舍楼": "421408349",
+        "东教二楼": "421408351",
+        "东教一楼": "421408356"
+      },
+      "loo_mean_error_m": 17.7,
+      "loo_max_error_m": 31.8
+    }
+  },
+  "cross_calibration": {
+    "method": "two_gate_svg_similarity_scale",
+    "osm_gate_nodes": [
+      "5117734220",
+      "5229699412"
+    ],
+    "meters_per_svg_unit": 1.081,
+    "osm_gate_chord_m": 353.55,
+    "user_confirmed_edge_ids": [
+      "E133",
+      "E134",
+      "E135",
+      "E136",
+      "E137",
+      "E138"
+    ]
+  },
+  "edges": [
+    {
+      "edge_id": "E001",
+      "area": "main",
+      "length_estimate_m": 148.04,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 148.04
+    },
+    {
+      "edge_id": "E002",
+      "area": "main",
+      "length_estimate_m": 153.7,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 153.7
+    },
+    {
+      "edge_id": "E003",
+      "area": "main",
+      "length_estimate_m": 24.4,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 24.4
+    },
+    {
+      "edge_id": "E004",
+      "area": "main",
+      "length_estimate_m": 71.78,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 71.79,
+      "osm_way": "60110701",
+      "osm_highway": "residential",
+      "osm_name": "鲲鹏路",
+      "max_sample_distance_m": 3.6,
+      "osm_start_local_m": [
+        -238.26,
+        -1.68
+      ],
+      "osm_end_local_m": [
+        -221.83,
+        68.2
+      ]
+    },
+    {
+      "edge_id": "E005",
+      "area": "main",
+      "length_estimate_m": 16.97,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 16.97
+    },
+    {
+      "edge_id": "E006",
+      "area": "main",
+      "length_estimate_m": 83.02,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 83.02
+    },
+    {
+      "edge_id": "E007",
+      "area": "main",
+      "length_estimate_m": 28.5,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 28.43,
+      "osm_way": "60110701",
+      "osm_highway": "residential",
+      "osm_name": "鲲鹏路",
+      "max_sample_distance_m": 3.9,
+      "osm_start_local_m": [
+        -221.83,
+        68.2
+      ],
+      "osm_end_local_m": [
+        -215.15,
+        95.91
+      ]
+    },
+    {
+      "edge_id": "E008",
+      "area": "main",
+      "length_estimate_m": 58.63,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 58.63
+    },
+    {
+      "edge_id": "E010",
+      "area": "main",
+      "length_estimate_m": 83.03,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 83.03
+    },
+    {
+      "edge_id": "E011",
+      "area": "main",
+      "length_estimate_m": 76.67,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 76.68,
+      "osm_way": "60110701",
+      "osm_highway": "residential",
+      "osm_name": "鲲鹏路",
+      "max_sample_distance_m": 3.8,
+      "osm_start_local_m": [
+        -215.15,
+        95.91
+      ],
+      "osm_end_local_m": [
+        -196.22,
+        170.21
+      ]
+    },
+    {
+      "edge_id": "E013",
+      "area": "main",
+      "length_estimate_m": 83.03,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 83.03
+    },
+    {
+      "edge_id": "E014",
+      "area": "main",
+      "length_estimate_m": 45.74,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 45.74
+    },
+    {
+      "edge_id": "E015",
+      "area": "main",
+      "length_estimate_m": 69.72,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 69.72
+    },
+    {
+      "edge_id": "E016",
+      "area": "main",
+      "length_estimate_m": 71.77,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 71.72,
+      "osm_way": "60110801",
+      "osm_highway": "residential",
+      "osm_name": "积秀路",
+      "max_sample_distance_m": 4.1,
+      "osm_start_local_m": [
+        -156.18,
+        -21.95
+      ],
+      "osm_end_local_m": [
+        -141.7,
+        48.35
+      ]
+    },
+    {
+      "edge_id": "E017",
+      "area": "main",
+      "length_estimate_m": 69.65,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 69.65
+    },
+    {
+      "edge_id": "E018",
+      "area": "main",
+      "length_estimate_m": 28.34,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 28.35,
+      "osm_way": "60110801",
+      "osm_highway": "residential",
+      "osm_name": "积秀路",
+      "max_sample_distance_m": 4.5,
+      "osm_start_local_m": [
+        -141.7,
+        48.35
+      ],
+      "osm_end_local_m": [
+        -135.25,
+        75.95
+      ]
+    },
+    {
+      "edge_id": "E019",
+      "area": "main",
+      "length_estimate_m": 76.66,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 76.68,
+      "osm_way": "60110801",
+      "osm_highway": "residential",
+      "osm_name": "积秀路",
+      "max_sample_distance_m": 6.1,
+      "osm_start_local_m": [
+        -135.25,
+        75.95
+      ],
+      "osm_end_local_m": [
+        -118.16,
+        150.67
+      ]
+    },
+    {
+      "edge_id": "E020",
+      "area": "main",
+      "length_estimate_m": 47.79,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 47.79
+    },
+    {
+      "edge_id": "E021",
+      "area": "main",
+      "length_estimate_m": 69.61,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 69.61
+    },
+    {
+      "edge_id": "E022",
+      "area": "main",
+      "length_estimate_m": 4.42,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 4.42
+    },
+    {
+      "edge_id": "E025",
+      "area": "main",
+      "length_estimate_m": 49.42,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 49.41,
+      "osm_way": "60110801",
+      "osm_highway": "residential",
+      "osm_name": "积秀路",
+      "max_sample_distance_m": 7.0,
+      "osm_start_local_m": [
+        -118.16,
+        150.67
+      ],
+      "osm_end_local_m": [
+        -107.03,
+        198.82
+      ]
+    },
+    {
+      "edge_id": "E026",
+      "area": "main",
+      "length_estimate_m": 65.18,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 65.18
+    },
+    {
+      "edge_id": "E028",
+      "area": "main",
+      "length_estimate_m": 69.62,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 69.62
+    },
+    {
+      "edge_id": "E029",
+      "area": "main",
+      "length_estimate_m": 69.56,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 69.56
+    },
+    {
+      "edge_id": "E030",
+      "area": "main",
+      "length_estimate_m": 38.79,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 38.79
+    },
+    {
+      "edge_id": "E032",
+      "area": "main",
+      "length_estimate_m": 73.15,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 73.15
+    },
+    {
+      "edge_id": "E033",
+      "area": "main",
+      "length_estimate_m": 97.38,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 97.38
+    },
+    {
+      "edge_id": "E034",
+      "area": "main",
+      "length_estimate_m": 69.52,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 69.52
+    },
+    {
+      "edge_id": "E035",
+      "area": "main",
+      "length_estimate_m": 97.45,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 97.45
+    },
+    {
+      "edge_id": "E036",
+      "area": "main",
+      "length_estimate_m": 68.56,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 68.56
+    },
+    {
+      "edge_id": "E038",
+      "area": "main",
+      "length_estimate_m": 36.22,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 36.22
+    },
+    {
+      "edge_id": "E040",
+      "area": "main",
+      "length_estimate_m": 25.89,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 25.89
+    },
+    {
+      "edge_id": "E041",
+      "area": "main",
+      "length_estimate_m": 46.79,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 46.79
+    },
+    {
+      "edge_id": "E042",
+      "area": "main",
+      "length_estimate_m": 23.36,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 23.36
+    },
+    {
+      "edge_id": "E043",
+      "area": "main",
+      "length_estimate_m": 70.53,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 70.53
+    },
+    {
+      "edge_id": "E044",
+      "area": "main",
+      "length_estimate_m": 52.14,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 52.14
+    },
+    {
+      "edge_id": "E045",
+      "area": "main",
+      "length_estimate_m": 50.7,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 50.7
+    },
+    {
+      "edge_id": "E046",
+      "area": "main",
+      "length_estimate_m": 94.24,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 94.24
+    },
+    {
+      "edge_id": "E047",
+      "area": "main",
+      "length_estimate_m": 75.46,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 75.46
+    },
+    {
+      "edge_id": "E048",
+      "area": "main",
+      "length_estimate_m": 72.71,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 74.33,
+      "osm_way": "197993953",
+      "osm_highway": "residential",
+      "osm_name": "京院路",
+      "max_sample_distance_m": 2.8,
+      "osm_start_local_m": [
+        22.34,
+        8.43
+      ],
+      "osm_end_local_m": [
+        5.17,
+        -62.22
+      ]
+    },
+    {
+      "edge_id": "E049",
+      "area": "main",
+      "length_estimate_m": 75.93,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 75.93,
+      "osm_way": "60110831",
+      "osm_highway": "residential",
+      "osm_name": "银杏大道",
+      "max_sample_distance_m": 2.0,
+      "osm_start_local_m": [
+        98.56,
+        -9.37
+      ],
+      "osm_end_local_m": [
+        24.62,
+        7.9
+      ]
+    },
+    {
+      "edge_id": "E050",
+      "area": "main",
+      "length_estimate_m": 42.76,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 42.76
+    },
+    {
+      "edge_id": "E051",
+      "area": "main",
+      "length_estimate_m": 182.99,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 182.99
+    },
+    {
+      "edge_id": "E052",
+      "area": "main",
+      "length_estimate_m": 31.41,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 31.41
+    },
+    {
+      "edge_id": "E053",
+      "area": "main",
+      "length_estimate_m": 137.56,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 137.56
+    },
+    {
+      "edge_id": "E054",
+      "area": "main",
+      "length_estimate_m": 37.49,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 37.49
+    },
+    {
+      "edge_id": "E056",
+      "area": "main",
+      "length_estimate_m": 153.92,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 153.92
+    },
+    {
+      "edge_id": "E058",
+      "area": "main",
+      "length_estimate_m": 31.48,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 31.48
+    },
+    {
+      "edge_id": "E061",
+      "area": "main",
+      "length_estimate_m": 16.67,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 16.67
+    },
+    {
+      "edge_id": "E062",
+      "area": "main",
+      "length_estimate_m": 137.57,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 137.57
+    },
+    {
+      "edge_id": "E063",
+      "area": "main",
+      "length_estimate_m": 186.35,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 186.35
+    },
+    {
+      "edge_id": "E064",
+      "area": "main",
+      "length_estimate_m": 62.37,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 62.37
+    },
+    {
+      "edge_id": "E066",
+      "area": "main",
+      "length_estimate_m": 73.65,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 75.77,
+      "osm_way": "197993816",
+      "osm_highway": "residential",
+      "osm_name": "明湖路",
+      "max_sample_distance_m": 4.4,
+      "osm_start_local_m": [
+        84.51,
+        -81.72
+      ],
+      "osm_end_local_m": [
+        99.94,
+        -9.7
+      ]
+    },
+    {
+      "edge_id": "E067",
+      "area": "main",
+      "length_estimate_m": 61.69,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 61.68,
+      "osm_way": "60110831",
+      "osm_highway": "residential",
+      "osm_name": "银杏大道",
+      "max_sample_distance_m": 2.5,
+      "osm_start_local_m": [
+        158.68,
+        -23.24
+      ],
+      "osm_end_local_m": [
+        98.56,
+        -9.37
+      ]
+    },
+    {
+      "edge_id": "E073",
+      "area": "main",
+      "length_estimate_m": 80.87,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 80.87
+    },
+    {
+      "edge_id": "E074",
+      "area": "main",
+      "length_estimate_m": 26.85,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 26.85
+    },
+    {
+      "edge_id": "E078",
+      "area": "main",
+      "length_estimate_m": 90.8,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 90.8
+    },
+    {
+      "edge_id": "E079",
+      "area": "main",
+      "length_estimate_m": 34.17,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 34.17
+    },
+    {
+      "edge_id": "E082",
+      "area": "main",
+      "length_estimate_m": 80.67,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 80.57,
+      "osm_way": "60110831",
+      "osm_highway": "residential",
+      "osm_name": "银杏大道",
+      "max_sample_distance_m": 3.1,
+      "osm_start_local_m": [
+        237.87,
+        -38.58
+      ],
+      "osm_end_local_m": [
+        158.68,
+        -23.24
+      ]
+    },
+    {
+      "edge_id": "E083",
+      "area": "main",
+      "length_estimate_m": 39.45,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 39.45
+    },
+    {
+      "edge_id": "E084",
+      "area": "main",
+      "length_estimate_m": 55.19,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 55.19
+    },
+    {
+      "edge_id": "E085",
+      "area": "main",
+      "length_estimate_m": 2.13,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 2.13
+    },
+    {
+      "edge_id": "E086",
+      "area": "main",
+      "length_estimate_m": 44.23,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 44.23
+    },
+    {
+      "edge_id": "E087",
+      "area": "main",
+      "length_estimate_m": 58.98,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 58.98
+    },
+    {
+      "edge_id": "E088",
+      "area": "main",
+      "length_estimate_m": 41.39,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 41.39
+    },
+    {
+      "edge_id": "E089",
+      "area": "main",
+      "length_estimate_m": 56.99,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 56.99
+    },
+    {
+      "edge_id": "E090",
+      "area": "main",
+      "length_estimate_m": 54.93,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 54.93
+    },
+    {
+      "edge_id": "E091",
+      "area": "main",
+      "length_estimate_m": 53.56,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 53.56
+    },
+    {
+      "edge_id": "E092",
+      "area": "main",
+      "length_estimate_m": 41.02,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 41.02
+    },
+    {
+      "edge_id": "E093",
+      "area": "main",
+      "length_estimate_m": 58.47,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 58.47
+    },
+    {
+      "edge_id": "E094",
+      "area": "main",
+      "length_estimate_m": 44.6,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 44.6
+    },
+    {
+      "edge_id": "E095",
+      "area": "main",
+      "length_estimate_m": 41.21,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 41.24,
+      "osm_way": "266510294",
+      "osm_highway": "unclassified",
+      "osm_name": null,
+      "max_sample_distance_m": 5.1,
+      "osm_start_local_m": [
+        241.38,
+        87.51
+      ],
+      "osm_end_local_m": [
+        231.88,
+        47.42
+      ]
+    },
+    {
+      "edge_id": "E096",
+      "area": "main",
+      "length_estimate_m": 26.58,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 26.91,
+      "osm_way": "60110831",
+      "osm_highway": "residential",
+      "osm_name": "银杏大道",
+      "max_sample_distance_m": 3.7,
+      "osm_start_local_m": [
+        264.06,
+        -43.12
+      ],
+      "osm_end_local_m": [
+        237.87,
+        -38.58
+      ]
+    },
+    {
+      "edge_id": "E097",
+      "area": "main",
+      "length_estimate_m": 6.02,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 5.98,
+      "osm_way": "60110831",
+      "osm_highway": "residential",
+      "osm_name": "银杏大道",
+      "max_sample_distance_m": 3.2,
+      "osm_start_local_m": [
+        243.8,
+        -39.64
+      ],
+      "osm_end_local_m": [
+        237.87,
+        -38.58
+      ]
+    },
+    {
+      "edge_id": "E098",
+      "area": "main",
+      "length_estimate_m": 45.88,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 45.88
+    },
+    {
+      "edge_id": "E099",
+      "area": "main",
+      "length_estimate_m": 54.09,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 54.09
+    },
+    {
+      "edge_id": "E100",
+      "area": "main",
+      "length_estimate_m": 33.64,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 33.64
+    },
+    {
+      "edge_id": "E101",
+      "area": "main",
+      "length_estimate_m": 146.39,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 151.72,
+      "osm_way": "60110710",
+      "osm_highway": "residential",
+      "osm_name": null,
+      "max_sample_distance_m": 6.1,
+      "osm_start_local_m": [
+        411.5,
+        -76.48
+      ],
+      "osm_end_local_m": [
+        268.78,
+        -43.93
+      ]
+    },
+    {
+      "edge_id": "E102",
+      "area": "main",
+      "length_estimate_m": 76.31,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 76.67,
+      "osm_way": "60110704",
+      "osm_highway": "residential",
+      "osm_name": "芳华路",
+      "max_sample_distance_m": 5.4,
+      "osm_start_local_m": [
+        269.43,
+        -40.34
+      ],
+      "osm_end_local_m": [
+        283.86,
+        34.58
+      ]
+    },
+    {
+      "edge_id": "E103",
+      "area": "main",
+      "length_estimate_m": 1.57,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 1.57
+    },
+    {
+      "edge_id": "E105",
+      "area": "main",
+      "length_estimate_m": 50.25,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 50.25
+    },
+    {
+      "edge_id": "E107",
+      "area": "main",
+      "length_estimate_m": 1.57,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 1.57
+    },
+    {
+      "edge_id": "E110",
+      "area": "main",
+      "length_estimate_m": 41.16,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 41.04,
+      "osm_way": "60110704",
+      "osm_highway": "residential",
+      "osm_name": "芳华路",
+      "max_sample_distance_m": 4.0,
+      "osm_start_local_m": [
+        283.86,
+        34.58
+      ],
+      "osm_end_local_m": [
+        293.27,
+        74.65
+      ]
+    },
+    {
+      "edge_id": "E113",
+      "area": "main",
+      "length_estimate_m": 17.86,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 17.86
+    },
+    {
+      "edge_id": "E115",
+      "area": "main",
+      "length_estimate_m": 39.56,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 39.56
+    },
+    {
+      "edge_id": "E116",
+      "area": "main",
+      "length_estimate_m": 85.52,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 85.52
+    },
+    {
+      "edge_id": "E117",
+      "area": "main",
+      "length_estimate_m": 157.04,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 157.04
+    },
+    {
+      "edge_id": "E118",
+      "area": "main",
+      "length_estimate_m": 76.99,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 76.99
+    },
+    {
+      "edge_id": "E119",
+      "area": "main",
+      "length_estimate_m": 151.29,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 151.29
+    },
+    {
+      "edge_id": "E120",
+      "area": "main",
+      "length_estimate_m": 81.76,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 81.76
+    },
+    {
+      "edge_id": "E122",
+      "area": "main",
+      "length_estimate_m": 79.65,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 79.65
+    },
+    {
+      "edge_id": "E124",
+      "area": "main",
+      "length_estimate_m": 25.93,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 25.93
+    },
+    {
+      "edge_id": "E125",
+      "area": "east",
+      "length_estimate_m": 145.04,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 145.04
+    },
+    {
+      "edge_id": "E126",
+      "area": "east",
+      "length_estimate_m": 21.71,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 21.75,
+      "osm_way": "421587941",
+      "osm_highway": "residential",
+      "osm_name": null,
+      "max_sample_distance_m": 4.1,
+      "osm_start_local_m": [
+        452.44,
+        307.78
+      ],
+      "osm_end_local_m": [
+        454.77,
+        329.36
+      ]
+    },
+    {
+      "edge_id": "E127",
+      "area": "east",
+      "length_estimate_m": 185.22,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 185.22
+    },
+    {
+      "edge_id": "E128",
+      "area": "east",
+      "length_estimate_m": 11.28,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 11.28
+    },
+    {
+      "edge_id": "E129",
+      "area": "east",
+      "length_estimate_m": 102.3,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 102.3
+    },
+    {
+      "edge_id": "E130",
+      "area": "east",
+      "length_estimate_m": 220.41,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 220.41
+    },
+    {
+      "edge_id": "E131",
+      "area": "east",
+      "length_estimate_m": 143.95,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 143.95,
+      "osm_way": "421587941",
+      "osm_highway": "residential",
+      "osm_name": null,
+      "max_sample_distance_m": 4.1,
+      "osm_start_local_m": [
+        579.32,
+        500.47
+      ],
+      "osm_end_local_m": [
+        562.26,
+        357.54
+      ]
+    },
+    {
+      "edge_id": "E132",
+      "area": "east",
+      "length_estimate_m": 209.1,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 209.1
+    },
+    {
+      "edge_id": "E133",
+      "area": "cross",
+      "length_estimate_m": 80.23,
+      "method": "confirmed_alignment_gate_scale"
+    },
+    {
+      "edge_id": "E134",
+      "area": "cross",
+      "length_estimate_m": 13.37,
+      "method": "confirmed_alignment_gate_scale"
+    },
+    {
+      "edge_id": "E135",
+      "area": "cross",
+      "length_estimate_m": 265.64,
+      "method": "confirmed_alignment_gate_scale"
+    },
+    {
+      "edge_id": "E136",
+      "area": "cross",
+      "length_estimate_m": 24.65,
+      "method": "confirmed_alignment_gate_scale"
+    },
+    {
+      "edge_id": "E137",
+      "area": "cross",
+      "length_estimate_m": 55.85,
+      "method": "confirmed_alignment_gate_scale"
+    },
+    {
+      "edge_id": "E138",
+      "area": "cross",
+      "length_estimate_m": 29.27,
+      "method": "confirmed_alignment_gate_scale"
+    },
+    {
+      "edge_id": "E155",
+      "area": "main",
+      "length_estimate_m": 20.08,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 20.08
+    },
+    {
+      "edge_id": "E156",
+      "area": "main",
+      "length_estimate_m": 20.56,
+      "method": "osm_matched_section",
+      "svg_scale_estimate_m": 20.56,
+      "osm_way": "60110831",
+      "osm_highway": "residential",
+      "osm_name": "银杏大道",
+      "max_sample_distance_m": 3.7,
+      "osm_start_local_m": [
+        264.06,
+        -43.12
+      ],
+      "osm_end_local_m": [
+        243.8,
+        -39.64
+      ]
+    },
+    {
+      "edge_id": "E157",
+      "area": "main",
+      "length_estimate_m": 87.18,
+      "method": "confirmed_road_svg_scale",
+      "svg_scale_estimate_m": 87.18
+    }
+  ]
+}

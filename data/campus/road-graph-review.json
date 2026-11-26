@@ -1,0 +1,3309 @@
+{
+  "status": "draft",
+  "coordinate_system": "SVG viewBox 1800×1265; no metric scale",
+  "rules": "Undirected candidate edges. Exact drawn crossings are candidates for turn confirmation. Lengths and access unverified.",
+  "collapsed_point_edges": [
+    "E009",
+    "E012",
+    "E023",
+    "E027",
+    "E037",
+    "E057",
+    "E060",
+    "E065",
+    "E068",
+    "E069",
+    "E070",
+    "E071",
+    "E072",
+    "E081",
+    "E104",
+    "E106",
+    "E109",
+    "E111",
+    "E114",
+    "E121"
+  ],
+  "collapsed_retraces": [
+    "E055",
+    "E059",
+    "E108",
+    "E112"
+  ],
+  "collapsed_overlap_edges": [
+    "E031",
+    "E075",
+    "E076",
+    "E077",
+    "E080"
+  ],
+  "duplicate_edges": {
+    "E024": "E022",
+    "E123": "E124"
+  },
+  "nonexistent_edges": [
+    "E039"
+  ],
+  "nodes": [
+    {
+      "id": "N001",
+      "area": "main",
+      "xy_svg": [
+        230.0,
+        507.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N002",
+      "area": "main",
+      "xy_svg": [
+        401.95,
+        473.79
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N003",
+      "area": "main",
+      "xy_svg": [
+        429.98,
+        466.91
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N004",
+      "area": "main",
+      "xy_svg": [
+        447.0,
+        325.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N005",
+      "area": "main",
+      "xy_svg": [
+        422.5,
+        556.2
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N006",
+      "area": "main",
+      "xy_svg": [
+        403.0,
+        561.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N007",
+      "area": "main",
+      "xy_svg": [
+        517.87,
+        532.7
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N008",
+      "area": "main",
+      "xy_svg": [
+        430.63,
+        588.84
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N009",
+      "area": "main",
+      "xy_svg": [
+        497.34,
+        450.37
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N011",
+      "area": "main",
+      "xy_svg": [
+        525.98,
+        565.24
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N012",
+      "area": "main",
+      "xy_svg": [
+        452.58,
+        676.86
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N014",
+      "area": "main",
+      "xy_svg": [
+        547.93,
+        653.26
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N015",
+      "area": "main",
+      "xy_svg": [
+        465.67,
+        729.37
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N016",
+      "area": "main",
+      "xy_svg": [
+        577.0,
+        429.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N017",
+      "area": "main",
+      "xy_svg": [
+        597.88,
+        512.98
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N019",
+      "area": "main",
+      "xy_svg": [
+        527.0,
+        803.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N020",
+      "area": "main",
+      "xy_svg": [
+        582.0,
+        789.9
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N021",
+      "area": "main",
+      "xy_svg": [
+        537.55,
+        611.61
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N022",
+      "area": "main",
+      "xy_svg": [
+        617.46,
+        591.69
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N023",
+      "area": "main",
+      "xy_svg": [
+        552.94,
+        651.78
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N024",
+      "area": "main",
+      "xy_svg": [
+        562.07,
+        709.98
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N025",
+      "area": "main",
+      "xy_svg": [
+        627.8,
+        633.27
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N027",
+      "area": "main",
+      "xy_svg": [
+        641.86,
+        689.82
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N028",
+      "area": "main",
+      "xy_svg": [
+        567.91,
+        384.02
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N030",
+      "area": "main",
+      "xy_svg": [
+        689.16,
+        402.68
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N031",
+      "area": "main",
+      "xy_svg": [
+        662.0,
+        770.8
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N032",
+      "area": "main",
+      "xy_svg": [
+        710.43,
+        488.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N035",
+      "area": "main",
+      "xy_svg": [
+        635.19,
+        663.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N036",
+      "area": "main",
+      "xy_svg": [
+        689.0,
+        650.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N037",
+      "area": "main",
+      "xy_svg": [
+        722.0,
+        756.5
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N038",
+      "area": "main",
+      "xy_svg": [
+        747.18,
+        635.39
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N039",
+      "area": "main",
+      "xy_svg": [
+        775.83,
+        381.31
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N040",
+      "area": "main",
+      "xy_svg": [
+        798.04,
+        468.15
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N041",
+      "area": "main",
+      "xy_svg": [
+        722.67,
+        537.08
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N042",
+      "area": "main",
+      "xy_svg": [
+        932.55,
+        706.14
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N043",
+      "area": "main",
+      "xy_svg": [
+        733.0,
+        792.0
+      ],
+      "component": 1,
+      "name": "主校区南门"
+    },
+    {
+      "id": "N044",
+      "area": "main",
+      "xy_svg": [
+        880.58,
+        497.71
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N045",
+      "area": "main",
+      "xy_svg": [
+        733.4,
+        580.11
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N047",
+      "area": "main",
+      "xy_svg": [
+        742.41,
+        616.25
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N049",
+      "area": "main",
+      "xy_svg": [
+        905.09,
+        595.99
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N050",
+      "area": "main",
+      "xy_svg": [
+        850.74,
+        245.04
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N051",
+      "area": "main",
+      "xy_svg": [
+        846.15,
+        359.59
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N054",
+      "area": "main",
+      "xy_svg": [
+        869.29,
+        452.42
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N058",
+      "area": "main",
+      "xy_svg": [
+        876.1,
+        349.42
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N062",
+      "area": "main",
+      "xy_svg": [
+        889.0,
+        232.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N064",
+      "area": "main",
+      "xy_svg": [
+        963.0,
+        435.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N065",
+      "area": "main",
+      "xy_svg": [
+        963.0,
+        330.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N066",
+      "area": "main",
+      "xy_svg": [
+        883.02,
+        497.1
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N067",
+      "area": "main",
+      "xy_svg": [
+        893.24,
+        548.48
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N068",
+      "area": "main",
+      "xy_svg": [
+        961.0,
+        531.8
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N069",
+      "area": "main",
+      "xy_svg": [
+        970.5,
+        579.65
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N070",
+      "area": "main",
+      "xy_svg": [
+        920.81,
+        659.05
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N071",
+      "area": "main",
+      "xy_svg": [
+        982.0,
+        642.6
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N072",
+      "area": "main",
+      "xy_svg": [
+        999.83,
+        690.06
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N073",
+      "area": "main",
+      "xy_svg": [
+        1012.24,
+        519.19
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N074",
+      "area": "main",
+      "xy_svg": [
+        994.07,
+        430.43
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N075",
+      "area": "main",
+      "xy_svg": [
+        1023.16,
+        566.5
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N076",
+      "area": "main",
+      "xy_svg": [
+        1020.47,
+        632.41
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N077",
+      "area": "main",
+      "xy_svg": [
+        1166.31,
+        380.22
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N078",
+      "area": "main",
+      "xy_svg": [
+        1000.51,
+        688.33
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N083",
+      "area": "main",
+      "xy_svg": [
+        1025.96,
+        612.01
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N085",
+      "area": "main",
+      "xy_svg": [
+        1124.13,
+        587.53
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N086",
+      "area": "main",
+      "xy_svg": [
+        1189.71,
+        474.07
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N087",
+      "area": "main",
+      "xy_svg": [
+        1212.51,
+        565.5
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N088",
+      "area": "main",
+      "xy_svg": [
+        1340.0,
+        337.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N090",
+      "area": "main",
+      "xy_svg": [
+        1219.93,
+        595.27
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N091",
+      "area": "east",
+      "xy_svg": [
+        1041.0,
+        902.0
+      ],
+      "component": 1,
+      "name": "东校区小西门"
+    },
+    {
+      "id": "N092",
+      "area": "east",
+      "xy_svg": [
+        1138.0,
+        850.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N093",
+      "area": "east",
+      "xy_svg": [
+        1132.27,
+        830.93
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N094",
+      "area": "east",
+      "xy_svg": [
+        1179.02,
+        1014.5
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N095",
+      "area": "east",
+      "xy_svg": [
+        1169.0,
+        1017.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N096",
+      "area": "east",
+      "xy_svg": [
+        1269.88,
+        991.85
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N097",
+      "area": "east",
+      "xy_svg": [
+        1246.0,
+        1180.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N098",
+      "area": "east",
+      "xy_svg": [
+        1238.0,
+        864.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N099",
+      "area": "east",
+      "xy_svg": [
+        1262.0,
+        1145.0
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N102",
+      "area": "cross",
+      "xy_svg": [
+        751,
+        864
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N103",
+      "area": "cross",
+      "xy_svg": [
+        754,
+        876
+      ],
+      "component": 1,
+      "name": "南门外转向东（走法已确认）"
+    },
+    {
+      "id": "N104",
+      "area": "cross",
+      "xy_svg": [
+        995,
+        828
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N105",
+      "area": "cross",
+      "xy_svg": [
+        1001,
+        850
+      ],
+      "component": 1,
+      "name": "上园村路接入（走法已确认）"
+    },
+    {
+      "id": "N106",
+      "area": "cross",
+      "xy_svg": [
+        1014,
+        900
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N107",
+      "area": "main",
+      "xy_svg": [
+        939.85,
+        335.34
+      ],
+      "component": 1,
+      "name": null
+    },
+    {
+      "id": "N108",
+      "area": "main",
+      "xy_svg": [
+        970.0,
+        433.97
+      ],
+      "component": 1,
+      "name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "E001",
+      "area": "main",
+      "from_node": "N001",
+      "to_node": "N002",
+      "polyline_svg": [
+        [
+          230.0,
+          507.0
+        ],
+        [
+          309.0,
+          491.0
+        ],
+        [
+          397.0,
+          475.0
+        ],
+        [
+          401.95,
+          473.79
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        7
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E002",
+      "area": "main",
+      "from_node": "N003",
+      "to_node": "N004",
+      "polyline_svg": [
+        [
+          429.98,
+          466.91
+        ],
+        [
+          400.0,
+          337.0
+        ],
+        [
+          447.0,
+          325.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        42
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E003",
+      "area": "main",
+      "from_node": "N002",
+      "to_node": "N003",
+      "polyline_svg": [
+        [
+          401.95,
+          473.79
+        ],
+        [
+          429.98,
+          466.91
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        7
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E004",
+      "area": "main",
+      "from_node": "N002",
+      "to_node": "N005",
+      "polyline_svg": [
+        [
+          401.95,
+          473.79
+        ],
+        [
+          422.5,
+          556.2
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        21
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E005",
+      "area": "main",
+      "from_node": "N006",
+      "to_node": "N005",
+      "polyline_svg": [
+        [
+          403.0,
+          561.0
+        ],
+        [
+          422.5,
+          556.2
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E006",
+      "area": "main",
+      "from_node": "N005",
+      "to_node": "N007",
+      "polyline_svg": [
+        [
+          422.5,
+          556.2
+        ],
+        [
+          517.87,
+          532.7
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E007",
+      "area": "main",
+      "from_node": "N005",
+      "to_node": "N008",
+      "polyline_svg": [
+        [
+          422.5,
+          556.2
+        ],
+        [
+          430.63,
+          588.84
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        21
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E008",
+      "area": "main",
+      "from_node": "N003",
+      "to_node": "N009",
+      "polyline_svg": [
+        [
+          429.98,
+          466.91
+        ],
+        [
+          497.34,
+          450.37
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        7
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E010",
+      "area": "main",
+      "from_node": "N008",
+      "to_node": "N011",
+      "polyline_svg": [
+        [
+          430.63,
+          588.84
+        ],
+        [
+          525.98,
+          565.24
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        11
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E011",
+      "area": "main",
+      "from_node": "N008",
+      "to_node": "N012",
+      "polyline_svg": [
+        [
+          430.63,
+          588.84
+        ],
+        [
+          452.58,
+          676.86
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        21
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E013",
+      "area": "main",
+      "from_node": "N012",
+      "to_node": "N014",
+      "polyline_svg": [
+        [
+          452.58,
+          676.86
+        ],
+        [
+          547.93,
+          653.26
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        13
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E014",
+      "area": "main",
+      "from_node": "N012",
+      "to_node": "N015",
+      "polyline_svg": [
+        [
+          452.58,
+          676.86
+        ],
+        [
+          465.67,
+          729.37
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        21
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E015",
+      "area": "main",
+      "from_node": "N009",
+      "to_node": "N016",
+      "polyline_svg": [
+        [
+          497.34,
+          450.37
+        ],
+        [
+          507.0,
+          448.0
+        ],
+        [
+          577.0,
+          429.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        7
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E016",
+      "area": "main",
+      "from_node": "N009",
+      "to_node": "N007",
+      "polyline_svg": [
+        [
+          497.34,
+          450.37
+        ],
+        [
+          517.87,
+          532.7
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        22
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E017",
+      "area": "main",
+      "from_node": "N007",
+      "to_node": "N017",
+      "polyline_svg": [
+        [
+          517.87,
+          532.7
+        ],
+        [
+          597.88,
+          512.98
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E018",
+      "area": "main",
+      "from_node": "N007",
+      "to_node": "N011",
+      "polyline_svg": [
+        [
+          517.87,
+          532.7
+        ],
+        [
+          525.98,
+          565.24
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        22
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E019",
+      "area": "main",
+      "from_node": "N011",
+      "to_node": "N014",
+      "polyline_svg": [
+        [
+          525.98,
+          565.24
+        ],
+        [
+          547.93,
+          653.26
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        22
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E020",
+      "area": "main",
+      "from_node": "N019",
+      "to_node": "N020",
+      "polyline_svg": [
+        [
+          527.0,
+          803.0
+        ],
+        [
+          582.0,
+          789.9
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        20
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E021",
+      "area": "main",
+      "from_node": "N021",
+      "to_node": "N022",
+      "polyline_svg": [
+        [
+          537.55,
+          611.61
+        ],
+        [
+          617.46,
+          591.69
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        9
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E022",
+      "area": "main",
+      "from_node": "N014",
+      "to_node": "N023",
+      "polyline_svg": [
+        [
+          547.93,
+          653.26
+        ],
+        [
+          552.94,
+          651.78
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        25
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E025",
+      "area": "main",
+      "from_node": "N014",
+      "to_node": "N024",
+      "polyline_svg": [
+        [
+          547.93,
+          653.26
+        ],
+        [
+          562.07,
+          709.98
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        22
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E026",
+      "area": "main",
+      "from_node": "N023",
+      "to_node": "N025",
+      "polyline_svg": [
+        [
+          552.94,
+          651.78
+        ],
+        [
+          627.8,
+          633.27
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        25
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E028",
+      "area": "main",
+      "from_node": "N024",
+      "to_node": "N020",
+      "polyline_svg": [
+        [
+          562.07,
+          709.98
+        ],
+        [
+          582.0,
+          789.9
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        24
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E029",
+      "area": "main",
+      "from_node": "N024",
+      "to_node": "N027",
+      "polyline_svg": [
+        [
+          562.07,
+          709.98
+        ],
+        [
+          641.86,
+          689.82
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        16
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E030",
+      "area": "main",
+      "from_node": "N028",
+      "to_node": "N016",
+      "polyline_svg": [
+        [
+          567.91,
+          384.02
+        ],
+        [
+          577.0,
+          429.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        1
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E032",
+      "area": "main",
+      "from_node": "N016",
+      "to_node": "N017",
+      "polyline_svg": [
+        [
+          577.0,
+          429.0
+        ],
+        [
+          597.88,
+          512.98
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        23
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E033",
+      "area": "main",
+      "from_node": "N016",
+      "to_node": "N030",
+      "polyline_svg": [
+        [
+          577.0,
+          429.0
+        ],
+        [
+          650.0,
+          412.0
+        ],
+        [
+          689.16,
+          402.68
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        7
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E034",
+      "area": "main",
+      "from_node": "N020",
+      "to_node": "N031",
+      "polyline_svg": [
+        [
+          582.0,
+          789.9
+        ],
+        [
+          662.0,
+          770.8
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        20
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E035",
+      "area": "main",
+      "from_node": "N017",
+      "to_node": "N032",
+      "polyline_svg": [
+        [
+          597.88,
+          512.98
+        ],
+        [
+          610.0,
+          510.0
+        ],
+        [
+          651.0,
+          501.0
+        ],
+        [
+          706.0,
+          489.0
+        ],
+        [
+          710.43,
+          488.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E036",
+      "area": "main",
+      "from_node": "N017",
+      "to_node": "N022",
+      "polyline_svg": [
+        [
+          597.88,
+          512.98
+        ],
+        [
+          617.46,
+          591.69
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        23
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E038",
+      "area": "main",
+      "from_node": "N022",
+      "to_node": "N025",
+      "polyline_svg": [
+        [
+          617.46,
+          591.69
+        ],
+        [
+          627.8,
+          633.27
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        23
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E040",
+      "area": "main",
+      "from_node": "N025",
+      "to_node": "N035",
+      "polyline_svg": [
+        [
+          627.8,
+          633.27
+        ],
+        [
+          635.19,
+          663.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        23
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E041",
+      "area": "main",
+      "from_node": "N035",
+      "to_node": "N036",
+      "polyline_svg": [
+        [
+          635.19,
+          663.0
+        ],
+        [
+          689.0,
+          650.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        18
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E042",
+      "area": "main",
+      "from_node": "N035",
+      "to_node": "N027",
+      "polyline_svg": [
+        [
+          635.19,
+          663.0
+        ],
+        [
+          641.86,
+          689.82
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        23
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E043",
+      "area": "main",
+      "from_node": "N027",
+      "to_node": "N031",
+      "polyline_svg": [
+        [
+          641.86,
+          689.82
+        ],
+        [
+          662.0,
+          770.8
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        23
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E044",
+      "area": "main",
+      "from_node": "N031",
+      "to_node": "N037",
+      "polyline_svg": [
+        [
+          662.0,
+          770.8
+        ],
+        [
+          722.0,
+          756.5
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        20
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E045",
+      "area": "main",
+      "from_node": "N036",
+      "to_node": "N038",
+      "polyline_svg": [
+        [
+          689.0,
+          650.0
+        ],
+        [
+          725.0,
+          641.0
+        ],
+        [
+          747.18,
+          635.39
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        18
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E046",
+      "area": "main",
+      "from_node": "N037",
+      "to_node": "N036",
+      "polyline_svg": [
+        [
+          722.0,
+          756.5
+        ],
+        [
+          689.0,
+          650.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        27
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E047",
+      "area": "main",
+      "from_node": "N030",
+      "to_node": "N039",
+      "polyline_svg": [
+        [
+          689.16,
+          402.68
+        ],
+        [
+          734.0,
+          392.0
+        ],
+        [
+          775.83,
+          381.31
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        7
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E048",
+      "area": "main",
+      "from_node": "N030",
+      "to_node": "N032",
+      "polyline_svg": [
+        [
+          689.16,
+          402.68
+        ],
+        [
+          710.43,
+          488.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        28
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E049",
+      "area": "main",
+      "from_node": "N032",
+      "to_node": "N040",
+      "polyline_svg": [
+        [
+          710.43,
+          488.0
+        ],
+        [
+          790.0,
+          470.0
+        ],
+        [
+          798.04,
+          468.15
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E050",
+      "area": "main",
+      "from_node": "N032",
+      "to_node": "N041",
+      "polyline_svg": [
+        [
+          710.43,
+          488.0
+        ],
+        [
+          722.67,
+          537.08
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        28
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E051",
+      "area": "main",
+      "from_node": "N037",
+      "to_node": "N042",
+      "polyline_svg": [
+        [
+          722.0,
+          756.5
+        ],
+        [
+          867.0,
+          721.8
+        ],
+        [
+          932.55,
+          706.14
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        20
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E052",
+      "area": "main",
+      "from_node": "N043",
+      "to_node": "N037",
+      "polyline_svg": [
+        [
+          733,
+          792
+        ],
+        [
+          722.0,
+          756.5
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        27
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E053",
+      "area": "main",
+      "from_node": "N041",
+      "to_node": "N044",
+      "polyline_svg": [
+        [
+          722.67,
+          537.08
+        ],
+        [
+          880.58,
+          497.71
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        14
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E054",
+      "area": "main",
+      "from_node": "N041",
+      "to_node": "N045",
+      "polyline_svg": [
+        [
+          722.67,
+          537.08
+        ],
+        [
+          733.4,
+          580.11
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        28
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E056",
+      "area": "main",
+      "from_node": "N045",
+      "to_node": "N047",
+      "polyline_svg": [
+        [
+          733.4,
+          580.11
+        ],
+        [
+          768.0,
+          571.0
+        ],
+        [
+          802.0,
+          562.0
+        ],
+        [
+          807.0,
+          563.0
+        ],
+        [
+          815.0,
+          583.0
+        ],
+        [
+          815.0,
+          589.0
+        ],
+        [
+          811.0,
+          594.0
+        ],
+        [
+          742.41,
+          616.25
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        37
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E058",
+      "area": "main",
+      "from_node": "N045",
+      "to_node": "N047",
+      "polyline_svg": [
+        [
+          733.4,
+          580.11
+        ],
+        [
+          742.41,
+          616.25
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        28
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E061",
+      "area": "main",
+      "from_node": "N047",
+      "to_node": "N038",
+      "polyline_svg": [
+        [
+          742.41,
+          616.25
+        ],
+        [
+          747.18,
+          635.39
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        28
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E062",
+      "area": "main",
+      "from_node": "N038",
+      "to_node": "N049",
+      "polyline_svg": [
+        [
+          747.18,
+          635.39
+        ],
+        [
+          808.0,
+          620.0
+        ],
+        [
+          869.0,
+          605.0
+        ],
+        [
+          905.09,
+          595.99
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        18
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E063",
+      "area": "main",
+      "from_node": "N039",
+      "to_node": "N050",
+      "polyline_svg": [
+        [
+          775.83,
+          381.31
+        ],
+        [
+          748.0,
+          270.0
+        ],
+        [
+          850.74,
+          245.04
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        41
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E064",
+      "area": "main",
+      "from_node": "N039",
+      "to_node": "N051",
+      "polyline_svg": [
+        [
+          775.83,
+          381.31
+        ],
+        [
+          824.0,
+          369.0
+        ],
+        [
+          846.15,
+          359.59
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        7
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E066",
+      "area": "main",
+      "from_node": "N039",
+      "to_node": "N040",
+      "polyline_svg": [
+        [
+          775.83,
+          381.31
+        ],
+        [
+          798.04,
+          468.15
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        26
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E067",
+      "area": "main",
+      "from_node": "N040",
+      "to_node": "N054",
+      "polyline_svg": [
+        [
+          798.04,
+          468.15
+        ],
+        [
+          842.0,
+          458.0
+        ],
+        [
+          869.29,
+          452.42
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E073",
+      "area": "main",
+      "from_node": "N051",
+      "to_node": "N054",
+      "polyline_svg": [
+        [
+          846.15,
+          359.59
+        ],
+        [
+          869.29,
+          452.42
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        29
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E074",
+      "area": "main",
+      "from_node": "N051",
+      "to_node": "N058",
+      "polyline_svg": [
+        [
+          846.15,
+          359.59
+        ],
+        [
+          864.0,
+          352.0
+        ],
+        [
+          876.1,
+          349.42
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        7
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E078",
+      "area": "main",
+      "from_node": "N050",
+      "to_node": "N058",
+      "polyline_svg": [
+        [
+          850.74,
+          245.04
+        ],
+        [
+          876.1,
+          349.42
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        5
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E079",
+      "area": "main",
+      "from_node": "N050",
+      "to_node": "N062",
+      "polyline_svg": [
+        [
+          850.74,
+          245.04
+        ],
+        [
+          889.0,
+          232.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        4
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E082",
+      "area": "main",
+      "from_node": "N054",
+      "to_node": "N064",
+      "polyline_svg": [
+        [
+          869.29,
+          452.42
+        ],
+        [
+          886.0,
+          449.0
+        ],
+        [
+          963.0,
+          435.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E083",
+      "area": "main",
+      "from_node": "N054",
+      "to_node": "N044",
+      "polyline_svg": [
+        [
+          869.29,
+          452.42
+        ],
+        [
+          880.58,
+          497.71
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        29
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E084",
+      "area": "main",
+      "from_node": "N058",
+      "to_node": "N107",
+      "polyline_svg": [
+        [
+          876.1,
+          349.42
+        ],
+        [
+          911.0,
+          342.0
+        ],
+        [
+          939.85,
+          335.34
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        7
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E085",
+      "area": "main",
+      "from_node": "N044",
+      "to_node": "N066",
+      "polyline_svg": [
+        [
+          880.58,
+          497.71
+        ],
+        [
+          883.02,
+          497.1
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        14
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E086",
+      "area": "main",
+      "from_node": "N044",
+      "to_node": "N067",
+      "polyline_svg": [
+        [
+          880.58,
+          497.71
+        ],
+        [
+          893.24,
+          548.48
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        29
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E087",
+      "area": "main",
+      "from_node": "N067",
+      "to_node": "N068",
+      "polyline_svg": [
+        [
+          893.24,
+          548.48
+        ],
+        [
+          961.0,
+          531.8
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        30
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E088",
+      "area": "main",
+      "from_node": "N067",
+      "to_node": "N049",
+      "polyline_svg": [
+        [
+          893.24,
+          548.48
+        ],
+        [
+          905.09,
+          595.99
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        29
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E089",
+      "area": "main",
+      "from_node": "N049",
+      "to_node": "N069",
+      "polyline_svg": [
+        [
+          905.09,
+          595.99
+        ],
+        [
+          970.5,
+          579.65
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        18
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E090",
+      "area": "main",
+      "from_node": "N049",
+      "to_node": "N070",
+      "polyline_svg": [
+        [
+          905.09,
+          595.99
+        ],
+        [
+          920.81,
+          659.05
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        29
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E091",
+      "area": "main",
+      "from_node": "N070",
+      "to_node": "N071",
+      "polyline_svg": [
+        [
+          920.81,
+          659.05
+        ],
+        [
+          982.0,
+          642.6
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        33
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E092",
+      "area": "main",
+      "from_node": "N070",
+      "to_node": "N042",
+      "polyline_svg": [
+        [
+          920.81,
+          659.05
+        ],
+        [
+          932.55,
+          706.14
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        29
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E093",
+      "area": "main",
+      "from_node": "N042",
+      "to_node": "N072",
+      "polyline_svg": [
+        [
+          932.55,
+          706.14
+        ],
+        [
+          999.83,
+          690.06
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        20
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E094",
+      "area": "main",
+      "from_node": "N068",
+      "to_node": "N073",
+      "polyline_svg": [
+        [
+          961.0,
+          531.8
+        ],
+        [
+          1012.24,
+          519.19
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        30
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E095",
+      "area": "main",
+      "from_node": "N068",
+      "to_node": "N069",
+      "polyline_svg": [
+        [
+          961.0,
+          531.8
+        ],
+        [
+          968.0,
+          566.0
+        ],
+        [
+          970.5,
+          579.65
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        32
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E096",
+      "area": "main",
+      "from_node": "N064",
+      "to_node": "N074",
+      "polyline_svg": [
+        [
+          963.0,
+          435.0
+        ],
+        [
+          994.0,
+          430.0
+        ],
+        [
+          994.07,
+          430.43
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        34
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E097",
+      "area": "main",
+      "from_node": "N064",
+      "to_node": "N108",
+      "polyline_svg": [
+        [
+          963.0,
+          435.0
+        ],
+        [
+          970.0,
+          433.97
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E098",
+      "area": "main",
+      "from_node": "N069",
+      "to_node": "N075",
+      "polyline_svg": [
+        [
+          970.5,
+          579.65
+        ],
+        [
+          1023.16,
+          566.5
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        18
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E099",
+      "area": "main",
+      "from_node": "N069",
+      "to_node": "N071",
+      "polyline_svg": [
+        [
+          970.5,
+          579.65
+        ],
+        [
+          982.0,
+          642.6
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        32
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E100",
+      "area": "main",
+      "from_node": "N071",
+      "to_node": "N076",
+      "polyline_svg": [
+        [
+          982.0,
+          642.6
+        ],
+        [
+          1020.47,
+          632.41
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        33
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E101",
+      "area": "main",
+      "from_node": "N074",
+      "to_node": "N077",
+      "polyline_svg": [
+        [
+          994.07,
+          430.43
+        ],
+        [
+          997.0,
+          430.0
+        ],
+        [
+          1123.0,
+          391.0
+        ],
+        [
+          1166.31,
+          380.22
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E102",
+      "area": "main",
+      "from_node": "N074",
+      "to_node": "N073",
+      "polyline_svg": [
+        [
+          994.07,
+          430.43
+        ],
+        [
+          1004.0,
+          489.0
+        ],
+        [
+          1011.0,
+          514.0
+        ],
+        [
+          1012.24,
+          519.19
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        34
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E103",
+      "area": "main",
+      "from_node": "N078",
+      "to_node": "N072",
+      "polyline_svg": [
+        [
+          1000.51,
+          688.33
+        ],
+        [
+          999.83,
+          690.06
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        34
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E105",
+      "area": "main",
+      "from_node": "N076",
+      "to_node": "N078",
+      "polyline_svg": [
+        [
+          1020.47,
+          632.41
+        ],
+        [
+          1016.0,
+          649.0
+        ],
+        [
+          1000.51,
+          688.33
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        34
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E107",
+      "area": "main",
+      "from_node": "N072",
+      "to_node": "N078",
+      "polyline_svg": [
+        [
+          999.83,
+          690.06
+        ],
+        [
+          1000.51,
+          688.33
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        20
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E110",
+      "area": "main",
+      "from_node": "N073",
+      "to_node": "N075",
+      "polyline_svg": [
+        [
+          1012.24,
+          519.19
+        ],
+        [
+          1017.0,
+          539.0
+        ],
+        [
+          1023.16,
+          566.5
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        34
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E113",
+      "area": "main",
+      "from_node": "N083",
+      "to_node": "N076",
+      "polyline_svg": [
+        [
+          1025.96,
+          612.01
+        ],
+        [
+          1020.47,
+          632.41
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        34
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E115",
+      "area": "main",
+      "from_node": "N075",
+      "to_node": "N083",
+      "polyline_svg": [
+        [
+          1023.16,
+          566.5
+        ],
+        [
+          1030.0,
+          597.0
+        ],
+        [
+          1025.96,
+          612.01
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        34
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E116",
+      "area": "main",
+      "from_node": "N083",
+      "to_node": "N085",
+      "polyline_svg": [
+        [
+          1025.96,
+          612.01
+        ],
+        [
+          1124.13,
+          587.53
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        19
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E117",
+      "area": "main",
+      "from_node": "N086",
+      "to_node": "N085",
+      "polyline_svg": [
+        [
+          1189.71,
+          474.07
+        ],
+        [
+          1101.0,
+          496.0
+        ],
+        [
+          1124.13,
+          587.53
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        36
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E118",
+      "area": "main",
+      "from_node": "N085",
+      "to_node": "N087",
+      "polyline_svg": [
+        [
+          1124.13,
+          587.53
+        ],
+        [
+          1212.51,
+          565.5
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        19
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E119",
+      "area": "main",
+      "from_node": "N077",
+      "to_node": "N088",
+      "polyline_svg": [
+        [
+          1166.31,
+          380.22
+        ],
+        [
+          1340.0,
+          337.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E120",
+      "area": "main",
+      "from_node": "N077",
+      "to_node": "N086",
+      "polyline_svg": [
+        [
+          1166.31,
+          380.22
+        ],
+        [
+          1189.71,
+          474.07
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        35
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E122",
+      "area": "main",
+      "from_node": "N086",
+      "to_node": "N087",
+      "polyline_svg": [
+        [
+          1189.71,
+          474.07
+        ],
+        [
+          1212.51,
+          565.5
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        35
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E124",
+      "area": "main",
+      "from_node": "N087",
+      "to_node": "N090",
+      "polyline_svg": [
+        [
+          1212.51,
+          565.5
+        ],
+        [
+          1219.93,
+          595.27
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        35
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E125",
+      "area": "east",
+      "from_node": "N091",
+      "to_node": "N092",
+      "polyline_svg": [
+        [
+          1041,
+          902
+        ],
+        [
+          1143.61,
+          876.42
+        ],
+        [
+          1138.0,
+          850.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        43
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E126",
+      "area": "east",
+      "from_node": "N092",
+      "to_node": "N093",
+      "polyline_svg": [
+        [
+          1138.0,
+          850.0
+        ],
+        [
+          1132.27,
+          830.93
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        43
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E127",
+      "area": "east",
+      "from_node": "N092",
+      "to_node": "N094",
+      "polyline_svg": [
+        [
+          1138.0,
+          850.0
+        ],
+        [
+          1179.02,
+          1014.5
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        44
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E128",
+      "area": "east",
+      "from_node": "N094",
+      "to_node": "N095",
+      "polyline_svg": [
+        [
+          1179.02,
+          1014.5
+        ],
+        [
+          1169.0,
+          1017.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        49
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E129",
+      "area": "east",
+      "from_node": "N094",
+      "to_node": "N096",
+      "polyline_svg": [
+        [
+          1179.02,
+          1014.5
+        ],
+        [
+          1269.88,
+          991.85
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        49
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E130",
+      "area": "east",
+      "from_node": "N094",
+      "to_node": "N097",
+      "polyline_svg": [
+        [
+          1179.02,
+          1014.5
+        ],
+        [
+          1221.78,
+          1186.04
+        ],
+        [
+          1246.0,
+          1180.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        44
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E131",
+      "area": "east",
+      "from_node": "N098",
+      "to_node": "N096",
+      "polyline_svg": [
+        [
+          1238.0,
+          864.0
+        ],
+        [
+          1269.88,
+          991.85
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        48
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E132",
+      "area": "east",
+      "from_node": "N096",
+      "to_node": "N099",
+      "polyline_svg": [
+        [
+          1269.88,
+          991.85
+        ],
+        [
+          1288.46,
+          1066.39
+        ],
+        [
+          1305.37,
+          1134.19
+        ],
+        [
+          1262.0,
+          1145.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        48
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E133",
+      "area": "cross",
+      "from_node": "N043",
+      "to_node": "N102",
+      "polyline_svg": [
+        [
+          733,
+          792
+        ],
+        [
+          751,
+          864
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E134",
+      "area": "cross",
+      "from_node": "N102",
+      "to_node": "N103",
+      "polyline_svg": [
+        [
+          751,
+          864
+        ],
+        [
+          754,
+          876
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E135",
+      "area": "cross",
+      "from_node": "N103",
+      "to_node": "N104",
+      "polyline_svg": [
+        [
+          754,
+          876
+        ],
+        [
+          995,
+          828
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E136",
+      "area": "cross",
+      "from_node": "N104",
+      "to_node": "N105",
+      "polyline_svg": [
+        [
+          995,
+          828
+        ],
+        [
+          1001,
+          850
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E137",
+      "area": "cross",
+      "from_node": "N105",
+      "to_node": "N106",
+      "polyline_svg": [
+        [
+          1001,
+          850
+        ],
+        [
+          1014,
+          900
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E138",
+      "area": "cross",
+      "from_node": "N106",
+      "to_node": "N091",
+      "polyline_svg": [
+        [
+          1014,
+          900
+        ],
+        [
+          1041,
+          902
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E155",
+      "area": "main",
+      "from_node": "N107",
+      "to_node": "N065",
+      "polyline_svg": [
+        [
+          939.85,
+          335.34
+        ],
+        [
+          963.0,
+          330.0
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        7
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E156",
+      "area": "main",
+      "from_node": "N108",
+      "to_node": "N074",
+      "polyline_svg": [
+        [
+          970.0,
+          433.97
+        ],
+        [
+          994.07,
+          430.43
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        8
+      ],
+      "existence": "user_confirmed"
+    },
+    {
+      "id": "E157",
+      "area": "main",
+      "from_node": "N107",
+      "to_node": "N108",
+      "polyline_svg": [
+        [
+          939.85,
+          335.34
+        ],
+        [
+          970.0,
+          433.97
+        ]
+      ],
+      "length_m": null,
+      "svg_roads": [
+        50
+      ],
+      "existence": "user_confirmed",
+      "label": "主校区图书馆东侧连接"
+    }
+  ]
+}

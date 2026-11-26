@@ -1,0 +1,508 @@
+{
+  "status": "proposal",
+  "coordinate_system": "SVG viewBox 1800×1265",
+  "selected_station_ids": [
+    "E01",
+    "E03",
+    "E04",
+    "M10",
+    "M06",
+    "M02",
+    "M04",
+    "M01",
+    "M13",
+    "M16",
+    "M08",
+    "M18"
+  ],
+  "stations": [
+    {
+      "id": "M01",
+      "campus": "main",
+      "zone": "体育",
+      "landmark": "主校区体育场",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        401,
+        400
+      ],
+      "xy_svg": [
+        413.8543,
+        397.0336
+      ],
+      "road_edge_id": "E002",
+      "road_offset": 0.39439123,
+      "preferred_svg_roads": [
+        42
+      ]
+    },
+    {
+      "id": "M02",
+      "campus": "main",
+      "zone": "宿舍",
+      "landmark": "16号宿舍楼",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        898,
+        239
+      ],
+      "xy_svg": [
+        889.0,
+        232.0
+      ],
+      "road_edge_id": "E079",
+      "road_offset": 1.0,
+      "preferred_svg_roads": [
+        4
+      ]
+    },
+    {
+      "id": "M03",
+      "campus": "main",
+      "zone": "食堂",
+      "landmark": "明湖餐厅",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        868,
+        277
+      ],
+      "xy_svg": [
+        859.0342,
+        279.1783
+      ],
+      "road_edge_id": "E078",
+      "road_offset": 0.32705804,
+      "preferred_svg_roads": [
+        5
+      ]
+    },
+    {
+      "id": "M04",
+      "campus": "main",
+      "zone": "宿舍",
+      "landmark": "18号宿舍楼",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        910,
+        330
+      ],
+      "xy_svg": [
+        912.6806,
+        341.612
+      ],
+      "road_edge_id": "E084",
+      "road_offset": 0.5729142,
+      "preferred_svg_roads": [
+        7
+      ]
+    },
+    {
+      "id": "M05",
+      "campus": "main",
+      "zone": "教学",
+      "landmark": "8号教学楼",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        813,
+        355
+      ],
+      "xy_svg": [
+        817.0328,
+        370.7805
+      ],
+      "road_edge_id": "E064",
+      "road_offset": 0.57637014,
+      "preferred_svg_roads": [
+        7
+      ]
+    },
+    {
+      "id": "M06",
+      "campus": "main",
+      "zone": "体育",
+      "landmark": "主校区第二体育场",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        1019,
+        401
+      ],
+      "xy_svg": [
+        1025.268,
+        421.2504
+      ],
+      "road_edge_id": "E101",
+      "road_offset": 0.18136059,
+      "preferred_svg_roads": [
+        8
+      ]
+    },
+    {
+      "id": "M07",
+      "campus": "main",
+      "zone": "图书馆",
+      "landmark": "主校区图书馆",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        937,
+        445
+      ],
+      "xy_svg": [
+        936.072,
+        439.896
+      ],
+      "road_edge_id": "E082",
+      "road_offset": 0.71286378,
+      "preferred_svg_roads": [
+        8
+      ]
+    },
+    {
+      "id": "M08",
+      "campus": "main",
+      "zone": "教学",
+      "landmark": "5号教学楼",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        815,
+        565
+      ],
+      "xy_svg": [
+        808.7931,
+        567.4828
+      ],
+      "road_edge_id": "E056",
+      "road_offset": 0.44413289,
+      "preferred_svg_roads": [
+        37
+      ]
+    },
+    {
+      "id": "M09",
+      "campus": "main",
+      "zone": "教学",
+      "landmark": "机械试验馆",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        1129,
+        572
+      ],
+      "xy_svg": [
+        1120.7334,
+        574.089
+      ],
+      "road_edge_id": "E117",
+      "road_offset": 0.92537978,
+      "preferred_svg_roads": [
+        19,
+        36
+      ]
+    },
+    {
+      "id": "M10",
+      "campus": "main",
+      "zone": "教学",
+      "landmark": "9号教学楼",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        736,
+        711
+      ],
+      "xy_svg": [
+        710.3629,
+        718.9439
+      ],
+      "road_edge_id": "E046",
+      "road_offset": 0.35263952,
+      "preferred_svg_roads": [
+        27
+      ]
+    },
+    {
+      "id": "M11",
+      "campus": "main",
+      "zone": "宿舍",
+      "landmark": "3号宿舍楼",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        943,
+        623
+      ],
+      "xy_svg": [
+        950.5427,
+        651.0568
+      ],
+      "road_edge_id": "E091",
+      "road_offset": 0.48590703,
+      "preferred_svg_roads": [
+        29,
+        33
+      ]
+    },
+    {
+      "id": "M12",
+      "campus": "main",
+      "zone": "食堂",
+      "landmark": "留园餐厅",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        999,
+        658
+      ],
+      "xy_svg": [
+        1010.6485,
+        662.5877
+      ],
+      "road_edge_id": "E105",
+      "road_offset": 0.53463631,
+      "preferred_svg_roads": [
+        33,
+        34
+      ]
+    },
+    {
+      "id": "M13",
+      "campus": "main",
+      "zone": "教学",
+      "landmark": "思源西楼",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        568,
+        530
+      ],
+      "xy_svg": [
+        565.7565,
+        520.8975
+      ],
+      "road_edge_id": "E017",
+      "road_offset": 0.59850647,
+      "preferred_svg_roads": [
+        8
+      ]
+    },
+    {
+      "id": "M14",
+      "campus": "main",
+      "zone": "教学",
+      "landmark": "思源楼西侧",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        616,
+        498
+      ],
+      "xy_svg": [
+        618.2372,
+        508.1918
+      ],
+      "road_edge_id": "E035",
+      "road_offset": 0.18140236,
+      "preferred_svg_roads": [
+        8
+      ]
+    },
+    {
+      "id": "M15",
+      "campus": "main",
+      "zone": "教学",
+      "landmark": "思源楼东侧",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        692,
+        481
+      ],
+      "xy_svg": [
+        694.3023,
+        491.5522
+      ],
+      "road_edge_id": "E035",
+      "road_offset": 0.85676129,
+      "preferred_svg_roads": [
+        8,
+        28
+      ]
+    },
+    {
+      "id": "M16",
+      "campus": "main",
+      "zone": "教学",
+      "landmark": "思源东楼",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        756,
+        494
+      ],
+      "xy_svg": [
+        752.4903,
+        478.4853
+      ],
+      "road_edge_id": "E049",
+      "road_offset": 0.48004877,
+      "preferred_svg_roads": [
+        8
+      ]
+    },
+    {
+      "id": "M17",
+      "campus": "main",
+      "zone": "办公",
+      "landmark": "9号办公楼",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        439,
+        571
+      ],
+      "xy_svg": [
+        426.9349,
+        574.0052
+      ],
+      "road_edge_id": "E007",
+      "road_offset": 0.54550179,
+      "preferred_svg_roads": [
+        21
+      ]
+    },
+    {
+      "id": "M18",
+      "campus": "main",
+      "zone": "教学",
+      "landmark": "国家经济安全研究院",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        462,
+        664
+      ],
+      "xy_svg": [
+        464.4555,
+        673.9207
+      ],
+      "road_edge_id": "E013",
+      "road_offset": 0.12454607,
+      "preferred_svg_roads": [
+        13,
+        21
+      ]
+    },
+    {
+      "id": "M19",
+      "campus": "main",
+      "zone": "宿舍",
+      "landmark": "12号宿舍楼",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        537,
+        679
+      ],
+      "xy_svg": [
+        553.3319,
+        674.9286
+      ],
+      "road_edge_id": "E025",
+      "road_offset": 0.38202668,
+      "preferred_svg_roads": [
+        22
+      ]
+    },
+    {
+      "id": "E01",
+      "campus": "east",
+      "zone": "宿舍",
+      "landmark": "东5学生宿舍楼北侧",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        1119,
+        905
+      ],
+      "xy_svg": [
+        1113.732,
+        883.8684
+      ],
+      "road_edge_id": "E125",
+      "road_offset": 0.56461524,
+      "preferred_svg_roads": [
+        43
+      ]
+    },
+    {
+      "id": "E02",
+      "campus": "east",
+      "zone": "宿舍",
+      "landmark": "东4学生宿舍楼北侧",
+      "selection_source": "user_screenshot",
+      "selected": false,
+      "marked_xy_svg": [
+        1120,
+        938
+      ],
+      "xy_svg": [
+        1157.6055,
+        928.6226
+      ],
+      "road_edge_id": "E127",
+      "road_offset": 0.47794915,
+      "preferred_svg_roads": [
+        44
+      ]
+    },
+    {
+      "id": "E03",
+      "campus": "east",
+      "zone": "宿舍",
+      "landmark": "东2学生宿舍楼北侧",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        1128,
+        978
+      ],
+      "xy_svg": [
+        1167.4644,
+        968.1591
+      ],
+      "road_edge_id": "E127",
+      "road_offset": 0.71829241,
+      "preferred_svg_roads": [
+        44
+      ]
+    },
+    {
+      "id": "E04",
+      "campus": "east",
+      "zone": "教学",
+      "landmark": "东教三楼南侧",
+      "selection_source": "user_screenshot",
+      "selected": true,
+      "marked_xy_svg": [
+        1165,
+        1064
+      ],
+      "xy_svg": [
+        1189.8169,
+        1057.8139
+      ],
+      "road_edge_id": "E130",
+      "road_offset": 0.2212593,
+      "preferred_svg_roads": [
+        44
+      ]
+    }
+  ]
+}

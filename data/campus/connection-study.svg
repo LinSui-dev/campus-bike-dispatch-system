@@ -1,0 +1,63 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 736" width="1250" height="736" role="img" aria-labelledby="title">
+<title id="title">北京交通大学南门与东校区 2.5D 局部描摹</title>
+<style>
+text{font: 15px "Microsoft YaHei",sans-serif; fill:#233c34;paint-order:stroke;stroke:#f5f4e8;stroke-width:3px;stroke-linejoin:round}
+.road{fill:#f5f1e4}.border{stroke:#668463;stroke-width:2}
+.wall{fill:#8094a0;stroke:#546c71;stroke-width:1}
+.teach{fill:#b5c8dc}.dorm{fill:#dda999}.service{fill:#cecabd}
+.roof{stroke:#536a70;stroke-width:1.2}
+</style>
+<rect width="1250" height="736" fill="#dce8cc"/>
+<g id="campus-areas" fill="#b8d1a6" class="border">
+ <path id="main-campus" d="M0 0H1150L1161 40Q1018 83 828 115L234 222 212 145 131 159 156 233 0 254Z"/>
+ <path id="east-campus" d="M590 210 1174 101 1250 294V715L841 681 672 605Z"/>
+ <path id="road-island" d="M223 277 556 215 640 647 251 534Z"/>
+</g>
+<g id="roads" class="road">
+ <path id="jiaotong-university-road" d="M0 252 158 231 145 192 208 162 236 222 828 115Q1028 80 1160 39L1150 0H1217L1250 16V83L590 211 556 215 222 276 0 306Z"/>
+ <path id="gaoliangqiao-street" d="M181 280 223 276 252 534 205 514Z M0 413 205 514 252 534Q466 615 640 647L672 605 841 681 1250 715V736H686Q335 687 0 492Z"/>
+ <path id="shangyuancun-road" d="M556 212 590 207 672 605 640 648Z"/>
+ <path id="jiaoda-east-road" d="M1173 101 1250 83V391Z"/>
+ <path id="east-campus-paths" d="M635 287 775 260 757 193 769 187 782 222 898 201 893 169 906 166 932 241 1041 212 1043 220 932 254 964 494 971 541 946 606 935 688 925 689 914 636 833 555 820 510 776 274 636 300Z"/>
+</g>
+<g id="sports-grounds">
+ <path fill="#b77c73" stroke="#895c55" d="M819 221Q867 197 894 222Q914 246 916 292Q926 337 894 355Q855 378 829 357Q808 343 802 305Q787 253 819 221Z"/>
+ <path fill="none" stroke="#f0d7c4" d="M826 225Q867 205 889 228Q905 248 910 294Q919 333 889 351Q856 369 832 351Q813 337 808 304Q793 255 826 225Z"/>
+ <path fill="#7d9e73" stroke="#eeeada" stroke-width="2" d="M806 251 887 236 903 333 822 349Z M813 299 895 285"/>
+ <ellipse cx="852" cy="291" rx="11" ry="8" transform="rotate(-10 852 291)" fill="none" stroke="#eeeada"/>
+ <path fill="#a87a70" stroke="#739169" stroke-width="4" d="M809 391 930 370 939 420 820 440Z"/>
+ <path fill="none" stroke="#efe6d2" d="M814 396 928 376 934 416 823 434Z M842 391 850 430 M871 386 878 425 M899 381 906 420 M819 415 931 395"/>
+</g>
+<g id="buildings">
+ <g id="east-canteen"><path class="wall" d="M677 221 770 244 772 265 739 271 696 254Z"/><path class="roof service" d="M675 215 695 194 732 188 753 203 769 240 741 257 697 248Z"/><text x="704" y="224">食堂</text></g>
+ <g id="east-gym"><path class="wall" d="M635 312 714 305 717 322 646 333 635 324Z"/><path class="roof service" d="M641 306 711 294 715 313 636 325Z"/><text x="651" y="317">体育馆</text></g>
+ <g id="east-library"><path class="wall" d="M926 246 1013 233 1017 258 932 273Z"/><path class="roof service" d="M922 237 1011 222 1016 252 928 266Z"/><text x="943" y="249">图书馆</text></g>
+ <g id="east-dorm-5"><path class="wall" d="M689 345 778 326 787 345 695 361Z"/><path class="roof dorm" d="M686 332 775 317 786 337 690 352Z"/><text x="699" y="339">东5学生宿舍楼</text></g>
+ <g id="east-dorm-4"><path class="wall" d="M698 368 778 357 785 371 708 385Z"/><path class="roof dorm" d="M698 365 775 352 785 363 705 377Z"/><text x="707" y="373">东4学生宿舍楼</text></g>
+ <g id="east-dorm-3"><path class="wall" d="M702 398 786 380 794 398 706 413Z"/><path class="roof dorm" d="M699 392 783 376 794 389 702 406Z"/><text x="710" y="398">东3学生宿舍楼</text></g>
+ <g id="east-dorm-2"><path class="wall" d="M708 429 795 410 803 429 718 443Z"/><path class="roof dorm" d="M705 420 790 405 801 419 713 436Z"/><text x="715" y="426">东2学生宿舍楼</text></g>
+ <g id="east-dorm-1"><path class="wall" d="M716 459 801 443 808 459 722 475Z"/><path class="roof dorm" d="M712 451 797 437 808 449 717 468Z"/><text x="721" y="456">东1学生宿舍楼</text></g>
+ <g id="east-teaching-3"><path class="wall" d="M720 490 804 477 809 494 728 508Z"/><path class="roof teach" d="M716 485 800 471 808 484 724 500Z"/><text x="736" y="488">东教三楼</text></g>
+ <g id="east-teaching-2"><path class="wall" d="M813 472 946 449 955 491 825 505Z"/><path class="roof teach" d="M808 462 842 454 848 462 916 449 918 442 943 438 957 466 819 493Z"/><text x="856" y="476">东教二楼</text></g>
+ <g id="east-teaching-1"><path class="wall" d="M821 530 960 512 969 545 833 566Z"/><path class="roof teach" d="M820 520 955 501 969 529 823 551Z"/><text x="862" y="530">东教一楼</text></g>
+</g>
+<g id="cross-campus-route" fill="none" stroke-linejoin="round" stroke-linecap="round">
+ <title>主校区南门经上园村路至东校区小西门，走法已确认，长度待核验</title>
+ <polyline points="148,142 177,245 180,256 560,188 568,225 581,267 637,274" stroke="#faf8ee" stroke-width="15"/>
+ <polyline points="148,142 177,245 180,256 560,188 568,225 581,267 637,274" stroke="#007c76" stroke-width="9"/>
+ <path d="M637 274L720 264" stroke="#f5f1e4" stroke-width="10"/>
+</g>
+<g id="gates" fill="#9e725c" stroke="#674f43" stroke-width="2">
+ <path id="main-south-gate" d="M109 98Q146 62 175 78Q190 79 201 101L190 113Q171 89 146 98L131 113 152 153 141 159Z"/>
+ <path id="east-west-gate" d="M599 268Q629 248 655 253L681 263 671 278 604 288 591 280Z"/>
+ <path id="east-south-gate" d="M817 641Q856 616 895 624L917 636 896 650 829 664 814 653Z"/>
+</g>
+<g id="labels">
+ <text x="50" y="198">主校区南门</text><text x="600" y="277">东校区小西门</text><text x="825" y="650">东校区南门</text>
+ <text x="725" y="154" transform="rotate(-11 725 154)" style="font-size:24px">交通大学路</text>
+ <text x="599" y="339" transform="rotate(79 599 339)">上园村路</text>
+ <text x="193" y="305" transform="rotate(84 193 305)">高粱桥斜街</text>
+ <text x="1025" y="153" style="font-size:26px">东校区</text>
+ <text x="1033" y="690">局部 · 长度待核验</text>
+</g>
+</svg>
