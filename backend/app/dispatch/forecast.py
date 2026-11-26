@@ -1,13 +1,21 @@
-"""库存约束的流体期望预测（docs/06“库存约束期望预测”一节）。
+"""库存约束的流体期望预测（fluid-v2）。
 
 从当前快照出发，按引擎的 step 逐步向后推演 horizon 窗口：
     每个边界 t 的处理顺序与引擎一致（docs/05）：
     运输到达 -> 骑行到达 -> 此前等待重试 -> 本步借车
 
-对每个站累计三个量：
+对每个站累计：
     B      expected_borrow         OD 率积分得到的潜在借车量，不管有没有车
     served expected_served_borrow  受库存限制的预计实际借出量，只有它产生新骑行
     R      expected_return         窗口内实际归还到该站的骑行/等待车辆
+    min_level                      需求水位曲线在窗口内的最低点（fluid-v2 新增）
+
+需求水位曲线（不调度时该站“欠不欠车”的走势）：
+    起点 = stock + reserved_inbound + 正在该站等待还车的车辆
+    每步 + 计划到达该站的骑行（已知在途、新骑行的首次到达；不含改道转来的车）
+          - 该站的潜在借车量 B（不受库存限制，所以可以为负）
+    最低点为负，说明窗口内某一时刻会缺车，缺口就是 |最低点|。
+    供需计算用最低点而不是窗口总量 B-R，避免“先借后还”的站被误判为不缺车。
 
 这是确定性的期望近似：车辆数是小数，不做随机抽样，不读未来真实请求，
 不预测之后会发生的调度。
@@ -17,11 +25,20 @@ from __future__ import annotations
 import copy
 import math
 from collections import defaultdict
+from dataclasses import dataclass
 from typing import Any, Mapping
 
 from contracts.python_interfaces import NetworkError, NetworkPort
 
 EPS = 1e-9
+
+
+@dataclass(frozen=True)
+class StationForecast:
+    borrow: float      # B
+    served: float      # 预计实际借出
+    returned: float    # R
+    min_level: float   # 需求水位曲线最低点
 
 
 def multiplier_integral(periods: list[Mapping[str, Any]], start_sec: float, end_sec: float) -> float:
@@ -63,9 +80,10 @@ class FluidForecaster:
         self.served = dict.fromkeys(self.ids, 0.0)     # served
         self.returned = dict.fromkeys(self.ids, 0.0)   # R
 
-        # 到达队列：时刻 -> [(目的站, 数量)]
-        self.ride_arrivals: dict[int, list[tuple[str, float]]] = defaultdict(list)
-        self.transport_arrivals: dict[int, list[tuple[str, float]]] = defaultdict(list)
+        # 到达队列：时刻 -> [(目的站, 数量, 是否计划到达)]
+        # “计划到达”指骑行第一次到达它原本要去的站；改道转来的车为 False
+        self.ride_arrivals: dict[int, list[tuple[str, float, bool]]] = defaultdict(list)
+        self.transport_arrivals: dict[int, list[tuple[str, float, bool]]] = defaultdict(list)
         self.waiting: dict[str, float] = defaultdict(float)
         self._routes: dict[tuple[str, str], float | None] = {}
 
@@ -82,6 +100,11 @@ class FluidForecaster:
             if item["station_id"] in self.capacity:
                 self.waiting[item["station_id"]] += 1.0
 
+        # 需求水位：预留的运输车视为已在站内（与 E=stock+reserved 一致），等待车辆也算该站的车
+        self.level = {sid: self.stock[sid] + self.reserved[sid] + self.waiting.get(sid, 0.0)
+                      for sid in self.ids}
+        self.min_level = dict(self.level)
+
         # 只保留起终点都有效的 OD，按 (起点, 终点) 排序
         self.ods = sorted(
             (od for od in scenario["od_demands"]
@@ -91,13 +114,13 @@ class FluidForecaster:
 
     # ---------- 工具 ----------
 
-    def _schedule(self, queue, time_sec: int, station_id: str, amount: float) -> None:
+    def _schedule(self, queue, time_sec: int, station_id: str, amount: float, planned: bool = True) -> None:
         """登记到达；窗口结束后才到的不计入，已过去的时刻按下一边界处理。"""
         if amount <= EPS or station_id not in self.capacity:
             return
         time_sec = max(time_sec, self.now + self.step)
         if time_sec <= self.window_end:
-            queue[time_sec].append((station_id, amount))
+            queue[time_sec].append((station_id, amount, planned))
 
     def _distance(self, source: str, destination: str) -> float | None:
         """道路距离，带缓存；不可达返回 None。"""
@@ -117,7 +140,7 @@ class FluidForecaster:
     # ---------- 每步四个阶段 ----------
 
     def _arrive_transports(self, t: int) -> None:
-        for station_id, amount in self.transport_arrivals.pop(t, []):
+        for station_id, amount, _ in self.transport_arrivals.pop(t, []):
             self.stock[station_id] += amount
             self.reserved[station_id] = max(0.0, self.reserved[station_id] - amount)
 
@@ -147,7 +170,7 @@ class FluidForecaster:
             moved = min(rest, space)
             redirected[other] += moved
             self._schedule(self.ride_arrivals, t + travel_steps_sec(distance, self.speed_kmh, self.step),
-                           other, moved)
+                           other, moved, planned=False)
             rest -= moved
             if rest <= EPS:
                 return
@@ -157,7 +180,9 @@ class FluidForecaster:
         redirected: dict[str, float] = defaultdict(float)
         previous_waiting = self.waiting
         self.waiting = defaultdict(float)  # 本步新产生的等待不在本步重试
-        for station_id, amount in sorted(self.ride_arrivals.pop(t, [])):
+        for station_id, amount, planned in sorted(self.ride_arrivals.pop(t, [])):
+            if planned:
+                self.level[station_id] += amount
             self._try_return(station_id, amount, t, redirected)
         for station_id in sorted(previous_waiting):
             self._try_return(station_id, previous_waiting[station_id], t, redirected)
@@ -174,6 +199,7 @@ class FluidForecaster:
         for origin in sorted(potentials):
             wanted = sum(amount for _, amount in potentials[origin])
             self.borrow[origin] += wanted
+            self.level[origin] -= wanted
             available = max(0.0, self.stock[origin])
             served_total = min(available, wanted)
             if served_total <= EPS:
@@ -189,18 +215,24 @@ class FluidForecaster:
                 arrival = t + travel_steps_sec(distance, self.speed_kmh, self.step)
                 self._schedule(self.ride_arrivals, arrival, od["destination_id"], share)
 
+    def _record_levels(self) -> None:
+        for sid in self.ids:
+            if self.level[sid] < self.min_level[sid]:
+                self.min_level[sid] = self.level[sid]
+
     # ---------- 主循环 ----------
 
-    def run(self) -> dict[str, tuple[float, float, float]]:
-        """返回 station_id -> (B, served, R)。"""
+    def run(self) -> dict[str, StationForecast]:
         t = self.now + self.step
         while t <= self.window_end:
             self._arrive_transports(t)
             self._arrive_rides_and_waiting(t)
             if t < self.window_end:
                 self._borrow(t)
+            self._record_levels()
             t += self.step
-        return {sid: (self.borrow[sid], min(self.served[sid], self.borrow[sid]), self.returned[sid])
+        return {sid: StationForecast(self.borrow[sid], min(self.served[sid], self.borrow[sid]),
+                                     self.returned[sid], self.min_level[sid])
                 for sid in self.ids}
 
     @property
@@ -209,8 +241,8 @@ class FluidForecaster:
 
 
 def forecast(snapshot: Mapping[str, Any], scenario: Mapping[str, Any],
-             params: Mapping[str, Any], network: NetworkPort) -> tuple[dict[str, tuple[float, float, float]], int]:
-    """对输入做深拷贝后推演，返回 (每站 (B, served, R), 实际窗口秒数)。"""
+             params: Mapping[str, Any], network: NetworkPort) -> tuple[dict[str, StationForecast], int]:
+    """对输入做深拷贝后推演，返回 (每站预测, 实际窗口秒数)。"""
     forecaster = FluidForecaster(copy.deepcopy(snapshot), copy.deepcopy(scenario),
                                  copy.deepcopy(params), network)
     return forecaster.run(), forecaster.horizon_sec

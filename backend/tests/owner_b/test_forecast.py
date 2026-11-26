@@ -93,9 +93,46 @@ def test_tutorial_example():
     assert rows["dorm"]["expected_served_borrow"] == pytest.approx(3)
     assert rows["dorm"]["expected_return"] == 0
     assert rows["teach"]["expected_return"] == pytest.approx(5)
-    assert (rows["dorm"]["target"], rows["dorm"]["demand"]) == (14, 11)     # 9-0+5=14，现有 3
-    assert (rows["teach"]["target"], rows["teach"]["supply"]) == (0, 15)    # 0-5+5=0
+    # 宿舍水位 3 → 最低 3-9=-6；S=max(5, Q95(Poisson(9))-9=14-9=5)=5；T=3+5-(-6)=14 → 缺 11
+    assert (rows["dorm"]["target"], rows["dorm"]["demand"]) == (14, 11)
+    # 教学楼只进不出，最低点就是当前 15；B=0 → S=5；T=15+5-15=5 → 可调出 10（v1 会给出 15）
+    assert (rows["teach"]["target"], rows["teach"]["supply"]) == (5, 10)
     schema_validator("SupplyDemand").validate(sd)
+    assert sd["estimator_version"] == "fluid-v2"
+
+
+def test_borrow_first_return_later_is_short():
+    """v1 公式的反例：宿舍 10 辆，前 10 分钟 20 人借车，第 25 分钟 20 辆还回来。
+    v1：T = B-R+S = 20-20+5 = 5 < 10，判为可调出 5 辆，但第 5 分钟就空站了。
+    v2：水位 10 → 第 10 分钟最低 -10 → 第 25 分钟回到 10；
+        S = max(5, Q95(Poisson(20))-20 = 28-20 = 8) = 8；T = 10+8-(-10) = 28 → 缺 18。"""
+    snap = snapshot([station("dorm", 10, capacity=30), station("teach", 0, capacity=60)],
+                    rides=[ride("dorm", 1500) for _ in range(20)])
+    sc = scenario(od("dorm", "teach", 2, [{"start_min": 11, "end_min": 120, "multiplier": 0}]))
+    sd = service.estimate(snap, sc, params(horizon_min=30), make_network({("dorm", "teach"): 990}))
+    dorm = rows_by_id(sd)["dorm"]
+    assert dorm["expected_borrow"] == pytest.approx(20)
+    assert dorm["expected_return"] == pytest.approx(20)
+    assert (dorm["target"], dorm["supply"], dorm["demand"]) == (28, 0, 18)
+
+
+def test_min_level_tracks_lowest_point():
+    snap = snapshot([station("dorm", 10, capacity=30), station("teach", 0, capacity=60)],
+                    rides=[ride("dorm", 1500) for _ in range(20)])
+    sc = scenario(od("dorm", "teach", 2, [{"start_min": 11, "end_min": 120, "multiplier": 0}]))
+    result, _ = forecast(snap, sc, params(horizon_min=30), make_network({("dorm", "teach"): 990}))
+    assert result["dorm"].min_level == pytest.approx(-10)
+    assert result["teach"].min_level == 0           # 只有到达，没有借车，最低点是起点
+
+
+def test_redirected_arrivals_do_not_raise_level():
+    """改道转来的车不计入目的站水位（它们原本不是来这个站的）。"""
+    snap = snapshot([station("teach", 20), station("lib", 0)], rides=[ride("teach", 60)])
+    result, _ = forecast(snap, scenario(od("lib", "teach", 1)), params(horizon_min=5),
+                         make_network({("teach", "lib"): 10, ("lib", "teach"): 10}))
+    # t=120 改道车到 lib；t=120 从 lib 借出的车 t=180 到满站 teach，又改道回 lib（t=240）
+    assert result["lib"].returned == pytest.approx(2)
+    assert result["lib"].min_level == pytest.approx(-4)   # 0 - 4 个借车桶，改道车不抵消
 
 
 # ---------- AC-B01 核心检查点 ----------
@@ -115,7 +152,7 @@ def test_known_rides_counted_once_and_window_cutoff():
     snap = snapshot([station("a", 5), station("b", 5)],
                     rides=[ride("b", 120), ride("b", 600), ride("b", 660)])  # 窗口末 600
     result, _ = forecast(snap, scenario(), params(), make_network({}))
-    assert result["b"][2] == pytest.approx(2)    # 120 与 600 计入，660 不计入
+    assert result["b"].returned == pytest.approx(2)    # 120 与 600 计入，660 不计入
 
 
 def test_new_ride_after_window_not_counted():
@@ -123,8 +160,8 @@ def test_new_ride_after_window_not_counted():
     snap = snapshot([station("a", 100), station("b", 0)])
     result, _ = forecast(snap, scenario(od("a", "b", 1)), params(), make_network({("a", "b"): 990}))
     # 借车桶 60..540 共 9 辆，到达 360..840，窗口内 360/420/480/540/600 共 5 辆
-    assert result["a"][1] == pytest.approx(9)
-    assert result["b"][2] == pytest.approx(5)
+    assert result["a"].served == pytest.approx(9)
+    assert result["b"].returned == pytest.approx(5)
 
 
 def test_transport_adds_stock_but_not_return():
@@ -132,12 +169,12 @@ def test_transport_adds_stock_but_not_return():
     snap = snapshot([station("dorm", 0, reserved=5), station("teach", 0)],
                     tasks=[task("dorm", 5, 120), task("teach", 3, 60, status="completed")])
     result, _ = forecast(snap, scenario(od("dorm", "teach", 1)), params(), make_network({("dorm", "teach"): 990}))
-    b, served, r = result["dorm"]
+    b, served, r = result["dorm"].borrow, result["dorm"].served, result["dorm"].returned
     assert b == pytest.approx(9)
     assert served == pytest.approx(5)      # t=60 借不到；t=120..540 共 8 桶，但只有 5 辆
     assert r == 0
     # 已完成的运输任务被忽略；5 辆在 120..360 借出，420..660 到达，窗口 600 内只有 4 辆
-    assert result["teach"][2] == pytest.approx(4)
+    assert result["teach"].returned == pytest.approx(4)
 
 
 def test_multiplier_period():
@@ -145,7 +182,7 @@ def test_multiplier_period():
     snap = snapshot([station("a", 100, capacity=200), station("b", 0)])
     sc = scenario(od("a", "b", 1, [{"start_min": 0, "end_min": 5, "multiplier": 2}]))
     result, _ = forecast(snap, sc, params(), make_network({("a", "b"): 990}))
-    assert result["a"][0] == pytest.approx(13)
+    assert result["a"].borrow == pytest.approx(13)
 
 
 def test_same_origin_split_proportionally():
@@ -154,9 +191,9 @@ def test_same_origin_split_proportionally():
     sc = scenario(od("a", "b", 2), od("a", "c", 1))
     net = make_network({("a", "b"): 10, ("a", "c"): 10})
     result, _ = forecast(snap, sc, params(horizon_min=2), net)
-    assert result["a"][:2] == (pytest.approx(3), pytest.approx(1))
-    assert result["b"][2] == pytest.approx(2 / 3)
-    assert result["c"][2] == pytest.approx(1 / 3)
+    assert (result["a"].borrow, result["a"].served) == (pytest.approx(3), pytest.approx(1))
+    assert result["b"].returned == pytest.approx(2 / 3)
+    assert result["c"].returned == pytest.approx(1 / 3)
 
 
 # ---------- 满站改道与等待 ----------
@@ -166,9 +203,9 @@ def test_full_station_redirects_to_nearest():
                     rides=[ride("teach", 60)])
     net = make_network({("teach", "lib"): 10, ("teach", "gym"): 500})
     result, _ = forecast(snap, scenario(), params(horizon_min=5), net)
-    assert result["teach"][2] == 0
-    assert result["lib"][2] == pytest.approx(1)    # 改道到最近的 lib，下一步到达
-    assert result["gym"][2] == 0
+    assert result["teach"].returned == 0
+    assert result["lib"].returned == pytest.approx(1)    # 改道到最近的 lib，下一步到达
+    assert result["gym"].returned == 0
 
 
 def test_redirect_splits_by_free_space():
@@ -177,8 +214,8 @@ def test_redirect_splits_by_free_space():
                     rides=[ride("teach", 60), ride("teach", 60)])
     net = make_network({("teach", "lib"): 10, ("teach", "gym"): 500})
     result, _ = forecast(snap, scenario(), params(horizon_min=10), net)
-    assert result["lib"][2] == pytest.approx(1)
-    assert result["gym"][2] == pytest.approx(1)
+    assert result["lib"].returned == pytest.approx(1)
+    assert result["gym"].returned == pytest.approx(1)
 
 
 def test_waiting_retries_when_space_frees():
@@ -188,10 +225,10 @@ def test_waiting_retries_when_space_frees():
                     waiting=[waiting_at("teach")])
     net = make_network({("teach", "dorm"): 10})   # dorm→teach 不可达，dorm 满站车只能等待
     result, _ = forecast(snap, scenario(od("teach", "dorm", 1)), params(horizon_min=3), net)
-    b, served, r = result["teach"]
+    b, served, r = result["teach"].borrow, result["teach"].served, result["teach"].returned
     assert (b, served) == (pytest.approx(2), pytest.approx(2))
     assert r == pytest.approx(1)
-    assert result["dorm"][2] == 0
+    assert result["dorm"].returned == 0
 
 
 # ---------- 窗口、输入与输出 ----------
