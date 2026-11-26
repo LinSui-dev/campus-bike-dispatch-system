@@ -1,9 +1,9 @@
-# 成员 D 地图路网与数据交接
+﻿# 成员 D 地图路网与数据交接
 
 ## 1 身份与范围
 
 - 成员 D，地图路网与数据。状态 draft。首批路网服务已通过本地自测，正式远程交接待授权推送并由 E 复验。
-- 分支 feat/d-map。公共基线 398d384。地图与候选数据 639db8f，路网服务及测试草稿 58cbae1，校园审阅包和专用测试 49edca5。被测提交 SHA 为 6ff3f70e4af7cc46a889ca40ff961865bc5f8b5b。
+- 分支 feat/d-map。公共基线 398d384。地图与候选数据 639db8f，路网服务及测试草稿 58cbae1，校园审阅包和专用测试 49edca5。首次被测 SHA 为 6ff3f70e4af7cc46a889ca40ff961865bc5f8b5b，最新被测 SHA 为 bb175f94ddeaf37ed53b51ced1062ac7590d656f。
 - 预定交付仓库 https://github.com/LinSui-dev/campus-bike-dispatch-system/tree/feat/d-map 。尚未推送个人分支，远程核验未执行。
 - FR01、FR02、FR03，以及 FR05、FR09 的路径支撑。T09、T15，AC-D01～AC-D03。
 - 首批接入范围为 `app.network.NetworkService` 与 D 模块自测。接收方 A/B 可先用现有 fixture 或各自的契约数据接入。E 可按本报告复现模块结果。
@@ -54,7 +54,7 @@ print(service.validate_station(candidate))
 |---|---|---|---|
 |AC-D01 / T09|合成折线、同边多站、端点共点、反向、跨区、断开及重建。运行 owner_d 测试|米制权重正确、折线有序、不可达报错、重建使用新权重|本地模块自测通过|
 |AC-D02 / T09|合法投影、超容差、图外、同 ID 替换和断开孤岛。运行 owner_d 测试|输出标准化 Station，原数据不变，相应错误明确|本地模块自测通过，A API 联调待执行|
-|AC-D03 准备|审阅包 PNG、DTO、14 站库存、4 场景 OD、唯一跨区链及跨区往返。运行 test_campus_review_profile.py|数据引用自洽、跨区经指定门链|3 项审阅包自测通过，正式 AC-D03 待执行|
+|AC-D03 准备|审阅包 PNG、DTO、14 站库存、4 场景 OD、唯一跨区链及跨区往返。运行 test_campus_review_profile.py|数据引用自洽、跨区经指定门链|4 项审阅包自测通过，正式 AC-D03 待执行|
 |AC-D03 / T15|使用正式 campus 数据核验路网、底图、站点、OD 和唯一跨区路线|全部引用合法，各校区连通，跨区仅经确认链路，数据来源可追溯|未执行，正式 profile 未生成|
 
 2026-11-26 本地使用 Python 3.12.9 和锁定依赖。首次 pytest 因独立虚拟环境未安装 pytest 而无法开始，随后执行 requirements-lock.txt 安装成功。首次基线检查因三个 D Python 文件含 UTF-8 BOM，语法扫描报 U+FEFF。已在 6ff3f70 修正编码。复跑命令：
@@ -65,6 +65,13 @@ print(service.validate_station(candidate))
 实际结果为 20 项通过、0 项失败（17 项合成小图模块用例、3 项审阅包用例），基线检查退出码 0、输出 Baseline OK。基线检查覆盖 fixture 和工程结构。真实 API、正式 AC-D03 与 E 复验未执行。当前未推送。
 
 补做 fixture 调用自测。在独立 PowerShell 环境将 `PYTHONPATH` 设为 `.;backend`，用 `.\.venv\Scripts\python.exe -` 执行第 2 节调用与断言。实际结果为 s1 → s4 及反向均为 800.0 米，四个折线点顺序互逆。站点 s2 的输入 (350,207) 投影为 (350,200)，道路 e1，偏移 1.0。命令退出码 0。
+
+### 当前审阅包的补充路径证据
+
+运行 .\.venv\Scripts\python.exe data/campus/build_route_check_review.py 生成 data/campus/route-check-review.html。该页展示真实 NetworkService 输出与候选底图。M10 → M13 为 266.43 米，E01 → E04 为 297.14 米。M08 → E01 及反向均为 829.47 米，包含两侧校内接入和 469 米跨区链。距离取自审阅包，无现场实测结论。Edge 首屏已渲染并检查路线图层。
+
+在 bb175f94ddeaf37ed53b51ced1062ac7590d656f 上执行 .\.venv\Scripts\python.exe -m pytest backend/tests/owner_d -q，21 项通过，共 0.58 秒。新增用例遍历 14 站的 91 对组合及其反向，核对距离、折线及起终点。随后运行 .\.venv\Scripts\python.exe scripts/check_baseline.py，退出码 0，输出 Baseline OK。A 的真实站点 API 联调、C 的真实地图路径接入和正式 AC-D03 仍待执行。
+
 
 ## 5 依赖与集成
 
