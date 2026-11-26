@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent
 # Road IDs are fixed explicitly to avoid snapping to a nearby unrelated corridor.
 PROPOSALS = [
     ("M01","main","体育","主校区体育场", 401,400, (42,)),
-    ("M02","main","宿舍","16号宿舍楼", 898,239, (4,)),
+    ("M02","main","食堂","明湖餐厅", 883,250, (4,5)),
     ("M03","main","食堂","明湖餐厅", 868,277, (5,)),
     ("M04","main","宿舍","18号宿舍楼", 910,330, (7,)),
     ("M05","main","教学","8号教学楼", 813,355, (7,)),
@@ -28,6 +28,8 @@ PROPOSALS = [
     ("M17","main","办公","9号办公楼", 439,571, (21,)),
     ("M18","main","教学","国家经济安全研究院", 462,664, (13,21)),
     ("M19","main","宿舍","12号宿舍楼", 537,679, (22,)),
+    ("M20","main","活动","学生活动中心", 406,541, (21,8)),
+    ("M21","main","食堂","留园餐厅", 993,652, (33,34)),
     ("E01","east","宿舍","东5学生宿舍楼北侧", 1119,905, (43,)),
     ("E02","east","宿舍","东4学生宿舍楼北侧", 1120,938, (44,)),
     ("E03","east","宿舍","东2学生宿舍楼北侧", 1128,978, (44,)),
@@ -35,7 +37,7 @@ PROPOSALS = [
 ]
 
 
-SELECTED_IDS = ("E01","E03","E04","M10","M06","M02","M04","M01","M13","M16","M08","M18")
+SELECTED_IDS = ("E01","E03","E04","M10","M06","M02","M04","M01","M13","M16","M08","M18","M20","M21")
 
 
 def build():
@@ -89,11 +91,12 @@ def draw(stations):
 if __name__=="__main__":
     stations = build()
     by_id = {s["id"]:s for s in stations}
-    assert len(set(SELECTED_IDS)) == 12 and set(SELECTED_IDS) <= by_id.keys()
+    assert len(set(SELECTED_IDS)) == 14 and set(SELECTED_IDS) <= by_id.keys()
     selected = [by_id[sid] for sid in SELECTED_IDS]
     (ROOT/"station-placement-review.json").write_text(
         json.dumps({"status":"proposal","coordinate_system":"SVG viewBox 1800×1265",
-                    "selected_station_ids":SELECTED_IDS,"stations":stations},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+                    "selected_station_ids":SELECTED_IDS,
+                    "selected_positions_status":"user_confirmed","stations":stations},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     (ROOT/"station-review-items.js").write_text(
         "window.stationReviewItems = "+json.dumps(selected,ensure_ascii=False)+";\n",encoding="utf-8")
     (ROOT/"campus-station-proposals.svg").write_text(draw(selected),encoding="utf-8")

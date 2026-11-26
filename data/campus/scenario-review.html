@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>校园预设场景审阅</title>
+<style>
+body{max-width:1000px;margin:2rem auto;padding:0 1rem;background:#f3f5ee;color:#263a30;font:16px system-ui,sans-serif}
+details,header{background:white;border:1px solid #d1dacd;border-radius:9px;padding:1rem;margin:1rem 0}
+h1{margin:0}summary{cursor:pointer;font-weight:700}table{border-collapse:collapse;width:100%}
+th,td{padding:.55rem;text-align:left;border-bottom:1px solid #e0e6dc}
+</style>
+<header><h1>校园预设场景审阅</h1>
+<p>需求为课程合成假设。四个预设共用已选站点及统一初始车辆配置。</p>
+<a href="map-preview.html?stations">查看站点位置</a></header>
+<p>当前 14 站，初始车辆 290 辆。</p>
+<details><summary>早课 · 07:00 · 120 分钟</summary>
+<p>课程合成需求。宿舍流向教学楼，含少量跨校区通勤。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>基础需求（次／分钟）</th><th>场景内峰段</th></tr></thead><tbody>
+<tr><td>M04 18号宿舍楼</td><td>M13 思源西楼</td><td>0.1</td><td>0–35 分钟 ×2</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M16 思源东楼</td><td>0.08</td><td>0–35 分钟 ×2</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M08 5号教学楼</td><td>0.1</td><td>0–35 分钟 ×2</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M10 9号教学楼</td><td>0.09</td><td>0–35 分钟 ×2</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M18 国家经济安全研究院</td><td>0.06</td><td>0–35 分钟 ×2</td></tr>
+<tr><td>E01 东5学生宿舍楼北侧</td><td>E04 东教三楼南侧</td><td>0.12</td><td>0–35 分钟 ×2</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>E04 东教三楼南侧</td><td>0.1</td><td>0–35 分钟 ×2</td></tr>
+<tr><td>E01 东5学生宿舍楼北侧</td><td>M16 思源东楼</td><td>0.05</td><td>0–40 分钟 ×2</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>M10 9号教学楼</td><td>0.04</td><td>0–40 分钟 ×2</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>E04 东教三楼南侧</td><td>0.035</td><td>0–40 分钟 ×1.5</td></tr>
+</tbody></table></details>
+<details><summary>午餐 · 11:00 · 120 分钟</summary>
+<p>课程合成需求。明湖餐厅 M02、留园餐厅 M21 和东区食堂接入点 E01 承接午餐需求，返程在后段增强。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>基础需求（次／分钟）</th><th>场景内峰段</th></tr></thead><tbody>
+<tr><td>M13 思源西楼</td><td>M02 明湖餐厅</td><td>0.1</td><td>10–50 分钟 ×2</td></tr>
+<tr><td>M16 思源东楼</td><td>M02 明湖餐厅</td><td>0.1</td><td>10–50 分钟 ×2</td></tr>
+<tr><td>M08 5号教学楼</td><td>M02 明湖餐厅</td><td>0.07</td><td>10–50 分钟 ×2</td></tr>
+<tr><td>M10 9号教学楼</td><td>M21 留园餐厅</td><td>0.08</td><td>10–50 分钟 ×2</td></tr>
+<tr><td>M18 国家经济安全研究院</td><td>M21 留园餐厅</td><td>0.06</td><td>10–50 分钟 ×2</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E01 东5学生宿舍楼北侧</td><td>0.12</td><td>10–50 分钟 ×2</td></tr>
+<tr><td>M02 明湖餐厅</td><td>M13 思源西楼</td><td>0.065</td><td>60–105 分钟 ×1.7</td></tr>
+<tr><td>M02 明湖餐厅</td><td>M16 思源东楼</td><td>0.065</td><td>60–105 分钟 ×1.7</td></tr>
+<tr><td>M21 留园餐厅</td><td>M10 9号教学楼</td><td>0.06</td><td>60–105 分钟 ×1.7</td></tr>
+<tr><td>M21 留园餐厅</td><td>M18 国家经济安全研究院</td><td>0.05</td><td>60–105 分钟 ×1.7</td></tr>
+<tr><td>E01 东5学生宿舍楼北侧</td><td>E04 东教三楼南侧</td><td>0.09</td><td>60–105 分钟 ×1.7</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>M02 明湖餐厅</td><td>0.035</td><td>10–50 分钟 ×1.5</td></tr>
+<tr><td>M02 明湖餐厅</td><td>E04 东教三楼南侧</td><td>0.035</td><td>60–105 分钟 ×1.5</td></tr>
+</tbody></table></details>
+<details><summary>返寝 · 20:30 · 120 分钟</summary>
+<p>课程合成需求。教学点流向宿舍，跨校区返程方向与早课对应。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>基础需求（次／分钟）</th><th>场景内峰段</th></tr></thead><tbody>
+<tr><td>M13 思源西楼</td><td>M04 18号宿舍楼</td><td>0.1</td><td>25–75 分钟 ×2</td></tr>
+<tr><td>M16 思源东楼</td><td>M04 18号宿舍楼</td><td>0.08</td><td>25–75 分钟 ×2</td></tr>
+<tr><td>M08 5号教学楼</td><td>M04 18号宿舍楼</td><td>0.1</td><td>25–75 分钟 ×2</td></tr>
+<tr><td>M10 9号教学楼</td><td>M04 18号宿舍楼</td><td>0.09</td><td>25–75 分钟 ×2</td></tr>
+<tr><td>M18 国家经济安全研究院</td><td>M04 18号宿舍楼</td><td>0.06</td><td>25–75 分钟 ×2</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E01 东5学生宿舍楼北侧</td><td>0.12</td><td>25–75 分钟 ×2</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E03 东2学生宿舍楼北侧</td><td>0.1</td><td>25–75 分钟 ×2</td></tr>
+<tr><td>M16 思源东楼</td><td>E01 东5学生宿舍楼北侧</td><td>0.05</td><td>25–75 分钟 ×2</td></tr>
+<tr><td>M10 9号教学楼</td><td>E03 东2学生宿舍楼北侧</td><td>0.04</td><td>25–75 分钟 ×2</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>M04 18号宿舍楼</td><td>0.035</td><td>25–75 分钟 ×1.5</td></tr>
+</tbody></table></details>
+<details><summary>平峰 · 14:00 · 120 分钟</summary>
+<p>课程合成需求。低强度分散出行，含体育场和跨校区活动。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>基础需求（次／分钟）</th><th>场景内峰段</th></tr></thead><tbody>
+<tr><td>M01 主校区体育场</td><td>M13 思源西楼</td><td>0.025</td><td>全程基础需求</td></tr>
+<tr><td>M13 思源西楼</td><td>M01 主校区体育场</td><td>0.025</td><td>全程基础需求</td></tr>
+<tr><td>M06 主校区第二体育场</td><td>M16 思源东楼</td><td>0.025</td><td>全程基础需求</td></tr>
+<tr><td>M16 思源东楼</td><td>M06 主校区第二体育场</td><td>0.025</td><td>全程基础需求</td></tr>
+<tr><td>M20 学生活动中心</td><td>M08 5号教学楼</td><td>0.03</td><td>全程基础需求</td></tr>
+<tr><td>M08 5号教学楼</td><td>M20 学生活动中心</td><td>0.03</td><td>全程基础需求</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M10 9号教学楼</td><td>0.03</td><td>全程基础需求</td></tr>
+<tr><td>M10 9号教学楼</td><td>M04 18号宿舍楼</td><td>0.03</td><td>全程基础需求</td></tr>
+<tr><td>M18 国家经济安全研究院</td><td>M01 主校区体育场</td><td>0.025</td><td>全程基础需求</td></tr>
+<tr><td>M20 学生活动中心</td><td>M13 思源西楼</td><td>0.02</td><td>全程基础需求</td></tr>
+<tr><td>M13 思源西楼</td><td>M20 学生活动中心</td><td>0.02</td><td>全程基础需求</td></tr>
+<tr><td>E01 东5学生宿舍楼北侧</td><td>E04 东教三楼南侧</td><td>0.03</td><td>全程基础需求</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E03 东2学生宿舍楼北侧</td><td>0.03</td><td>全程基础需求</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>E01 东5学生宿舍楼北侧</td><td>0.02</td><td>全程基础需求</td></tr>
+<tr><td>M06 主校区第二体育场</td><td>E04 东教三楼南侧</td><td>0.015</td><td>全程基础需求</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>M06 主校区第二体育场</td><td>0.015</td><td>全程基础需求</td></tr>
+</tbody></table></details>

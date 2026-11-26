@@ -106,14 +106,29 @@ def estimate(snapshot):
     gate_nodes = ["5117734220","5229699412"]
     osm_gate_span = LineString([raw_nodes[node] for node in gate_nodes]).length
     cross_scale = osm_gate_span/svg_gate_span
+    inputs = json.loads((ROOT/"profile-inputs.json").read_text(encoding="utf-8"))
+    user_lengths = inputs["confirmed_edge_lengths_m"]
+    cross_total_m = inputs["confirmed_cross_campus_total_m"]
+    cross_pixels = [LineString(edge["polyline_svg"]).length for edge in cross_edges]
+    cross_cents = round(cross_total_m * 100)
+    cumulative_pixels = 0.0
+    assigned_cents = 0
+    cross_lengths = {}
+    for edge,pixels in zip(cross_edges,cross_pixels):
+        cumulative_pixels += pixels
+        through_cents = round(cross_cents * (cumulative_pixels / sum(cross_pixels)))
+        cross_lengths[edge["id"]] = (through_cents-assigned_cents)/100
+        assigned_cents = through_cents
     records = []
     totals = Counter()
     for edge in graph["edges"]:
         area = edge["area"]
         result = dict(edge_id=edge["id"],area=area,length_estimate_m=None,method="pending_location")
-        if edge["id"] in confirmed_cross:
-            length = LineString(edge["polyline_svg"]).length*cross_scale
-            result.update(method="confirmed_alignment_gate_scale",length_estimate_m=round(length,2))
+        if edge["id"] in user_lengths:
+            result.update(method="user_confirmed_edge_length",length_estimate_m=user_lengths[edge["id"]])
+        elif edge["id"] in cross_lengths:
+            result.update(method="user_confirmed_total_allocated_by_polyline",
+                          length_estimate_m=cross_lengths[edge["id"]])
         elif area in matching:
             project,_ = matching[area]
             line = LineString([project(*p) for p in edge["polyline_svg"]])
@@ -165,7 +180,9 @@ def estimate(snapshot):
                cross_calibration=dict(method="two_gate_svg_similarity_scale",osm_gate_nodes=gate_nodes,
                                       meters_per_svg_unit=round(cross_scale,4),
                                       osm_gate_chord_m=round(osm_gate_span,2),
-                                      user_confirmed_edge_ids=confirmed_cross),
+                                      user_confirmed_edge_ids=confirmed_cross,
+                                      user_confirmed_total_m=cross_total_m,
+                                      allocation_method="proportional_svg_polyline_length_rounded_cumulative"),
                edges=records)
     (ROOT/"road-length-review.json").write_text(json.dumps(out,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     graph_edges = {edge["id"]:edge for edge in graph["edges"]}

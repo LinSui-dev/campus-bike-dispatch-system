@@ -54,7 +54,9 @@
       "E136",
       "E137",
       "E138"
-    ]
+    ],
+    "user_confirmed_total_m": 469,
+    "allocation_method": "proportional_svg_polyline_length_rounded_cumulative"
   },
   "edges": [
     {
@@ -1001,37 +1003,37 @@
       "edge_id": "E133",
       "area": "cross",
       "length_estimate_m": 80.23,
-      "method": "confirmed_alignment_gate_scale"
+      "method": "user_confirmed_total_allocated_by_polyline"
     },
     {
       "edge_id": "E134",
       "area": "cross",
       "length_estimate_m": 13.37,
-      "method": "confirmed_alignment_gate_scale"
+      "method": "user_confirmed_total_allocated_by_polyline"
     },
     {
       "edge_id": "E135",
       "area": "cross",
       "length_estimate_m": 265.64,
-      "method": "confirmed_alignment_gate_scale"
+      "method": "user_confirmed_total_allocated_by_polyline"
     },
     {
       "edge_id": "E136",
       "area": "cross",
       "length_estimate_m": 24.65,
-      "method": "confirmed_alignment_gate_scale"
+      "method": "user_confirmed_total_allocated_by_polyline"
     },
     {
       "edge_id": "E137",
       "area": "cross",
-      "length_estimate_m": 55.85,
-      "method": "confirmed_alignment_gate_scale"
+      "length_estimate_m": 55.84,
+      "method": "user_confirmed_total_allocated_by_polyline"
     },
     {
       "edge_id": "E138",
       "area": "cross",
       "length_estimate_m": 29.27,
-      "method": "confirmed_alignment_gate_scale"
+      "method": "user_confirmed_total_allocated_by_polyline"
     },
     {
       "edge_id": "E155",
@@ -1062,9 +1064,8 @@
     {
       "edge_id": "E157",
       "area": "main",
-      "length_estimate_m": 87.18,
-      "method": "confirmed_road_svg_scale",
-      "svg_scale_estimate_m": 87.18
+      "length_estimate_m": 100,
+      "method": "user_confirmed_edge_length"
     }
   ]
 }

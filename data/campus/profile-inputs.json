@@ -1,0 +1,66 @@
+{
+  "status": "user_confirmed_inputs",
+  "station_defaults": {
+    "M01": {
+      "capacity": 20,
+      "initial_stock": 10
+    },
+    "M13": {
+      "capacity": 60,
+      "initial_stock": 40
+    },
+    "M16": {
+      "capacity": 60,
+      "initial_stock": 40
+    },
+    "M04": {
+      "capacity": 50,
+      "initial_stock": 25
+    },
+    "M06": {
+      "capacity": 35,
+      "initial_stock": 20
+    },
+    "M02": {
+      "capacity": 30,
+      "initial_stock": 15
+    },
+    "M08": {
+      "capacity": 30,
+      "initial_stock": 10
+    },
+    "M18": {
+      "capacity": 60,
+      "initial_stock": 30
+    },
+    "M10": {
+      "capacity": 30,
+      "initial_stock": 10
+    },
+    "E01": {
+      "capacity": 40,
+      "initial_stock": 20
+    },
+    "E03": {
+      "capacity": 40,
+      "initial_stock": 20
+    },
+    "E04": {
+      "capacity": 40,
+      "initial_stock": 20
+    },
+    "M20": {
+      "capacity": 40,
+      "initial_stock": 20
+    },
+    "M21": {
+      "capacity": 30,
+      "initial_stock": 10
+    }
+  },
+  "confirmed_edge_lengths_m": {
+    "E157": 100
+  },
+  "confirmed_cross_campus_total_m": 469,
+  "source": "用户提供逐站容量、初始车辆、道路 50 长度及跨区总长，并确认新增 M20、M21 的初值。跨区各分段按折线比例分摊。"
+}
