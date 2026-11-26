@@ -1,4 +1,4 @@
-﻿"""AC-D01 and AC-D02 examples using an explicitly synthetic small graph."""
+"""AC-D01 and AC-D02 examples using an explicitly synthetic small graph."""
 from copy import deepcopy
 
 import pytest

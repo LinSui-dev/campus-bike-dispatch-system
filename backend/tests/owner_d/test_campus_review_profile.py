@@ -1,4 +1,4 @@
-﻿"""D-owned checks for the campus review bundle, separate from formal acceptance."""
+"""D-owned checks for the campus review bundle, separate from formal acceptance."""
 import json
 import struct
 from collections import Counter

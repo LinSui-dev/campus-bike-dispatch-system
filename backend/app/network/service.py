@@ -1,4 +1,4 @@
-﻿"""Framework-independent road projection and routing."""
+"""Framework-independent road projection and routing."""
 from __future__ import annotations
 
 from bisect import bisect_right
