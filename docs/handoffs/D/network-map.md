@@ -1,22 +1,37 @@
-﻿# 成员 D 地图路网与数据交接
+# 成员 D 地图、路网与数据交接
 
 ## 1 身份与范围
 
-- 成员 D，地图路网与数据。状态 draft。首批路网服务已通过本地自测，可供 A/B 接入并由 E 复验。校园数据仍为审阅包。
-- 分支 feat/d-map。公共基线 398d384。地图与候选数据 639db8f，路网服务及测试草稿 58cbae1，校园审阅包和专用测试 49edca5。首次被测 SHA 为 6ff3f70e4af7cc46a889ca40ff961865bc5f8b5b，首次路径全对复验 SHA 为 bb175f94ddeaf37ed53b51ced1062ac7590d656f，推送前被测代码 SHA 为 1e2f6ded7542c97e0154d3ad0f534e60822a4528。
-- 预定交付仓库 https://github.com/LinSui-dev/campus-bike-dispatch-system/tree/feat/d-map 。推送核对以交接消息给出的远程 HEAD 为准。
-- FR01、FR02、FR03，以及 FR05、FR09 的路径支撑。T09、T15，AC-D01～AC-D03。
-- 首批接入范围为 `app.network.NetworkService` 与 D 模块自测。接收方 A/B 可先用现有 fixture 或各自的契约数据接入。E 可按本报告复现模块结果。
-- 地图及 14 站数据审阅包位于 `data/campus/profile-review`，状态为 draft。正式 campus profile、真实 API 联调和 AC-D03 留在后续批次。
+**状态为 draft。** 路网服务已通过 D 模块自测，可供 A、B 接入。校园底图、站点与需求场景已生成审阅包。正式校园数据导入、真实接口联调和 AC-D03 复验待完成。
+
+| 项目 | 交接信息 |
+| --- | --- |
+| 负责人 | 成员 D |
+| 需求与任务 | FR01～FR03，FR05、FR09 的路径支撑，T09、T15 |
+| 验收项 | AC-D01～AC-D03，详见第 4 节 |
+| 公共基线 | `398d384` |
+| 交付分支 | [feat/d-map](https://github.com/LinSui-dev/campus-bike-dispatch-system/tree/feat/d-map) |
+| 已核对的远程提交 | `4daa751f724870995e342bff6f385b585807330d`，含八组场景和对应模块自测 |
+
+正式实验采用用户确认的全部八组场景。沿用三种策略、五个种子时，完整批次为 120 次。公共实验批次和验收口径待 E 同步。
 
 ## 2 成果与入口
 
-- 地图脚本、可编辑 SVG、前端预览及候选图和站点记录位于 data/campus。站点校区分布提案位于 docs/integration/requests/D-默认站点校区分布.md。
-- 路网代码为 backend/app/network/service.py。模块用例为 backend/tests/owner_d/test_network_service.py，审阅包用例为 backend/tests/owner_d/test_campus_review_profile.py。公开入口 app.network.NetworkService。
-- 契约 1.1.0。构造接收 RoadNetwork 与 Station 数组。validate_station 接收 StationCreate 并返回 Station。route 返回 Route。
-- A 在站点保存前把合并后的 StationCreate 交给 `validate_station`，按公共端口映射 INVALID_STATION、UNREACHABLE。保存成功后用新路网和站点创建新实例。B 调用 `route` 获取米制距离及有序像素折线，返回数据可独立读取。
-- 下例使用公开的四站 fixture。在仓库根目录启动 Python 后添加 backend 到模块搜索路径。
-- fixture 用于开发。campus 正式数据待整理。服务依赖现有锁文件中的 NetworkX 3.4.2。
+| 成果 | 文件与使用方式 |
+| --- | --- |
+| 路网服务 | [service.py](../../../backend/app/network/service.py)，从 `app.network` 导入 `NetworkService` |
+| 可编辑底图与站点 | [地图预览](../../../data/campus/map-preview.html)，可切换全图和跨区局部，查看站点、道路编号与边长口径。生成脚本与 SVG 在 [地图目录](../../../data/campus/) |
+| 校园审阅包 | [数据与来源](../../../data/campus/profile-review/sources.md)，含 PNG、路网、14 站、八组 OD 数据和默认配置 |
+| 场景审阅 | [时窗与起终站](../../../data/campus/scenario-review.html)，含双向跨区通学和图书馆接入。需求率为合成参数 |
+| 路径审阅 | [校内与跨区样例](../../../data/campus/route-check-review.html)，展示服务返回的距离及折线 |
+
+服务使用契约 1.1.0 与 NetworkX 3.4.2。构造方法 `NetworkService(network, stations)` 接收 `RoadNetwork` 与 `Station` 列表。
+
+- A 在保存前调用 `validate_station(candidate)`，输入 `StationCreate`，得到标准化 `Station`。接口按契约映射 `INVALID_STATION` 和 `UNREACHABLE`。保存后用更新后的数据重建服务。
+- B 调用 `route(source_id, destination_id)` 获得 `Route`，包含米制距离和有序像素折线。
+- C 可从审阅包读取底图、尺寸与同画布坐标。开发对接可使用 `data/fixtures`，正式 `DATA_PROFILE=campus` 待启用。
+
+在仓库根目录运行以下 Python 示例，使用四站 fixture 调用服务。
 
 ```python
 import json
@@ -40,73 +55,67 @@ print(service.validate_station(candidate))
 
 ## 3 安装与复现
 
-以下命令从 D 独立工作目录根目录运行。模块测试不启动服务，不写数据库。
+从仓库根目录执行。原自测环境使用 Python 3.12.9。以下命令无需启动服务或连接数据库。
 
-    python -m venv .venv
-    .\.venv\Scripts\python.exe -m pip install -r backend/requirements-lock.txt
-    .\.venv\Scripts\python.exe -m pytest backend/tests/owner_d
-    .\.venv\Scripts\python.exe -m pytest backend/tests/owner_d/test_campus_review_profile.py
-    python scripts/check_baseline.py
+```powershell
+git switch feat/d-map
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r backend/requirements-lock.txt
+.\.venv\Scripts\python.exe -m pytest backend/tests/owner_d -q
+.\.venv\Scripts\python.exe scripts/check_baseline.py
+```
+
+如需重新生成审阅页，在同一目录执行以下命令。
+
+```powershell
+.\.venv\Scripts\python.exe data/campus/build_profile_review.py
+.\.venv\Scripts\python.exe data/campus/build_route_check_review.py
+```
 
 ## 4 验收证据
 
-|项目|输入与操作|预期|实际|
-|---|---|---|---|
-|AC-D01 / T09|合成折线、同边多站、端点共点、反向、跨区、断开及重建。运行 owner_d 测试|米制权重正确、折线有序、不可达报错、重建使用新权重|本地模块自测通过|
-|AC-D02 / T09|合法投影、超容差、图外、同 ID 替换和断开孤岛。运行 owner_d 测试|输出标准化 Station，原数据不变，相应错误明确|本地模块自测通过，A API 联调待执行|
-|AC-D03 准备|审阅包 PNG、DTO、14 站库存、4 场景 OD、唯一跨区链及跨区往返。运行 test_campus_review_profile.py|数据引用自洽、跨区经指定门链|4 项审阅包自测通过，正式 AC-D03 待执行|
-|AC-D03 / T15|使用正式 campus 数据核验路网、底图、站点、OD 和唯一跨区路线|全部引用合法，各校区连通，跨区仅经确认链路，数据来源可追溯|未执行，正式 profile 未生成|
+| 项目 | 输入与操作 | 预期 | 实际与证据 |
+| --- | --- | --- | --- |
+| AC-D01 / T09 模块自测 | 合成折线、同边多站、端点共点、反向、跨区、断开与重建，运行第 3 节 pytest | 距离权重和折线顺序正确，断开时报错，重建使用新权重 | 通过。[路网用例](../../../backend/tests/owner_d/test_network_service.py) |
+| AC-D02 / T09 模块自测 | 合法投影、超容差、图外、同 ID 替换、孤岛，运行同一命令 | 返回标准化站点并保留原输入，错误类型符合契约 | 通过，A 的真实 API 联调待执行。[路网用例](../../../backend/tests/owner_d/test_network_service.py) |
+| AC-D03 准备 | 用校园审阅包运行同一命令 | PNG 与 DTO 引用正确，14 站共 91 对及反向可达，跨区经过指定校门，八组时窗和 OD 符合配置 | 通过。[审阅包用例](../../../backend/tests/owner_d/test_campus_review_profile.py) |
+| 常规基线 | 运行 `scripts/check_baseline.py` | fixture 引用、连通性、工程结构及旧基线的 60 个组合通过 | 输出 `Baseline OK`，退出码 0 |
+| AC-D03 / T15 正式验收 | 导入正式校园数据后由 E 执行 `scripts/check.ps1 -Acceptance` | 底图、站点、路网、OD 及数据来源可核验，跨区仅经指定链路 | 未执行，正式 profile 待生成 |
 
-2026-11-26 本地使用 Python 3.12.9 和锁定依赖。首次 pytest 因独立虚拟环境未安装 pytest 而无法开始，随后执行 requirements-lock.txt 安装成功。首次基线检查因三个 D Python 文件含 UTF-8 BOM，语法扫描报 U+FEFF。已在 6ff3f70 修正编码。复跑命令：
+D 模块最新结果为 **21 项通过、0 项失败**。场景生成命令实际输出 `Draft generated: 14 stations, 8 scenarios.`。模块用例使用合成小图、项目 fixture 与校园审阅包，无生产 Mock 开关。真实 API、C 页面路径接入及 E 集成复验待执行。
 
-    .\.venv\Scripts\python.exe -m pytest backend/tests/owner_d -v
-    .\.venv\Scripts\python.exe scripts/check_baseline.py
+补充证据如下。
 
-实际结果为 20 项通过、0 项失败（17 项合成小图模块用例、3 项审阅包用例），基线检查退出码 0、输出 Baseline OK。基线检查覆盖 fixture 和工程结构。真实 API、正式 AC-D03 与 E 复验未执行。
-
-补做 fixture 调用自测。在独立 PowerShell 环境将 `PYTHONPATH` 设为 `.;backend`，用 `.\.venv\Scripts\python.exe -` 执行第 2 节调用与断言。实际结果为 s1 → s4 及反向均为 800.0 米，四个折线点顺序互逆。站点 s2 的输入 (350,207) 投影为 (350,200)，道路 e1，偏移 1.0。命令退出码 0。
-
-### 当前审阅包的补充路径证据
-
-运行 .\.venv\Scripts\python.exe data/campus/build_route_check_review.py 生成 data/campus/route-check-review.html。该页展示真实 NetworkService 输出与候选底图。M10 → M13 为 266.43 米，E01 → E04 为 297.14 米。M08 → E01 及反向均为 829.47 米，包含两侧校内接入和 469 米跨区链。距离取自审阅包，无现场实测结论。Edge 首屏已渲染并检查路线图层。
-
-在 bb175f94ddeaf37ed53b51ced1062ac7590d656f 上执行 .\.venv\Scripts\python.exe -m pytest backend/tests/owner_d -q，21 项通过，共 0.58 秒。新增用例遍历 14 站的 91 对组合及其反向，核对距离、折线及起终点。随后运行 .\.venv\Scripts\python.exe scripts/check_baseline.py，退出码 0，输出 Baseline OK。A 的真实站点 API 联调、C 的真实地图路径接入和正式 AC-D03 仍待执行。
-
-
-推送前已同步检查 origin/main，远程公共基线仍为 398d384。运行 .\.venv\Scripts\python.exe -m pytest backend/tests/owner_d -q，共 21 项通过、0 失败。运行 .\.venv\Scripts\python.exe scripts/check_baseline.py，退出码 0。边长口径图层用 Edge 检查了 109 条绘图边，以及 E157 显示 100 米和用户确认来源。这些证据用于本地模块和审阅包，不替代正式 AC-D03。
-
+- fixture 调用中，s1 与 s4 双向均为 800.0 米，四个折线点顺序互逆。s2 从 (350,207) 投影至 (350,200)，关联 e1，偏移 1.0。
+- 校园审阅包中，主校区 M10 → M13 为 266.43 米，东校区 E01 → E04 为 297.14 米，M08 与 E01 双向均为 829.47 米。跨区距离包含 469 米校外段与两端校内路段。路线图层已在 Edge 检查。 [路径证据](../../../data/campus/route-check-review.html)
+- 曾用 Edge 检查 109 条绘图边，确认道路 50 对应的 E157 显示 100 米和来源。 [边长口径](../../../data/campus/road-length-review.json)
 
 ## 5 依赖与集成
 
-- A 对接 NetworkService 构造、标准化站点输出及错误映射。B 使用 route 取得米制距离和图像折线。C 使用底图与坐标。E 在独立环境执行后续复验。
-- 站点口径差异待 E 协调。设计及 AC-D03 要求 12 站、主校区 8、东校区 4。用户确认的审阅包是 14 站、主校区 11、东校区 3，容量总计 565 辆，初始 290 辆。站点分布提案维持待协调。公共契约、验收矩阵均沿用基线版本。
-- D 等待最终名单后生成正式默认站点和对应 OD。E 决定默认数据验收口径，并协调 A/B/C 检查是否固定站点总数或校区数量。F 使用最终数据版本更新课程材料。路网服务按输入站点列表构建，不依赖上述两种数量。
-- 边长来源分别记录于 `road-length-review.json`。道路 50 采用用户确认的 100 米。跨区链总长 469 米已确认，各分段按底图比例分摊。其余路段含在线中心线量算和底图比例估算。E 需确认适用的证据标准及需要复测的路段。
-- 数据路线为候选审阅 JSON → 经核验的边长和默认运营参数 → 正式 campus profile。DB 无本次迁移。
+1. A、B 按契约 1.1.0 接入路网服务，C 按同画布坐标接入底图。各方可先使用 fixture。
+2. E 协调默认站点分布、边长证据和八组实验口径，D 据确认结果生成正式校园数据。B 核对各场景时长和调度触发。A、C 核对不同场景时长的加载和展示。
+3. 正式数据就绪后，E 在独立环境复验站点保存、地图路线及 AC-D03。本次数据交付无需数据库迁移。
+
+| 待同步事项 | 对应记录 |
+| --- | --- |
+| 默认站点数量及校区分布 | [D 默认站点校区分布提案](../../integration/requests/D-默认站点校区分布.md) |
+| 正式实验采用八组及对应时长 | [D 八组需求场景变更提案](../../integration/requests/D-八组需求场景.md) |
 
 ## 6 限制与未完成项
 
-|问题|影响|下一步|
-|---|---|---|
-|正式验收和真实 API 尚未运行|本地自测结果仅覆盖 D 模块和审阅包|等待 E 协调后进行真实接入与正式验收|
-|候选地图和边长尚未转入正式 campus profile|无法进行真实路径与数据验收|道路 50 和跨区总长已确认；核验剩余边长及来源，协调 14 站及 11＋3 分布|
-|逐站容量、初始库存已确认，八场景已编制为合成草稿|默认 profile 不可导入|站点已按 profile-inputs.json 写入审阅包，正式导入前由 E 核对口径及合成假设|
+| 事项 | 当前情况与影响 | 负责人及下一步 |
+| --- | --- | --- |
+| 站点数量 | 审阅包经用户确认共 14 站，主校区 11 站、东校区 3 站，总容量 565 辆、初始 290 辆。AC-D03 基线是 12 站，主校区 8 站、东校区 4 站 | E 协调验收口径，D 据此生成正式默认站点和 OD |
+| 边长与底图来源 | 道路 50 的 100 米和跨区链的 469 米总长已确认。跨区分段按底图比例分摊，其余边长含在线中心线量算及底图比例估算 | D 提供来源，E 确认证据标准及需要复测的段落 |
+| 八组正式实验 | 审阅包已生成八组，公共基线检查仍使用原 60 个组合 | E 协调公共实现和验收更新，B 核对运行时长与统计口径 |
+| 正式导入与验收 | 正式校园 profile、真实 API 和 C 路径接入待验证 | D 生成正式数据，A、C 完成对接，E 复验 |
 
 ## 7 给 F 的文档素材
 
-- 编辑底图与站点预览位于 data/campus/map-preview.html。路网细节、来源和估算限制见 road-graph-review.md 与 road-length-review.json。
-- 地理参考包含校方手绘资料、OpenStreetMap 与用户圈注。正式文件的授权状态和米制长度仍需核验。图面与候选数据无仿真实验结论。
-- D 绘制底图、整理候选图和站点、实现路网服务及模块用例。暂无正式运行截图、种子或贡献评分。
+- D 的实际贡献包括绘制可编辑底图、整理候选路网和站点、实现路网服务与模块用例、编制八组需求场景。跨区链经主校区南门、上园村路和东校区小西门。 [路网与来源说明](../../../data/campus/road-graph-review.md)
+- 地理参考包括校方手绘资料、OpenStreetMap 和用户圈注。需求率为课程合成参数，正式底图许可状态与米制长度仍需核验。 [审阅包来源](../../../data/campus/profile-review/sources.md)
+- 路径审阅页使用校园审阅包和真实路网服务输出，可作功能示例。正式场景实验截图、种子与运行结果待集成后补充。 [路径审阅页](../../../data/campus/route-check-review.html)
 
 ## 8 E 接收结论
 
 复验提交、命令、结果、证据路径及 accepted / returned 结论由 E 复验后填写。
-
-### 场景审阅包更新
-
-按用户给定的时段编制八组独立需求场景。上午下课、晚餐和返寝的双窗口之间停止生成新需求。上课组覆盖主校区住宿到东校区上课和反向通学。图书馆通过现有 M06 站接入。OD 强度为合成参数。
-
-- 生成命令 `.venv\Scripts\python.exe data/campus/build_profile_review.py`，预期生成 14 站、8 场景，实际输出与预期相同。审阅证据为 `data/campus/scenario-review.html` 和 `data/campus/profile-review/scenarios.json`。
-- 自测命令 `.venv\Scripts\python.exe -m pytest backend/tests/owner_d -q`，预期 D 模块用例通过，实际 21 项通过。场景断言覆盖时窗、暂停段、双向跨区、就餐站及图书馆接入。
-- 基线命令 `.venv\Scripts\python.exe scripts/check_baseline.py`，预期现有 60 个实验组合及其他基线检查通过，实际输出 Baseline OK。
-- 用户已确认正式实验采用全部八组。沿用三种策略和五个种子时，完整批次为 120 次。公共批次、各组时长适配及验收标准待 E 协调同步，见 `docs/integration/requests/D-八组需求场景.md`。本次结果限本地审阅和 D 模块自测。
