@@ -136,3 +136,19 @@ def test_review_has_one_cross_campus_chain_and_bidirectional_station_routes():
     points = service.route("M08", "E01")["polyline"]
     first = points.index(required[0])
     assert points[first:first+len(required)] == required
+
+
+def test_every_review_station_pair_has_a_consistent_path():
+    network = read(REVIEW / "road_network.json")
+    stations = read(REVIEW / "default_stations.json")
+    service = NetworkService(network, stations)
+
+    for i, origin in enumerate(stations):
+        for destination in stations[i+1:]:
+            forward = service.route(origin["id"], destination["id"])
+            reverse = service.route(destination["id"], origin["id"])
+            assert forward["distance_m"] > 0
+            assert forward["distance_m"] == reverse["distance_m"]
+            assert forward["polyline"] == reverse["polyline"][::-1]
+            assert forward["polyline"][0] == pytest.approx([origin["x"], origin["y"]])
+            assert forward["polyline"][-1] == pytest.approx([destination["x"], destination["y"]])
