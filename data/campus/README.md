@@ -31,3 +31,7 @@
 站点使用地图预览的「已选站点」图层，位置已由用户确认。scenario-review.html 展示四组明示为合成的需求数据。profile-review 子目录包含 PNG 底图与统一坐标下的路网、站点、场景和配置，状态仍为 draft，待 E 协调 14 站及校区分布。正式启动使用的文件尚未放到 campus 根目录。
 
 生成审阅 PNG 使用 data/campus/render_profile_png.ps1，随后运行 data/campus/build_profile_review.py 组装数据。几何变更时，依次重生成候选图、SVG、边长、站点、PNG 和审阅包。
+
+## 边长口径图层
+
+在 map-preview.html 点击「边长口径」，可按来源查看 109 条图边。单边选择器显示真实用户输入、跨区分摊、OSM 中心线量算及底图比例估算。高度放大时仍可查看底图楼名，选中边使用红线。边长或候选图更新后运行 python data/campus/build_length_preview.py 重生成 road-length-preview.js。
