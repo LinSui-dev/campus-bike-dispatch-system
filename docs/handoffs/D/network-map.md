@@ -90,7 +90,7 @@ print(service.validate_station(candidate))
 |---|---|---|
 |正式验收和真实 API 尚未运行|本地自测结果仅覆盖 D 模块和审阅包|等待 E 协调后进行真实接入与正式验收|
 |候选地图和边长尚未转入正式 campus profile|无法进行真实路径与数据验收|道路 50 和跨区总长已确认；核验剩余边长及来源，协调 14 站及 11＋3 分布|
-|逐站容量、初始库存已确认，四场景已编制为合成草稿|默认 profile 不可导入|站点已按 profile-inputs.json 写入审阅包，正式导入前由 E 核对口径及合成假设|
+|逐站容量、初始库存已确认，八场景已编制为合成草稿|默认 profile 不可导入|站点已按 profile-inputs.json 写入审阅包，正式导入前由 E 核对口径及合成假设|
 
 ## 7 给 F 的文档素材
 
@@ -101,3 +101,12 @@ print(service.validate_station(candidate))
 ## 8 E 接收结论
 
 复验提交、命令、结果、证据路径及 accepted / returned 结论由 E 复验后填写。
+
+### 场景审阅包更新
+
+按用户给定的时段编制八组独立需求场景。上午下课、晚餐和返寝的双窗口之间停止生成新需求。上课组覆盖主校区住宿到东校区上课和反向通学。图书馆通过现有 M06 站接入。OD 强度为合成参数。
+
+- 生成命令 `.venv\Scripts\python.exe data/campus/build_profile_review.py`，预期生成 14 站、8 场景，实际输出与预期相同。审阅证据为 `data/campus/scenario-review.html` 和 `data/campus/profile-review/scenarios.json`。
+- 自测命令 `.venv\Scripts\python.exe -m pytest backend/tests/owner_d -q`，预期 D 模块用例通过，实际 21 项通过。场景断言覆盖时窗、暂停段、双向跨区、就餐站及图书馆接入。
+- 基线命令 `.venv\Scripts\python.exe scripts/check_baseline.py`，预期现有 60 个实验组合及其他基线检查通过，实际输出 Baseline OK。
+- 用户已确认正式实验采用全部八组。沿用三种策略和五个种子时，完整批次为 120 次。公共批次、各组时长适配及验收标准待 E 协调同步，见 `docs/integration/requests/D-八组需求场景.md`。本次结果限本地审阅和 D 模块自测。

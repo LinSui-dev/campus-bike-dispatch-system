@@ -12,41 +12,73 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "profile-review"
 VERSION = "campus-review-v1"
 
-# Rates and peak multipliers are course-model assumptions, in trips per minute.
-# Unlisted OD pairs are absent. Time windows are relative to the scenario start.
+def minute(hour, minute=0):
+    return 60 * hour + minute
+
+
+# Synthetic rates are trips per minute while a window is active.
+# M06 is an existing access point on the road south of the library.
 SCENARIOS = (
-    ("morning", "早课", 420, "宿舍流向教学楼，含少量跨校区通勤。", (
-        ("M04","M13",.10,0,35,2), ("M04","M16",.08,0,35,2),
-        ("M04","M08",.10,0,35,2), ("M04","M10",.09,0,35,2),
-        ("M04","M18",.06,0,35,2), ("E01","E04",.12,0,35,2),
-        ("E03","E04",.10,0,35,2), ("E01","M16",.05,0,40,2),
-        ("E03","M10",.04,0,40,2), ("M04","E04",.035,0,40,1.5),
+    ("morning", "早课", ((minute(7,30),minute(8)),),
+     "宿舍到教学楼，含双向跨校区上课和少量图书馆自习。", (
+        ("M04","M13",.20), ("M04","M16",.16), ("M04","M08",.17),
+        ("M04","M10",.18), ("M04","M18",.11), ("M04","E04",.09),
+        ("E01","E04",.24), ("E03","E04",.20), ("E01","M16",.10),
+        ("E03","M10",.08), ("M04","M06",.04), ("E03","M06",.025),
     )),
-    ("lunch", "午餐", 660, "明湖餐厅 M02、留园餐厅 M21 和东区食堂接入点 E01 承接午餐需求，返程在后段增强。", (
-        ("M13","M02",.10,10,50,2), ("M16","M02",.10,10,50,2),
-        ("M08","M02",.07,10,50,2), ("M10","M21",.08,10,50,2),
-        ("M18","M21",.06,10,50,2), ("E04","E01",.12,10,50,2),
-        ("M02","M13",.065,60,105,1.7), ("M02","M16",.065,60,105,1.7),
-        ("M21","M10",.06,60,105,1.7), ("M21","M18",.05,60,105,1.7), ("E01","E04",.09,60,105,1.7),
-        ("E04","M02",.035,10,50,1.5), ("M02","E04",.035,60,105,1.5),
+    ("morning-dismissal", "上午下课", ((minute(9,50),minute(10,10)),(minute(10,30),minute(10,50))),
+     "教学楼到宿舍、教学楼之间换课，并有少量流向图书馆。", (
+        ("M13","M04",.15), ("M16","M04",.12), ("M08","M04",.12),
+        ("M10","E03",.07), ("M16","E01",.06), ("E04","M04",.06),
+        ("E04","E01",.14), ("E04","E03",.12), ("M13","M08",.10),
+        ("M10","M16",.10), ("M18","M10",.07), ("M08","M06",.04),
+        ("M13","M06",.04), ("E04","M06",.025),
     )),
-    ("evening", "返寝", 1230, "教学点流向宿舍，跨校区返程方向与早课对应。", (
-        ("M13","M04",.10,25,75,2), ("M16","M04",.08,25,75,2),
-        ("M08","M04",.10,25,75,2), ("M10","M04",.09,25,75,2),
-        ("M18","M04",.06,25,75,2), ("E04","E01",.12,25,75,2),
-        ("E04","E03",.10,25,75,2), ("M16","E01",.05,25,75,2),
-        ("M10","E03",.04,25,75,2), ("E04","M04",.035,25,75,1.5),
+    ("lunch", "午餐", ((minute(11,30),minute(12,50)),),
+     "教学楼和宿舍流向明湖餐厅、留园餐厅和东区食堂接入点。", (
+        ("M13","M02",.12), ("M16","M02",.12), ("M08","M02",.08),
+        ("M04","M02",.08), ("M10","M21",.12), ("M18","M21",.09),
+        ("M04","M21",.05), ("E04","E01",.18), ("E03","E01",.12),
+        ("M06","M02",.04), ("M06","M21",.04), ("E04","M02",.025),
     )),
-    ("offpeak", "平峰", 840, "低强度分散出行，含体育场和跨校区活动。", (
-        ("M01","M13",.025), ("M13","M01",.025), ("M06","M16",.025),
-        ("M16","M06",.025), ("M20","M08",.03), ("M08","M20",.03),
-        ("M04","M10",.03), ("M10","M04",.03), ("M18","M01",.025),
-        ("M20","M13",.02), ("M13","M20",.02), ("E01","E04",.03), ("E04","E03",.03), ("E03","E01",.02),
-        ("M06","E04",.015), ("E04","M06",.015),
+    ("afternoon-class", "午课", ((minute(13,30),minute(14,10)),),
+     "宿舍到教学楼、教学楼之间换课，含双向跨校区和图书馆出行。", (
+        ("M04","M13",.15), ("M04","M10",.14), ("M04","M08",.12),
+        ("M04","E04",.07), ("E01","E04",.19), ("E03","E04",.17),
+        ("E01","M16",.08), ("E03","M18",.07), ("M13","M10",.08),
+        ("M08","M16",.07), ("M10","M06",.04), ("M06","M18",.035),
+    )),
+    ("afternoon-dismissal", "下午下课", ((minute(16),minute(16,20)),),
+     "教学楼到宿舍、教学楼之间换课，并有少量图书馆出行。", (
+        ("M13","M04",.17), ("M10","M04",.15), ("M08","M04",.12),
+        ("M16","E01",.09), ("M18","E03",.08), ("E04","M04",.07),
+        ("E04","E01",.18), ("E04","E03",.15), ("M13","M16",.09),
+        ("M08","M10",.08), ("M16","M06",.045), ("M18","M06",.04),
+    )),
+    ("dinner", "晚餐", ((minute(17),minute(17,30)),(minute(18,10),minute(18,30))),
+     "教学楼和宿舍流向三个就餐接入点。", (
+        ("M13","M02",.12), ("M16","M02",.10), ("M08","M02",.09),
+        ("M04","M02",.09), ("M10","M21",.12), ("M18","M21",.10),
+        ("M04","M21",.07), ("E04","E01",.17), ("E03","E01",.12),
+        ("M06","M02",.04), ("M06","M21",.04),
+    )),
+    ("evening-class", "晚课", ((minute(18,30),minute(19)),),
+     "餐厅和宿舍到教学楼，含双向跨校区通学和少量自习。", (
+        ("M02","M13",.12), ("M02","M16",.10), ("M21","M10",.13),
+        ("M21","M18",.10), ("M04","M08",.11), ("M04","E04",.06),
+        ("E01","E04",.18), ("E03","E04",.14), ("E01","M16",.07),
+        ("E03","M10",.06), ("M02","M06",.045), ("M21","M06",.035),
+    )),
+    ("evening", "返寝", ((minute(20,50),minute(21,10)),(minute(21,50),minute(22,10))),
+     "教学区和图书馆流向宿舍，含双向跨校区返寝。", (
+        ("M13","M04",.18), ("M16","M04",.16), ("M08","M04",.14),
+        ("M10","M04",.15), ("M18","M04",.10), ("E04","E01",.20),
+        ("E04","E03",.17), ("M16","E01",.09), ("M10","E03",.08),
+        ("E04","M04",.07), ("M06","M04",.065), ("M06","E03",.035),
     )),
 )
 
-PARAMS = dict(duration_min=120, step_sec=60, ride_speed_kmh=12,
+PARAMS = dict( step_sec=60, ride_speed_kmh=12,
               dispatch_speed_kmh=10, speed=60, horizon_min=30,
               safety_stock=5, max_dispatch=50)
 
@@ -66,13 +98,22 @@ def raster_point(point):
     return [round(x * 2.5, 6), round(y * 2.5 + .25, 6)]
 
 
-def demand(row):
-    start,end,rate,*period = row
-    periods = []
-    if period:
-        first,last,multiplier = period
-        periods.append(dict(start_min=first,end_min=last,multiplier=multiplier))
-    return dict(origin_id=start,destination_id=end,rate_per_min=rate,periods=periods)
+def scenario_draft(item):
+    sid, name, windows, description, flows = item
+    start = windows[0][0]
+    gaps = [
+        dict(start_min=before_end-start, end_min=after_start-start, multiplier=0)
+        for (_,before_end),(after_start,_) in zip(windows,windows[1:])
+    ]
+    return dict(id=sid,name=name,start_minute=start,duration_min=windows[-1][1]-start,
+                description="课程合成需求。"+description,is_preset=True,
+                od_demands=[dict(origin_id=origin,destination_id=destination,
+                                 rate_per_min=rate,periods=gaps)
+                            for origin,destination,rate in flows])
+
+
+def hhmm(value):
+    return f"{value//60:02}:{value%60:02}"
 
 
 def write_scenario_preview(scenarios, stations):
@@ -87,20 +128,18 @@ h1{margin:0}summary{cursor:pointer;font-weight:700}table{border-collapse:collaps
 th,td{padding:.55rem;text-align:left;border-bottom:1px solid #e0e6dc}
 </style>
 <header><h1>校园预设场景审阅</h1>
-<p>需求为课程合成假设。四个预设共用已选站点及统一初始车辆配置。</p>
+<p>需求为课程合成假设。正式实验采用以下八个独立场景，共用已选站点及统一初始车辆配置。各自从默认库存开始，窗口间继续处理已发生的行程。</p>
 <a href="map-preview.html?stations">查看站点位置</a></header>"""]
     page.append(f'<p>当前 {len(stations)} 站，初始车辆 {sum(station["initial_stock"] for station in stations)} 辆。</p>')
-    for scenario in scenarios:
-        start = scenario["start_minute"]
-        page.append(f'<details><summary>{scenario["name"]} · {start//60:02}:{start%60:02} · {scenario["duration_min"]} 分钟</summary>')
+    for scenario,(_,_,windows,_,_) in zip(scenarios,SCENARIOS):
+        active = "、".join(f"{hhmm(first)}–{hhmm(last)}" for first,last in windows)
+        page.append(f'<details><summary>{scenario["name"]} · {active}</summary>')
         page.append(f'<p>{escape(scenario["description"])}</p>')
-        page.append("<table><thead><tr><th>起点</th><th>终点</th><th>基础需求（次／分钟）</th><th>场景内峰段</th></tr></thead><tbody>")
+        page.append("<table><thead><tr><th>起点</th><th>终点</th><th>窗口内需求（次／分钟）</th></tr></thead><tbody>")
         for od in scenario["od_demands"]:
             origin,destination = od["origin_id"],od["destination_id"]
-            periods = "、".join(f'{p["start_min"]}–{p["end_min"]} 分钟 ×{p["multiplier"]}'
-                               for p in od["periods"]) or "全程基础需求"
             page.append(f'<tr><td>{origin} {escape(names[origin])}</td><td>{destination} {escape(names[destination])}</td>'
-                        f'<td>{od["rate_per_min"]}</td><td>{periods}</td></tr>')
+                        f'<td>{od["rate_per_min"]}</td></tr>')
         page.append("</tbody></table></details>")
     (ROOT/"scenario-review.html").write_text("\n".join(page)+"\n",encoding="utf-8")
 
@@ -137,12 +176,10 @@ def build():
                              road_edge_id=edge_id,road_offset=offset,
                              **inputs["station_defaults"][sid]))
 
-    scenarios = [dict(id=sid,name=name,start_minute=start,duration_min=120,
-                      description="课程合成需求。"+description,is_preset=True,
-                      od_demands=[demand(row) for row in flows])
-                 for sid,name,start,description,flows in SCENARIOS]
+    scenarios = [scenario_draft(s) for s in SCENARIOS]
     config = dict(id="campus-default",name="校园默认配置",scenario_id="morning",
-                  params=PARAMS,seed=42,algorithm="none")
+                  params=dict(duration_min=scenarios[0]["duration_min"],**PARAMS),
+                  seed=42,algorithm="none")
     OUT.mkdir(exist_ok=True)
     copyfile(ROOT / "campus-map.svg", OUT / "campus-map.svg")
     write("road_network.json", network)
@@ -157,6 +194,7 @@ def build():
                                 source="审阅包 · 校方手绘资料、OpenStreetMap 与用户确认"))
     write("review-status.json", dict(status="draft",ready_for_import=False,
                                     reasons=["14 站、11＋3 校区分布待 E 协调",
+                                             "用户确认正式实验采用 8 组，公共批次和验收口径待 E 同步",
                                              "其余边长含底图比例估计",
                                              "底图与数据验收待执行"]))
     print(f"Draft generated: {len(stations)} stations, {len(scenarios)} scenarios.")

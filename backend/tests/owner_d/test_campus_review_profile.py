@@ -68,13 +68,25 @@ def test_review_scenarios_and_initial_state_match_the_selected_stations():
         assert 0 <= station["initial_stock"] <= station["capacity"]
         assert station["active"]
 
-    assert {s["id"] for s in scenarios} == {"morning", "lunch", "evening", "offpeak"}
-    assert config["scenario_id"] in {s["id"] for s in scenarios}
+    windows = {
+        "morning": [(450,480)], "morning-dismissal": [(590,610),(630,650)],
+        "lunch": [(690,770)], "afternoon-class": [(810,850)],
+        "afternoon-dismissal": [(960,980)], "dinner": [(1020,1050),(1090,1110)],
+        "evening-class": [(1110,1140)], "evening": [(1250,1270),(1310,1330)],
+    }
+    assert {s["id"] for s in scenarios} == set(windows)
+    default = next(s for s in scenarios if s["id"] == config["scenario_id"])
+    assert config["params"]["duration_min"] == default["duration_min"]
     for scenario in scenarios:
         assert_schema("Scenario", scenario)
         assert "合成" in scenario["description"]
         assert scenario["is_preset"]
-        assert scenario["duration_min"] == config["params"]["duration_min"]
+        active = windows[scenario["id"]]
+        start = scenario["start_minute"]
+        assert start == active[0][0]
+        assert scenario["duration_min"] == active[-1][1] - start
+        expected_gaps = [(end-start,following-start,0)
+                         for (_,end),(following,_) in zip(active,active[1:])]
         seen = set()
         for demand in scenario["od_demands"]:
             pair = demand["origin_id"], demand["destination_id"]
@@ -84,10 +96,19 @@ def test_review_scenarios_and_initial_state_match_the_selected_stations():
             previous_end = 0
             for period in sorted(demand["periods"], key=lambda p: p["start_min"]):
                 assert previous_end <= period["start_min"] < period["end_min"] <= scenario["duration_min"]
-                assert period["multiplier"] > 0
+                assert period["multiplier"] >= 0
                 previous_end = period["end_min"]
-    lunch = next(s for s in scenarios if s["id"] == "lunch")
-    assert {"M02", "M21", "E01"} <= {d["destination_id"] for d in lunch["od_demands"]}
+            assert [(p["start_min"],p["end_min"],p["multiplier"])
+                    for p in demand["periods"]] == expected_gaps
+    for scenario in scenarios:
+        pairs = {(d["origin_id"],d["destination_id"]) for d in scenario["od_demands"]}
+        if scenario["id"] in {"lunch","dinner"}:
+            assert {"M02", "M21", "E01"} <= {destination for _,destination in pairs}
+        if scenario["id"] in {"morning","afternoon-class","evening-class"}:
+            assert ("M04","E04") in pairs
+            assert any(origin in {"E01","E03"} and destination in {"M10","M16","M18"}
+                       for origin,destination in pairs)
+        assert any("M06" in pair for pair in pairs)
 
 
 def test_review_has_one_cross_campus_chain_and_bidirectional_station_routes():
