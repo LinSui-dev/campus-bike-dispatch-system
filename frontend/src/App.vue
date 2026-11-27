@@ -1,52 +1,69 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { ElAlert } from 'element-plus'
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, ref } from 'vue'
+import { DataAnalysis, Histogram, Location, Operation, Van, Bicycle } from '@element-plus/icons-vue'
+import { ElIcon } from 'element-plus'
+import 'element-plus/es/components/icon/style/css'
+import { mockMode } from './api'
+import GlobalControls from './components/GlobalControls.vue'
+import { useConfig } from './stores/config'
+import { useRuntime } from './stores/runtime'
 
-const health = ref('正在检查服务')
-const error = ref('')
-const mapUrl = ref('')
-onMounted(async () => {
-  try {
-    const response = await fetch('/api/v1/health')
-    if (!response.ok) throw new Error(`服务检查失败：${response.status}`)
-    const info = await response.json()
-    health.value = `后端已连接 · ${info.stage}`
-    const mapResponse = await fetch('/api/v1/map')
-    if (!mapResponse.ok) throw new Error(`地图检查失败：${mapResponse.status}`)
-    const metadata = await mapResponse.json()
-    mapUrl.value = metadata.image_url
-  } catch (e) {
-    error.value = e instanceof Error ? e.message : '连接失败'
-    health.value = '后端尚未连接'
-  }
+const pages = [
+  { path: 'overview', label: '运营总览', icon: Histogram, component: defineAsyncComponent(() => import('./pages/OverviewPage.vue')) },
+  { path: 'stations', label: '停车点管理', icon: Location, component: defineAsyncComponent(() => import('./pages/StationsPage.vue')) },
+  { path: 'control', label: '仿真控制', icon: Operation, component: defineAsyncComponent(() => import('./pages/ControlPage.vue')) },
+  { path: 'dispatch', label: '智能调度', icon: Van, component: defineAsyncComponent(() => import('./pages/DispatchPage.vue')) },
+  { path: 'experiments', label: '实验分析', icon: DataAnalysis, component: defineAsyncComponent(() => import('./pages/ExperimentsPage.vue')) },
+]
+const MockControls = mockMode ? defineAsyncComponent(() => import('./components/MockControls.vue')) : null
+const route = ref(location.hash)
+const page = computed(() => pages.find(item => route.value === '#/' + item.path) ?? pages[0])
+const config = useConfig()
+const run = useRuntime()
+function routeChange() {
+  route.value = location.hash
+  window.scrollTo({ top: 0, behavior: 'instant' })
+}
+onMounted(() => {
+  window.addEventListener('hashchange', routeChange)
+  run.mount()
+  void config.load()
+})
+onBeforeUnmount(() => {
+  window.removeEventListener('hashchange', routeChange)
+  run.unmount()
 })
 </script>
 
 <template>
-  <main>
-    <p class="eyebrow">六人并行开发基线 · v1</p>
-    <h1>校园共享单车智能调度与可视化仿真系统</h1>
-    <el-alert title="开发骨架：业务功能尚未实现；当前没有运行实验。" type="info" :closable="false" />
-    <section>
-      <h2>服务与数据</h2>
-      <p>{{ health }}</p>
-      <el-alert v-if="error" :title="error" type="error" :closable="false" />
-      <p>下图是虚拟联调夹具，4站40车，不是校园实测地图或实验结果。</p>
-      <img v-if="mapUrl" :src="mapUrl" alt="明确标注为虚拟数据的双校区测试示意图" />
-    </section>
-    <section>
-      <h2>待开发的五个页面</h2>
-      <div class="pages"><span v-for="name in ['运营总览', '停车点管理', '仿真控制', '智能调度', '实验分析']" :key="name">{{ name }}</span></div>
-      <p>具体交互、接口与验收要求见仓库开发文档。本页面不会自动启动任何实验。</p>
-    </section>
-  </main>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#/overview" aria-label="校园单车仿真运营总览">
+        <span class="brand-mark"><ElIcon aria-hidden="true"><Bicycle /></ElIcon></span>
+        <span><strong>校园单车仿真</strong><small>双校区调度实验</small></span>
+      </a>
+      <nav aria-label="主导航">
+        <a v-for="item in pages" :key="item.path" :href="'#/' + item.path" :aria-current="page.path === item.path ? 'page' : undefined">
+          <ElIcon aria-hidden="true"><component :is="item.icon" /></ElIcon><span>{{ item.label }}</span>
+        </a>
+      </nav>
+      <div class="sidebar-source">
+        <span class="live-dot" :class="{ on: !mockMode && run.available }" />
+        <span>{{ mockMode ? '虚拟联调模式' : run.available ? '后端已连接' : '等待后端连接' }}</span>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-head"><span>北京交通大学 <i /> 共享单车调度</span><component :is="MockControls" v-if="MockControls" /></div>
+        <GlobalControls />
+      </header>
+      <main class="main-content">
+        <div v-if="config.issues.length" class="banner error" role="alert">
+          <div v-for="issue in config.issues" :key="issue">{{ issue }}</div>
+          <button class="text-button" @click="config.load">重试加载</button>
+        </div>
+        <component :is="page.component" :key="page.path" />
+      </main>
+    </div>
+  </div>
 </template>
-
-<style>
-body { margin: 0; background: #f3f6fa; color: #24354a; font-family: 'Microsoft YaHei', sans-serif; }
-main { max-width: 1120px; margin: 48px auto; padding: 0 28px; }
-h1 { font-size: 28px; line-height: 1.5; } h2 { font-size: 20px; }
-.eyebrow { color: #527394; } section { margin-top: 24px; padding: 24px; background: white; border-radius: 10px; }
-img { width: 100%; height: auto; } p { line-height: 1.8; }
-.pages { display: flex; flex-wrap: wrap; gap: 16px; } .pages span { padding: 12px 18px; background: #edf3fa; border-radius: 6px; }
-</style>
