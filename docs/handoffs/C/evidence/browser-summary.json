@@ -1,0 +1,52 @@
+{
+  "code_sha": "cd54b64c3114d604ca6b1ce4ca86bd074f79acbb",
+  "command": "npm --prefix frontend test -- --reporter=list,json",
+  "browser": "Microsoft Edge 158.0.4370.33",
+  "playwright": "1.58.2",
+  "stats": {
+    "startTime": "2026-11-27T00:59:38.565Z",
+    "duration": 44373.461,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "AC-C01 配置、交互控制、重置分支与保存失败",
+      "line": 59,
+      "status": "passed",
+      "duration_ms": 12212
+    },
+    {
+      "title": "AC-C02 刷新恢复、旧 Seq、轮询和状态 404",
+      "line": 171,
+      "status": "passed",
+      "duration_ms": 6893
+    },
+    {
+      "title": "AC-C03 地图图层、标准化拖动、库存状态和运输进度",
+      "line": 225,
+      "status": "passed",
+      "duration_ms": 9755
+    },
+    {
+      "title": "AC-C04 零分母、批量失败、策略统计和历史",
+      "line": 333,
+      "status": "passed",
+      "duration_ms": 9257
+    },
+    {
+      "title": "关闭 Mock 后通过真实 HTTP 加载停车点或显示骨架 501",
+      "line": 383,
+      "status": "passed",
+      "duration_ms": 913
+    },
+    {
+      "title": "按折线长度插值并处理跨校区折返点",
+      "line": 408,
+      "status": "passed",
+      "duration_ms": 306
+    }
+  ]
+}
