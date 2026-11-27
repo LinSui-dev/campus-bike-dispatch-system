@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>校园预设场景审阅</title>
+<style>
+body{max-width:1000px;margin:2rem auto;padding:0 1rem;background:#f3f5ee;color:#263a30;font:16px system-ui,sans-serif}
+details,header{background:white;border:1px solid #d1dacd;border-radius:9px;padding:1rem;margin:1rem 0}
+h1{margin:0}summary{cursor:pointer;font-weight:700}table{border-collapse:collapse;width:100%}
+th,td{padding:.55rem;text-align:left;border-bottom:1px solid #e0e6dc}
+</style>
+<header><h1>校园预设场景审阅</h1>
+<p>需求为课程合成假设。正式实验采用以下八个独立场景，共用已选站点及统一初始车辆配置。各自从默认库存开始，窗口间继续处理已发生的行程。</p>
+<a href="map-preview.html?stations">查看站点位置</a></header>
+<p>当前 14 站，初始车辆 290 辆。</p>
+<details><summary>早课 · 07:30–08:00</summary>
+<p>课程合成需求。宿舍到教学楼，含双向跨校区上课和少量图书馆自习。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>窗口内需求（次／分钟）</th></tr></thead><tbody>
+<tr><td>M04 18号宿舍楼</td><td>M13 思源西楼</td><td>0.2</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M16 思源东楼</td><td>0.16</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M08 5号教学楼</td><td>0.17</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M10 9号教学楼</td><td>0.18</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M18 国家经济安全研究院</td><td>0.11</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>E04 东教三楼南侧</td><td>0.09</td></tr>
+<tr><td>E01 东5学生宿舍楼北侧</td><td>E04 东教三楼南侧</td><td>0.24</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>E04 东教三楼南侧</td><td>0.2</td></tr>
+<tr><td>E01 东5学生宿舍楼北侧</td><td>M16 思源东楼</td><td>0.1</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>M10 9号教学楼</td><td>0.08</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M06 主校区第二体育场</td><td>0.04</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>M06 主校区第二体育场</td><td>0.025</td></tr>
+</tbody></table></details>
+<details><summary>上午下课 · 09:50–10:10、10:30–10:50</summary>
+<p>课程合成需求。教学楼到宿舍、教学楼之间换课，并有少量流向图书馆。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>窗口内需求（次／分钟）</th></tr></thead><tbody>
+<tr><td>M13 思源西楼</td><td>M04 18号宿舍楼</td><td>0.15</td></tr>
+<tr><td>M16 思源东楼</td><td>M04 18号宿舍楼</td><td>0.12</td></tr>
+<tr><td>M08 5号教学楼</td><td>M04 18号宿舍楼</td><td>0.12</td></tr>
+<tr><td>M10 9号教学楼</td><td>E03 东2学生宿舍楼北侧</td><td>0.07</td></tr>
+<tr><td>M16 思源东楼</td><td>E01 东5学生宿舍楼北侧</td><td>0.06</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>M04 18号宿舍楼</td><td>0.06</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E01 东5学生宿舍楼北侧</td><td>0.14</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E03 东2学生宿舍楼北侧</td><td>0.12</td></tr>
+<tr><td>M13 思源西楼</td><td>M08 5号教学楼</td><td>0.1</td></tr>
+<tr><td>M10 9号教学楼</td><td>M16 思源东楼</td><td>0.1</td></tr>
+<tr><td>M18 国家经济安全研究院</td><td>M10 9号教学楼</td><td>0.07</td></tr>
+<tr><td>M08 5号教学楼</td><td>M06 主校区第二体育场</td><td>0.04</td></tr>
+<tr><td>M13 思源西楼</td><td>M06 主校区第二体育场</td><td>0.04</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>M06 主校区第二体育场</td><td>0.025</td></tr>
+</tbody></table></details>
+<details><summary>午餐 · 11:30–12:50</summary>
+<p>课程合成需求。教学楼和宿舍流向明湖餐厅、留园餐厅和东区食堂接入点。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>窗口内需求（次／分钟）</th></tr></thead><tbody>
+<tr><td>M13 思源西楼</td><td>M02 明湖餐厅</td><td>0.12</td></tr>
+<tr><td>M16 思源东楼</td><td>M02 明湖餐厅</td><td>0.12</td></tr>
+<tr><td>M08 5号教学楼</td><td>M02 明湖餐厅</td><td>0.08</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M02 明湖餐厅</td><td>0.08</td></tr>
+<tr><td>M10 9号教学楼</td><td>M21 留园餐厅</td><td>0.12</td></tr>
+<tr><td>M18 国家经济安全研究院</td><td>M21 留园餐厅</td><td>0.09</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M21 留园餐厅</td><td>0.05</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E01 东5学生宿舍楼北侧</td><td>0.18</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>E01 东5学生宿舍楼北侧</td><td>0.12</td></tr>
+<tr><td>M06 主校区第二体育场</td><td>M02 明湖餐厅</td><td>0.04</td></tr>
+<tr><td>M06 主校区第二体育场</td><td>M21 留园餐厅</td><td>0.04</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>M02 明湖餐厅</td><td>0.025</td></tr>
+</tbody></table></details>
+<details><summary>午课 · 13:30–14:10</summary>
+<p>课程合成需求。宿舍到教学楼、教学楼之间换课，含双向跨校区和图书馆出行。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>窗口内需求（次／分钟）</th></tr></thead><tbody>
+<tr><td>M04 18号宿舍楼</td><td>M13 思源西楼</td><td>0.15</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M10 9号教学楼</td><td>0.14</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M08 5号教学楼</td><td>0.12</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>E04 东教三楼南侧</td><td>0.07</td></tr>
+<tr><td>E01 东5学生宿舍楼北侧</td><td>E04 东教三楼南侧</td><td>0.19</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>E04 东教三楼南侧</td><td>0.17</td></tr>
+<tr><td>E01 东5学生宿舍楼北侧</td><td>M16 思源东楼</td><td>0.08</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>M18 国家经济安全研究院</td><td>0.07</td></tr>
+<tr><td>M13 思源西楼</td><td>M10 9号教学楼</td><td>0.08</td></tr>
+<tr><td>M08 5号教学楼</td><td>M16 思源东楼</td><td>0.07</td></tr>
+<tr><td>M10 9号教学楼</td><td>M06 主校区第二体育场</td><td>0.04</td></tr>
+<tr><td>M06 主校区第二体育场</td><td>M18 国家经济安全研究院</td><td>0.035</td></tr>
+</tbody></table></details>
+<details><summary>下午下课 · 16:00–16:20</summary>
+<p>课程合成需求。教学楼到宿舍、教学楼之间换课，并有少量图书馆出行。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>窗口内需求（次／分钟）</th></tr></thead><tbody>
+<tr><td>M13 思源西楼</td><td>M04 18号宿舍楼</td><td>0.17</td></tr>
+<tr><td>M10 9号教学楼</td><td>M04 18号宿舍楼</td><td>0.15</td></tr>
+<tr><td>M08 5号教学楼</td><td>M04 18号宿舍楼</td><td>0.12</td></tr>
+<tr><td>M16 思源东楼</td><td>E01 东5学生宿舍楼北侧</td><td>0.09</td></tr>
+<tr><td>M18 国家经济安全研究院</td><td>E03 东2学生宿舍楼北侧</td><td>0.08</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>M04 18号宿舍楼</td><td>0.07</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E01 东5学生宿舍楼北侧</td><td>0.18</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E03 东2学生宿舍楼北侧</td><td>0.15</td></tr>
+<tr><td>M13 思源西楼</td><td>M16 思源东楼</td><td>0.09</td></tr>
+<tr><td>M08 5号教学楼</td><td>M10 9号教学楼</td><td>0.08</td></tr>
+<tr><td>M16 思源东楼</td><td>M06 主校区第二体育场</td><td>0.045</td></tr>
+<tr><td>M18 国家经济安全研究院</td><td>M06 主校区第二体育场</td><td>0.04</td></tr>
+</tbody></table></details>
+<details><summary>晚餐 · 17:00–17:30、18:10–18:30</summary>
+<p>课程合成需求。教学楼和宿舍流向三个就餐接入点。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>窗口内需求（次／分钟）</th></tr></thead><tbody>
+<tr><td>M13 思源西楼</td><td>M02 明湖餐厅</td><td>0.12</td></tr>
+<tr><td>M16 思源东楼</td><td>M02 明湖餐厅</td><td>0.1</td></tr>
+<tr><td>M08 5号教学楼</td><td>M02 明湖餐厅</td><td>0.09</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M02 明湖餐厅</td><td>0.09</td></tr>
+<tr><td>M10 9号教学楼</td><td>M21 留园餐厅</td><td>0.12</td></tr>
+<tr><td>M18 国家经济安全研究院</td><td>M21 留园餐厅</td><td>0.1</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M21 留园餐厅</td><td>0.07</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E01 东5学生宿舍楼北侧</td><td>0.17</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>E01 东5学生宿舍楼北侧</td><td>0.12</td></tr>
+<tr><td>M06 主校区第二体育场</td><td>M02 明湖餐厅</td><td>0.04</td></tr>
+<tr><td>M06 主校区第二体育场</td><td>M21 留园餐厅</td><td>0.04</td></tr>
+</tbody></table></details>
+<details><summary>晚课 · 18:30–19:00</summary>
+<p>课程合成需求。餐厅和宿舍到教学楼，含双向跨校区通学和少量自习。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>窗口内需求（次／分钟）</th></tr></thead><tbody>
+<tr><td>M02 明湖餐厅</td><td>M13 思源西楼</td><td>0.12</td></tr>
+<tr><td>M02 明湖餐厅</td><td>M16 思源东楼</td><td>0.1</td></tr>
+<tr><td>M21 留园餐厅</td><td>M10 9号教学楼</td><td>0.13</td></tr>
+<tr><td>M21 留园餐厅</td><td>M18 国家经济安全研究院</td><td>0.1</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>M08 5号教学楼</td><td>0.11</td></tr>
+<tr><td>M04 18号宿舍楼</td><td>E04 东教三楼南侧</td><td>0.06</td></tr>
+<tr><td>E01 东5学生宿舍楼北侧</td><td>E04 东教三楼南侧</td><td>0.18</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>E04 东教三楼南侧</td><td>0.14</td></tr>
+<tr><td>E01 东5学生宿舍楼北侧</td><td>M16 思源东楼</td><td>0.07</td></tr>
+<tr><td>E03 东2学生宿舍楼北侧</td><td>M10 9号教学楼</td><td>0.06</td></tr>
+<tr><td>M02 明湖餐厅</td><td>M06 主校区第二体育场</td><td>0.045</td></tr>
+<tr><td>M21 留园餐厅</td><td>M06 主校区第二体育场</td><td>0.035</td></tr>
+</tbody></table></details>
+<details><summary>返寝 · 20:50–21:10、21:50–22:10</summary>
+<p>课程合成需求。教学区和图书馆流向宿舍，含双向跨校区返寝。</p>
+<table><thead><tr><th>起点</th><th>终点</th><th>窗口内需求（次／分钟）</th></tr></thead><tbody>
+<tr><td>M13 思源西楼</td><td>M04 18号宿舍楼</td><td>0.18</td></tr>
+<tr><td>M16 思源东楼</td><td>M04 18号宿舍楼</td><td>0.16</td></tr>
+<tr><td>M08 5号教学楼</td><td>M04 18号宿舍楼</td><td>0.14</td></tr>
+<tr><td>M10 9号教学楼</td><td>M04 18号宿舍楼</td><td>0.15</td></tr>
+<tr><td>M18 国家经济安全研究院</td><td>M04 18号宿舍楼</td><td>0.1</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E01 东5学生宿舍楼北侧</td><td>0.2</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>E03 东2学生宿舍楼北侧</td><td>0.17</td></tr>
+<tr><td>M16 思源东楼</td><td>E01 东5学生宿舍楼北侧</td><td>0.09</td></tr>
+<tr><td>M10 9号教学楼</td><td>E03 东2学生宿舍楼北侧</td><td>0.08</td></tr>
+<tr><td>E04 东教三楼南侧</td><td>M04 18号宿舍楼</td><td>0.07</td></tr>
+<tr><td>M06 主校区第二体育场</td><td>M04 18号宿舍楼</td><td>0.065</td></tr>
+<tr><td>M06 主校区第二体育场</td><td>E03 东2学生宿舍楼北侧</td><td>0.035</td></tr>
+</tbody></table></details>
