@@ -146,6 +146,6 @@ python -m venv .venv
 
 - 复验基线/提交与实际命令：提交 `7186c686c7085318faa08ba09993b0b582facbdd`；合并后在 `integrate/abcd-20261127` 执行 `pytest backend/tests/owner_b`、`pytest tests/acceptance -m acceptance`、campus 120 组正式批次。
 - 通过/失败项、证据路径：B 模块 494 项通过；真实 campus 批量 120/120 成功，聚合均值/样本标准差/有效 n 正常，调度量与非零成本真实产生（[experiments-120.md](../../integration/results/experiments-120.md)）。`test_default_sixty_combinations` 因 E 按 8 场景/120 组更新 `contracts/examples/batch_request.json` 而失效。
-- 结论：returned（仅需更新该测试的 60→120 断言；算法与统计未发现失败）。
-- 退回负责人、修复要求、复验结果：B 将该测试改为 120 组合，或改用独立请求避免依赖公共示例；复验待更新后的分支 SHA。
+- 结论：accepted（1 项示例组合数断言经用户授权由 E 更新为 120 后复验通过；算法与统计未改）。
+- 退回负责人、修复要求、复验结果：无退回。E 仅将 `test_default_sixty_combinations` 更新为按公共示例计算 120 组/24 聚合组（已重命名为 `test_default_formal_combinations`），原因见 `docs/integration/results/integration-20261127.md` 第 3 节。
 - docs/integration/results中的综合记录路径：`docs/integration/results/integration-20261127.md`、`docs/integration/results/experiments-120.md`。

@@ -128,15 +128,18 @@ def test_a07_interactive_and_batch_concurrent_start_only_one_slot(app_factory):
             release.set()
 
 
-def test_unimplemented_runner_is_explicit_501_and_slot_released(app_factory):
+def test_default_runner_runs_batch_and_releases_slot(app_factory):
     app = app_factory()
     with TestClient(app) as client:
         empty_od(client)
         assert client.post(P+'/batches',json=batch_request()).status_code==202
-        app.state.manager.batch_thread.join(5)
+        app.state.manager.batch_thread.join(120)
         response = client.get(P+'/batches/batch-1')
-        assert response.status_code==501 and response.json()['code']=='NOT_IMPLEMENTED'
-        assert client.get(P+'/runs').json()['total']==0
+        assert response.status_code==200
+        result=response.json()
+        assert result['status']=='completed' and result['finished']==result['total']==4
+        assert all(i['status']=='completed' and i['run_id'] for i in result['items'])
+        assert client.get(P+'/runs').json()['total']==4
         assert client.get(P+'/runtime').json()['mode']=='idle'
 
 

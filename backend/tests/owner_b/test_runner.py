@@ -192,9 +192,12 @@ def test_dispatch_times_sorted_in_spec():
     assert fake.calls[0]["dispatch_times_sec"] == [0, 900, 1800]
 
 
-def test_default_sixty_combinations():
+def test_default_formal_combinations():
     fake = FakeRunOnce()
     result, _ = run(copy.deepcopy(BASE_REQUEST), fake)
-    assert result["total"] == 60 and len(fake.calls) == 60
-    assert len(result["aggregates"]) == 12
+    total = len(BASE_REQUEST["scenario_ids"]) * len(BASE_REQUEST["algorithms"]) * len(BASE_REQUEST["seeds"])
+    groups = len(BASE_REQUEST["scenario_ids"]) * len(BASE_REQUEST["algorithms"])
+    assert total == 120 and groups == 24
+    assert result["total"] == total and len(fake.calls) == total
+    assert len(result["aggregates"]) == groups
     assert result["status"] == "completed"

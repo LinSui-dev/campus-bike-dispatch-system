@@ -6,12 +6,12 @@ configfile: pytest.ini
 plugins: anyio-4.16.0
 collected 614 items
 
-backend\tests\owner_a\test_api.py ................................F..F   [  5%]
+backend\tests\owner_a\test_api.py ....................................   [  5%]
 backend\tests\owner_a\test_engine.py .................                   [  8%]
-backend\tests\owner_a\test_runtime.py ...F.........                      [ 10%]
+backend\tests\owner_a\test_runtime.py .............                      [ 10%]
 backend\tests\owner_a\test_transport.py .                                [ 10%]
 backend\tests\owner_b\test_forecast.py .....................             [ 14%]
-backend\tests\owner_b\test_runner.py ......................F             [ 18%]
+backend\tests\owner_b\test_runner.py .......................             [ 18%]
 backend\tests\owner_b\test_strategies.py ............................... [ 23%]
 ........................................................................ [ 34%]
 ........................................................................ [ 46%]
@@ -26,59 +26,6 @@ backend\tests\owner_d\test_network_service.py .................          [ 94%]
 tests\integration\test_acceptance_gate.py ........                       [ 96%]
 tests\integration\test_baseline.py ........................              [100%]
 
-================================== FAILURES ===================================
-__ test_default_production_ports_fail_explicitly_and_never_use_test_doubles ___
-
-tmp_path = WindowsPath('C:/Users/Lenovo/AppData/Local/Temp/pytest-of-Lenovo/pytest-164/test_default_production_ports_0')
-
-    def test_default_production_ports_fail_explicitly_and_never_use_test_doubles(tmp_path):
-        from app.main import create_app
-        app = create_app(database_url='sqlite:///'+(tmp_path/'real.db').as_posix(),data_profile='fixture',auto_advance=False)
-        with TestClient(app,raise_server_exceptions=False) as client:
->           assert client.get(P+'/health').json()['stage'] == 'scaffold'
-E           AssertionError: assert 'implemented' == 'scaffold'
-E             
-E             - scaffold
-E             + implemented
-
-backend\tests\owner_a\test_api.py:265: AssertionError
-___________ test_campus_missing_data_does_not_fall_back_to_fixture ____________
-
-tmp_path = WindowsPath('C:/Users/Lenovo/AppData/Local/Temp/pytest-of-Lenovo/pytest-164/test_campus_missing_data_does_0')
-
-    def test_campus_missing_data_does_not_fall_back_to_fixture(tmp_path):
-        from app.main import create_app
-        app=create_app(database_url='sqlite:///'+(tmp_path/'campus.db').as_posix(),data_profile='campus')
->       with pytest.raises(RuntimeError,match='DATA_PROFILE=campus'):
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-E       Failed: DID NOT RAISE RuntimeError
-
-backend\tests\owner_a\test_api.py:300: Failed
-_________ test_unimplemented_runner_is_explicit_501_and_slot_released _________
-
-app_factory = <function app_factory.<locals>.factory at 0x00000293D31FFCE0>
-
-    def test_unimplemented_runner_is_explicit_501_and_slot_released(app_factory):
-        app = app_factory()
-        with TestClient(app) as client:
-            empty_od(client)
-            assert client.post(P+'/batches',json=batch_request()).status_code==202
-            app.state.manager.batch_thread.join(5)
-            response = client.get(P+'/batches/batch-1')
->           assert response.status_code==501 and response.json()['code']=='NOT_IMPLEMENTED'
-E           assert (200 == 501)
-E            +  where 200 = <Response [200 OK]>.status_code
-
-backend\tests\owner_a\test_runtime.py:138: AssertionError
-_______________________ test_default_sixty_combinations _______________________
-
-    def test_default_sixty_combinations():
-        fake = FakeRunOnce()
-        result, _ = run(copy.deepcopy(BASE_REQUEST), fake)
->       assert result["total"] == 60 and len(fake.calls) == 60
-E       assert (120 == 60)
-
-backend\tests\owner_b\test_runner.py:198: AssertionError
 ============================== warnings summary ===============================
 .venv\Lib\site-packages\fastapi\testclient.py:1
   E:\hmdocument\æ™ºèƒ½äº¤é€šæŠ€æœ¯ä¸“é¢˜è¯¾-éƒ­ç”œç”œ\äº¤é€šå®žè·µé¡¹ç›®\code\campus-bike-dispatch-system\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
@@ -104,17 +51,28 @@ backend/tests/owner_a/test_transport.py::test_real_uvicorn_http_websocket_transp
     warnings.warn(pytest.PytestUnhandledThreadExceptionWarning(msg))
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-=========================== short test summary info ===========================
-FAILED backend/tests/owner_a/test_api.py::test_default_production_ports_fail_explicitly_and_never_use_test_doubles
-FAILED backend/tests/owner_a/test_api.py::test_campus_missing_data_does_not_fall_back_to_fixture
-FAILED backend/tests/owner_a/test_runtime.py::test_unimplemented_runner_is_explicit_501_and_slot_released
-FAILED backend/tests/owner_b/test_runner.py::test_default_sixty_combinations
-================= 4 failed, 610 passed, 2 warnings in 23.49s ==================
-Backend or integration tests failed.
-ËùÔÚÎ»ÖÃ E:\hmdocument\ÖÇÄÜ½»Í¨¼¼Êõ×¨Ìâ¿Î-¹ùÌðÌð\½»Í¨Êµ¼ùÏîÄ¿\code\campus-bike-dispatch-system\scripts\check.ps1:11 ×Ö
-·û: 32
-+ ... $LASTEXITCODE -ne 0) { throw 'Backend or integration tests failed.' }
-+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : OperationStopped: (Backend or integration tests failed.:String) [], RuntimeException
-    + FullyQualifiedErrorId : Backend or integration tests failed.
- 
+====================== 614 passed, 2 warnings in 31.37s =======================
+
+> campus-bike-simulation@0.1.0 build
+> vue-tsc --noEmit && vite build
+
+[36mvite v6.4.6 [32mbuilding for production...[36m[39m
+transforming...
+[32mâœ“[39m 2016 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                                                                    [39m[1m[2m  0.42 kB[22m[1m[22m[2m â”‚ gzip:   0.31 kB[22m
+[2mdist/[22m[35mfrontend-assets/index-kTSfSjU7.css                                            [39m[1m[2m 37.90 kB[22m[1m[22m[2m â”‚ gzip:  12.22 kB[22m
+[2mdist/[22m[36mfrontend-assets/ParamsFields.vue_vue_type_script_setup_true_lang-CaC-BZyD.js  [39m[1m[2m  0.88 kB[22m[1m[22m[2m â”‚ gzip:   0.55 kB[22m
+[2mdist/[22m[36mfrontend-assets/DispatchPage-B2INvkLh.js                                      [39m[1m[2m  5.01 kB[22m[1m[22m[2m â”‚ gzip:   2.16 kB[22m
+[2mdist/[22m[36mfrontend-assets/OverviewPage-FcMAKsKe.js                                      [39m[1m[2m  5.55 kB[22m[1m[22m[2m â”‚ gzip:   2.37 kB[22m
+[2mdist/[22m[36mfrontend-assets/StationsPage-CGuSwxnY.js                                      [39m[1m[2m  8.64 kB[22m[1m[22m[2m â”‚ gzip:   3.39 kB[22m
+[2mdist/[22m[36mfrontend-assets/ControlPage-CXNTV-Gg.js                                       [39m[1m[2m 12.71 kB[22m[1m[22m[2m â”‚ gzip:   4.43 kB[22m
+[2mdist/[22m[36mfrontend-assets/ExperimentsPage-oMRNSNdJ.js                                   [39m[1m[2m 14.54 kB[22m[1m[22m[2m â”‚ gzip:   5.47 kB[22m
+[2mdist/[22m[36mfrontend-assets/MetricList.vue_vue_type_script_setup_true_lang-D1y0O-pr.js    [39m[1m[2m 72.26 kB[22m[1m[22m[2m â”‚ gzip:  25.22 kB[22m
+[2mdist/[22m[36mfrontend-assets/chart-types-DTFUuFrr.js                                       [39m[1m[2m 75.30 kB[22m[1m[22m[2m â”‚ gzip:  26.05 kB[22m
+[2mdist/[22m[36mfrontend-assets/index-CFodQgZJ.js                                             [39m[1m[2m111.27 kB[22m[1m[22m[2m â”‚ gzip:  44.73 kB[22m
+[2mdist/[22m[36mfrontend-assets/CampusMap.vue_vue_type_script_setup_true_lang-3PZX5K75.js     [39m[1m[2m155.21 kB[22m[1m[22m[2m â”‚ gzip:  45.99 kB[22m
+[2mdist/[22m[36mfrontend-assets/charts-core-DJnv8ZWb.js                                       [39m[1m[2m362.49 kB[22m[1m[22m[2m â”‚ gzip: 122.73 kB[22m
+[32mâœ“ built in 24.70s[39m
+Baseline checks passed. P0 business acceptance was NOT run.

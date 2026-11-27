@@ -258,15 +258,17 @@ def test_websocket_context_seq_pause_reset_and_unknown_run(client):
         assert socket.receive()['code'] == 1008
 
 
-def test_default_production_ports_fail_explicitly_and_never_use_test_doubles(tmp_path):
+def test_default_production_ports_use_real_modules_and_no_test_doubles(tmp_path):
     from app.main import create_app
     app = create_app(database_url='sqlite:///'+(tmp_path/'real.db').as_posix(),data_profile='fixture',auto_advance=False)
     with TestClient(app,raise_server_exceptions=False) as client:
-        assert client.get(P+'/health').json()['stage'] == 'scaffold'
+        assert client.get(P+'/health').json()['stage'] == 'implemented'
         response = client.post(P+'/runs',json=request())
-        assert response.status_code == 501 and response.json()['code']=='NOT_IMPLEMENTED'
+        assert response.status_code == 201 and response.json()['status'] == 'running'
+        assert client.get(P+'/runtime').json()['mode']=='interactive'
+        assert client.post(P+'/runs/'+response.json()['run_id']+'/control',json={'action':'stop'}).status_code==200
         assert client.get(P+'/runtime').json()['mode']=='idle'
-        assert client.get(P+'/runs').json()['total']==0
+        assert client.get(P+'/runs').json()['total']==1
 
 
 def test_api_openapi_uses_contract_schemas_and_uniform_errors(client):
@@ -294,9 +296,10 @@ def test_empty_active_set_rejected_and_zero_vehicle_run_is_valid(client):
     assert state['metrics']['borrow_success_rate'] is None
 
 
-def test_campus_missing_data_does_not_fall_back_to_fixture(tmp_path):
-    from app.main import create_app
-    app=create_app(database_url='sqlite:///'+(tmp_path/'campus.db').as_posix(),data_profile='campus')
+def test_campus_missing_data_does_not_fall_back_to_fixture(tmp_path, monkeypatch):
+    import app.main as main_module
+    monkeypatch.setattr(main_module, 'ROOT', tmp_path)  # empty data root: campus files absent
+    app=main_module.create_app(database_url='sqlite:///'+(tmp_path/'campus.db').as_posix(),data_profile='campus')
     with pytest.raises(RuntimeError,match='DATA_PROFILE=campus'):
         with TestClient(app):
             pass

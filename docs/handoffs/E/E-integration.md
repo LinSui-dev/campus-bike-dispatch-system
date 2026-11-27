@@ -3,7 +3,7 @@
 ## 1 身份与范围
 
 - 成员、模块：E，公共契约、联调、验收框架、系统集成与正式实验。
-- 状态：**draft**。E 范围已完成真实集成、7 项业务验收、120 组正式实验与五页面真实截图；因 4 项他人旧断言、C 的 3 项真实人工证据和 F 的课程材料未完成，未达到最终 accepted。
+- 状态：**draft**。E 范围已完成真实集成、7 项业务验收、120 组正式实验、五页面与 C01～C03 真实浏览器证据；常规门禁 614/614 与 E 验收 7/7 通过。仅 F 的论文/PPT 未交付（AC-F01/F02 pending），故未标 accepted。
 - 分支、代码提交 SHA、基于的公共基线 SHA：交付分支 `test/e-integration`（基于 `398d384`）；集成工作分支 `integrate/abcd-20261127`，合并 A `bc98e7a5`、B `7186c686`、C `dc954a7e`、D `fcad17ac`。被测代码 SHA 以本分支最新提交为准（见第 8 节交接消息）。
 - 远程仓库与本人交付分支链接：https://github.com/LinSui-dev/campus-bike-dispatch-system/tree/test/e-integration
 - 推送核验：待推送后核对本地 HEAD 与 `git ls-remote origin refs/heads/test/e-integration`。
@@ -53,21 +53,21 @@ node scripts/e2e_campus_ui.mjs
 
 |AC/T编号|输入及前置条件|操作或命令|预期结果|实际结果|证据路径|
 |---|---|---|---|---|---|
-|AC-E01|四分支真实合并|campus 基线、pytest、前端构建|可复现、交接可追踪|基线 OK、610 通过、4 项旧断言失败（已退回 A/B）、构建通过|`docs/integration/results/evidence/acceptance/regular-gate.txt`|
+|AC-E01|四分支真实合并|campus 基线、pytest、前端构建|可复现、交接可追踪|基线 OK、**614/614 通过**、构建通过；4 项旧断言经授权由 E 仅改断言|`docs/integration/results/evidence/acceptance/regular-gate.txt`|
 |AC-E02|真实 A/B/D + C，Mock 关闭|五页面、交互运行、调度、批量|health implemented、无 501、守恒、五页一致|通过；9 步 0 错误；交互运行 290 辆守恒|`docs/integration/results/evidence/ui/`、`tests/acceptance/test_system.py`|
 |AC-E03|8 场景×3 策略×5 种子|campus 批次 120 项|120 项终态、统计 n=5、可查历史|**120/120 成功、0 失败**|`experiments-120.md`、`evidence/experiments/`|
 |AC-D03|正式 campus profile|加载、站点/场景/路线校验|14 站、8 场景、跨区链路|通过；266.43 / 297.14 / 829.47 米复验一致|`tests/acceptance/test_system.py`、`integration-20261127.md`|
 |AC-A01/A02/A04/A07|真实后端|campus 验收测试|campus 投影、守恒、幂等调度、单槽|通过|`evidence/acceptance/pytest-acceptance.txt`|
-|AC-C01～C04|真实前端|campus UI 脚本|五页面真实数据|五页/启动暂停/调度/历史通过；C01 重置、C02 恢复、C03 拖拽待 C 补证据|`evidence/ui/`|
+|AC-C01～C04|真实前端|campus UI 脚本|五页面真实数据|五页/启动暂停/调度/120 条历史通过；C01 重置三选项、C02 刷新恢复与重置 404、C03 拖动 PATCH 仅 x/y 均通过|`evidence/ui/`|
 
-- 测试总数：常规 614（610 通过 / 4 失败）；E 验收 7/7 通过。
+- 测试总数：常规 **614/614 通过**；E 验收 **7/7 通过**；C 浏览器套件 6/6 通过。
 - Mock/替身：E 验收与截图均未使用 Mock；仅 A/B/C/D 各自模块测试使用其声明的替身。
 - 尚未接入：F 的论文/PPT（AC-F01/F02 pending）。
-- 常规门禁退出 1（4 项旧断言）；正式门禁在 acceptance.json 完成前预期失败。
+- 常规门禁退出 0；正式门禁在 acceptance.json 的 F 项仍 pending 时预期失败（如实记录，不伪造）。
 
 ## 5 依赖与集成
 
-- 需要接收者：A/B 更新 4 项旧断言；C 补 3 项真实证据；F 更新 docs/04、09、13 的 14 站/8 场景/120 组口径并交付论文 PPT。
+- 需要接收者：F 更新 docs/04、09、13 的 14 站/8 场景/120 组口径并交付论文 PPT；A/B/C 的旧断言与真实证据已由 E 按授权补齐并复验。
 - 契约提案结论：
   - B `fluid-v2`：**接受**，示例已更新；docs/06 由 F 同步。
   - D 14 站/8 场景：**接受**，正式 profile 与示例已同步；docs/04/09/13 由 F 同步。
@@ -80,8 +80,8 @@ node scripts/e2e_campus_ui.mjs
 
 |问题|复现|影响|责任人|下一步|
 |---|---|---|---|---|
-|4 项旧断言失败|`pytest backend/tests tests/integration`|常规门禁失败，E01 不能通过|A、B|按第 8 节要求更新后复验|
-|C 的 C01/C02/C03 真实证据缺失|见 C 报告第 6 节|C 项不能最终 accepted|C|在 campus 后端补截图/请求记录|
+|4 项旧断言|已修复|无（614/614 通过）|E（用户授权）|记录于 integration-20261127 第 3 节|
+|C01/C02/C03 真实证据|已补齐|无（C 项 accepted）|E|见 evidence/ui/c0*-*.png 与 c-real-acceptance.json|
 |F 论文与 PPT 未交付|`docs/f-delivery` 不存在|F01/F02 无法验收|F|交付后 E 核对|
 |Python 3.13 与基线 3.12|`python --version`|环境偏差|F/E|论文注明；如需严格复现另装 3.12|
 |favicon.ico 404|浏览器控制台|装饰性|C|可选补图标|

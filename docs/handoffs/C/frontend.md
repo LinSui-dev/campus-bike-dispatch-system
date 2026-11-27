@@ -91,7 +91,7 @@ npm --prefix frontend run dev
 
 ## 8 E 接收结论
 
-- 复验基线/提交与实际命令：提交 `dc954a7e39160a2d4d9ae13b9c2c27ed5f57d838`；Mock 关闭，Vite 接 campus 后端，由 `scripts/e2e_campus_ui.mjs` 驱动 Edge 访问五页面、开始/暂停真实运行、手动调度、查看 120 条真实历史。
-- 通过/失败项与证据路径：五页面加载、真实地图 14 站、启动/暂停、调度页真实供需、实验历史 120 条均通过，0 错误（favicon 404 除外）；截图与记录见 `docs/integration/results/evidence/ui/`。AC-C01 重置三选项、AC-C02 断线/旧 seq 恢复、AC-C03 拖拽投影仍只有 Mock 证据。
-- 结论：returned（需补上述真实浏览器证据后才能 accepted；模块本身未发现失败）。
-- 退回负责人、修复要求、复验及综合记录路径：C 在真实 campus 后端下补 C01 重置三选项、C02 刷新/断线恢复、C03 拖动投影截图与请求记录；E 复验后更新本节。综合记录 `docs/integration/results/integration-20261127.md`。
+- 复验基线/提交与实际命令：提交 `dc954a7e39160a2d4d9ae13b9c2c27ed5f57d838`；Mock 关闭，Vite 接 campus 后端，由 `scripts/e2e_campus_ui.mjs` 访问五页面、开始/暂停真实运行、手动调度、查看 120 条真实历史；另由 `scripts/e2e_campus_acceptance.mjs` 驱动 C01 重置三选项、C02 刷新恢复/外部重置 404、C03 拖动投影。
+- 通过/失败项与证据路径：五页面、真实地图 14 站、启动/暂停、调度供需、120 条历史、重置三选项、刷新恢复、27.5× 倍速保持、拖动 PATCH 仅 x/y 均通过，0 错误；截图与请求记录见 `docs/integration/results/evidence/ui/`（含 `c01-*.png`、`c02-*.png`、`c03-*.png`、`c-real-acceptance.json`）。C 模块 Playwright 6/6 通过。
+- 结论：accepted（真实 campus 后端复验通过；旧 seq/恢复注入仍由 Mock 覆盖，已在综合记录中注明）。
+- 退回负责人、修复要求、复验及综合记录路径：无退回。综合记录 `docs/integration/results/integration-20261127.md`。

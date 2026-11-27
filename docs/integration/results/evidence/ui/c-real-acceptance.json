@@ -1,0 +1,178 @@
+{
+  "base": "http://127.0.0.1:15175",
+  "api": "http://127.0.0.1:8010",
+  "started_at": "2026-11-27T09:56:00.925Z",
+  "steps": [
+    {
+      "step": "c01-reset-modal",
+      "file": "docs/integration/results/evidence/ui/c01-reset-modal.png"
+    },
+    {
+      "step": "c01-reset-saved",
+      "file": "docs/integration/results/evidence/ui/c01-reset-saved.png"
+    },
+    {
+      "step": "c01-reset-discarded",
+      "file": "docs/integration/results/evidence/ui/c01-reset-discarded.png"
+    },
+    {
+      "step": "c01-reset-bodies",
+      "bodies": [
+        {
+          "action": "reset",
+          "save": true
+        },
+        {
+          "action": "reset",
+          "save": false
+        }
+      ]
+    },
+    {
+      "step": "c02-recovery-before-refresh",
+      "file": "docs/integration/results/evidence/ui/c02-recovery-before-refresh.png"
+    },
+    {
+      "step": "c02-recovery-after-refresh",
+      "file": "docs/integration/results/evidence/ui/c02-recovery-after-refresh.png"
+    },
+    {
+      "step": "c02-recovery-reset-404",
+      "file": "docs/integration/results/evidence/ui/c02-recovery-reset-404.png"
+    },
+    {
+      "step": "c03-campus-roads",
+      "file": "docs/integration/results/evidence/ui/c03-campus-roads.png"
+    },
+    {
+      "step": "c03-station-patch",
+      "body": {
+        "x": 1802.900104967198,
+        "y": 1810.838564272027
+      },
+      "path": "/api/v1/stations/M10"
+    },
+    {
+      "step": "c03-station-drag",
+      "file": "docs/integration/results/evidence/ui/c03-station-drag.png"
+    }
+  ],
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/api/v1/runs",
+      "body": {
+        "scenario_id": "afternoon-class",
+        "params": {
+          "duration_min": 40,
+          "step_sec": 60,
+          "ride_speed_kmh": 12,
+          "dispatch_speed_kmh": 10,
+          "speed": 60,
+          "horizon_min": 30,
+          "safety_stock": 5,
+          "max_dispatch": 50
+        },
+        "seed": 42,
+        "algorithm": "none",
+        "request_id": "f728bc34-4468-4ab5-be56-cbd9e9e8b236"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/runs/de06a709-8376-4ae4-8658-f243e25f5ea0/control",
+      "body": {
+        "action": "pause"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/runs/de06a709-8376-4ae4-8658-f243e25f5ea0/control",
+      "body": {
+        "action": "reset",
+        "save": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/runs",
+      "body": {
+        "scenario_id": "afternoon-class",
+        "params": {
+          "duration_min": 40,
+          "step_sec": 60,
+          "ride_speed_kmh": 12,
+          "dispatch_speed_kmh": 10,
+          "speed": 60,
+          "horizon_min": 30,
+          "safety_stock": 5,
+          "max_dispatch": 50
+        },
+        "seed": 42,
+        "algorithm": "none",
+        "request_id": "94897815-fb81-4ffb-add1-5a9925e60acb"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/runs/238eaee8-b8f4-44ad-b53e-2a217aec2fd9/control",
+      "body": {
+        "action": "pause"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/runs/238eaee8-b8f4-44ad-b53e-2a217aec2fd9/control",
+      "body": {
+        "action": "reset",
+        "save": false
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/runs",
+      "body": {
+        "scenario_id": "lunch",
+        "params": {
+          "duration_min": 80,
+          "step_sec": 60,
+          "ride_speed_kmh": 12,
+          "dispatch_speed_kmh": 10,
+          "speed": 60,
+          "horizon_min": 30,
+          "safety_stock": 5,
+          "max_dispatch": 50
+        },
+        "seed": 47,
+        "algorithm": "none",
+        "request_id": "e9ba1bdf-200a-4338-8dea-625031e8ded6"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/runs/61720a8e-8b9a-4298-8f00-64f61458d52b/control",
+      "body": {
+        "action": "pause"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/runs/61720a8e-8b9a-4298-8f00-64f61458d52b/control",
+      "body": {
+        "action": "speed",
+        "value": 27.5
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/stations/M10",
+      "body": {
+        "x": 1802.900104967198,
+        "y": 1810.838564272027
+      }
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "finished_at": "2026-11-27T09:56:15.303Z"
+}

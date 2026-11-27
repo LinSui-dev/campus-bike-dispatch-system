@@ -24,7 +24,7 @@
 | 检查 | 命令 | 结果 |
 |---|---|---|
 | 基线 | `python scripts/check_baseline.py` | `Baseline OK`，退出 0 |
-| 后端/集成测试 | `python -m pytest backend/tests tests/integration` | **610 passed / 4 failed**（见第 3 节） |
+| 后端/集成测试 | `python -m pytest backend/tests tests/integration` | **614 passed / 0 failed**（4 项旧断言经用户授权由 E 更新，见第 3 节） |
 | 前端构建 | `npm --prefix frontend run build` | 退出 0 |
 | E 业务验收 | `python -m pytest tests/acceptance -m acceptance` | **7 passed**，3.80 秒 |
 | 真实后端（campus） | uvicorn `DATA_PROFILE=campus`，端口 8010 | health `implemented`；14 站 / 8 场景；地图 PNG 200 |
@@ -35,25 +35,35 @@
 | 真实前端五页面 | Vite Mock 关闭，接 campus 后端 | 9 步、0 错误；截图见 `evidence/ui/` |
 | C 模块浏览器套件 | `npm --prefix frontend test`（Edge） | **6/6 通过**（Mock 场景 + 真实 HTTP 兼容检查），日志见 `evidence/acceptance/c-browser.txt` |
 
-## 3 失败项与退回
+## 3 旧断言更新（用户授权 E 代为修改，仅改测试断言）
 
-以下 4 项均为**旧假设断言**，不是系统行为错误，按归属退回原成员更新测试：
+集成后 4 项测试仍断言“业务未实现”的骨架行为，真实 B/D/C 接入后必然失效。用户授权 E 只更新断言、不改业务逻辑，更新后常规门禁 **614/614 通过**：
 
-| 失败测试 | 原因 | 负责人 | 要求 |
-|---|---|---|---|
-| `owner_a/test_api.py::test_default_production_ports_fail_explicitly_and_never_use_test_doubles` | 断言默认入口 `stage=scaffold`；B/D 接入后真实为 `implemented` | A | 改为断言真实实现（health implemented、无替身） |
-| `owner_a/test_api.py::test_campus_missing_data_does_not_fall_back_to_fixture` | 假设 `data/campus` 缺失；正式数据已由 E 提升 | A | 改为构造缺失目录或只验证不降级逻辑，不依赖正式数据缺席 |
-| `owner_a/test_runtime.py::test_unimplemented_runner_is_explicit_501_and_slot_released` | 断言批量 501；B 的 runner 已实现 | A | 改为断言真实批量结果或保留显式 501 的替身场景 |
-| `owner_b/test_runner.py::test_default_sixty_combinations` | 读取示例并断言 60 组；示例已同步为 8×3×5=120 | B | 更新断言为 120，或改用独立请求而非公共示例 |
+| 原测试 | 原因 | 更新后 |
+|---|---|---|
+| `owner_a/test_api.py::test_default_production_ports_fail_explicitly_and_never_use_test_doubles` | 断言 `stage=scaffold` 与创建返回 501 | 改为断言 `implemented`、真实创建 201、停止后槽释放并保存 1 条历史 |
+| `owner_a/test_api.py::test_campus_missing_data_does_not_fall_back_to_fixture` | 依赖正式 campus 数据缺席 | 用 `monkeypatch` 指向空数据根目录，仍验证不降级 fixture |
+| `owner_a/test_runtime.py::test_unimplemented_runner_is_explicit_501_and_slot_released` | 断言批量 501 | 改为断言真实 runner 完成 4 项、保存 4 条历史、释放槽 |
+| `owner_b/test_runner.py::test_default_sixty_combinations` | 断言公共示例为 60 组 | 改为按示例计算 120 组 / 24 个聚合组 |
 
-常规门禁因此退出 1；在 4 项修复前，AC-E01 不能标记 passed。
+A、B 的模块业务逻辑未改；复验日志见 `evidence/acceptance/regular-gate.txt`。该跨归属修改已在 A/B handoff 第 8 节注明。
+
+## 3.1 C 的真实浏览器证据
+
+`scripts/e2e_campus_acceptance.mjs` 在 Mock 关闭、campus 后端下实际点击并记录请求：
+
+- C01：重置弹窗三选项；取消不发 control 请求；保存重置发送 `{action:"reset",save:true}`，舍弃发送 `save:false`。
+- C02：种子 47、午餐、暂停并设 27.5×，刷新后状态/场景/种子/倍速恢复；切五页保持暂停；外部重置后 UI 通过 404 路径回到空闲。
+- C03：真实底图与道路图层；拖动 M10 后 PATCH `/stations/M10` 仅含 `x/y`，服务端投影返回成功。
+- 证据：`evidence/ui/c01-*.png`、`c02-*.png`、`c03-*.png`、`c-real-acceptance.json`，0 错误。
 
 ## 4 遗留与限制
 
-- F 的 `docs/f-delivery` 分支不存在，论文/PPT 未交付，AC-F01、AC-F02 保持 pending。
-- C 的真实浏览器证据覆盖五页面、启动/暂停、调度、实验历史；AC-C01 的重置三选项、AC-C02 的断线/旧 seq 恢复、AC-C03 的拖拽投影仅有 C 的 Mock 证据，需在最终验收前补真实截图或明确由 C 的 Mock 证据覆盖范围。
+- F 的 `docs/f-delivery` 分支不存在，论文/PPT 未交付，AC-F01、AC-F02 保持 pending；这是当前唯一未通过的 AC 组。
+- 旧 seq 覆盖与“恢复时重置”在真实后端下没有等价的可注入开关，仍由 C 的 Mock 套件覆盖；真实模式已覆盖刷新恢复与外部重置 404 路径。
 - 运行日志中仅 `favicon.ico` 404（前端未提供图标），不影响功能，记录为装饰性问题。
 - Python 3.13 与基线 3.12 的偏差、合成需求率、底图比例估算边长等，由 F 在论文中如实说明。
+- docs/04、09、13 仍写 12 站/4 场景/60 组，按 `docs/integration/requests/E-口径与契约协调结论.md` 由 F 同步。
 
 ## 5 证据索引
 
