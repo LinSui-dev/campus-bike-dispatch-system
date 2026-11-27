@@ -6,7 +6,7 @@
 - 状态：**draft**。E 范围已完成真实集成、7 项业务验收、120 组正式实验、五页面与 C01～C03 真实浏览器证据；常规门禁 614/614 与 E 验收 7/7 通过。仅 F 的论文/PPT 未交付（AC-F01/F02 pending），故未标 accepted。
 - 分支、代码提交 SHA、基于的公共基线 SHA：交付分支 `test/e-integration`（基于 `398d384`）；集成工作分支 `integrate/abcd-20261127`，合并 A `bc98e7a5`、B `7186c686`、C `dc954a7e`、D `fcad17ac`。被测代码 SHA 以本分支最新提交为准（见第 8 节交接消息）。
 - 远程仓库与本人交付分支链接：https://github.com/LinSui-dev/campus-bike-dispatch-system/tree/test/e-integration
-- 推送核验：待推送后核对本地 HEAD 与 `git ls-remote origin refs/heads/test/e-integration`。
+- 推送核验：`test/e-integration` 与 `main` 均已推送并核对为 `974b797090c1e50747efdd5530c8b2116b383252`；被测代码提交为 `527f7d964a470e4418869502f1ebd7e6b87d7264`（验收报告随后单独提交）。
 - 对应 FR、T、AC：全部 FR；T01～T15 的系统侧；AC-E01～AC-E03 主责，复验 A/B/C/D 全部 AC，配合 F01/F02。
 - 本次交接范围：四分支集成、campus 正式 profile 提升、真实验收测试、120 组实验、五页面真实截图、验收状态记录。明确未包含：F 的论文/PPT；A/B/C 的旧测试与人工证据修复；docs/04/09/13 的 F 文档同步。
 
@@ -97,3 +97,5 @@ node scripts/e2e_campus_ui.mjs
 
 - 本报告为 E 自身范围，状态 draft；A/B/C 结论见各自报告第 8 节，D 已 accepted。
 - 复验命令与结果见第 3、4 节；综合记录 `docs/integration/results/integration-20261127.md`。
+- 远程 HEAD：`974b797090c1e50747efdd5530c8b2116b383252`（main 与 test/e-integration 相同）；被测代码 SHA：`527f7d964a470e4418869502f1ebd7e6b87d7264`。
+- AC 状态：22 passed、2 pending（AC-F01/F02），0 failed；正式门禁仅在 F 项处失败。
