@@ -1,0 +1,19 @@
+
+> campus-bike-simulation@0.1.0 test
+> playwright test --reporter=list,json
+
+[2m[WebServer] [22mINFO:     Started server process [26704]
+[2m[WebServer] [22mINFO:     Waiting for application startup.
+[2m[WebServer] [22mINFO:     Application startup complete.
+[2m[WebServer] [22mINFO:     Uvicorn running on http://127.0.0.1:18015 (Press CTRL+C to quit)
+
+Running 6 tests using 1 worker
+
+  ok 1 tests\frontend.spec.ts:59:1 › AC-C01 配置、交互控制、重置分支与保存失败 (12.3s)
+  ok 2 tests\frontend.spec.ts:171:1 › AC-C02 刷新恢复、旧 Seq、轮询和状态 404 (7.0s)
+  ok 3 tests\frontend.spec.ts:225:1 › AC-C03 地图图层、标准化拖动、库存状态和运输进度 (9.3s)
+  ok 4 tests\frontend.spec.ts:333:1 › AC-C04 零分母、批量失败、策略统计和历史 (11.2s)
+  ok 5 tests\frontend.spec.ts:383:1 › 关闭 Mock 后通过真实 HTTP 加载停车点或显示骨架 501 (1.3s)
+  ok 6 tests\frontend.spec.ts:408:1 › 按折线长度插值并处理跨校区折返点 (284ms)
+
+  6 passed (55.3s)

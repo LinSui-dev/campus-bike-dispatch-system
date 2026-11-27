@@ -33,6 +33,7 @@
 | 真实批量 | 1 场景 × 3 策略 × 2 种子 | 6/6 完成，统计 n=2、标准差非空，none 调度量为 0 |
 | 正式实验 | 8 × 3 × 5 = 120 | **120/120 成功，0 失败**，见 [实验报告](experiments-120.md) |
 | 真实前端五页面 | Vite Mock 关闭，接 campus 后端 | 9 步、0 错误；截图见 `evidence/ui/` |
+| C 模块浏览器套件 | `npm --prefix frontend test`（Edge） | **6/6 通过**（Mock 场景 + 真实 HTTP 兼容检查），日志见 `evidence/acceptance/c-browser.txt` |
 
 ## 3 失败项与退回
 
