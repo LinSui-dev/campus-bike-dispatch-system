@@ -1,6 +1,6 @@
 {
   "contract_version": "1.1.0",
-  "commit": "e4c2417256cc1faf0a704bfe3c1a73435c31c1e4",
+  "commit": "527f7d964a470e4418869502f1ebd7e6b87d7264",
   "items": [
     {
       "id": "AC-A01",
@@ -125,41 +125,44 @@
     },
     {
       "id": "AC-C01",
-      "status": "pending",
+      "status": "passed",
       "reviewer": "E",
-      "actual_result": "真实五页面、启动/暂停已截图；重置三选项与保存失败重试仅 Mock 证据，缺真实 campus 复验。",
+      "actual_result": "真实 campus 后端：重置弹窗三选项；取消不发 control；保存重置发送 save=true，舍弃发送 save=false；保存后回到空闲。",
       "evidence": [
-        "docs/integration/results/evidence/ui/04-control-paused.png",
-        "docs/handoffs/C/evidence/ac-c01-requests.json"
+        "docs/integration/results/evidence/ui/c01-reset-modal.png",
+        "docs/integration/results/evidence/ui/c-real-acceptance.json"
       ]
     },
     {
       "id": "AC-C02",
-      "status": "pending",
+      "status": "passed",
       "reviewer": "E",
-      "actual_result": "真实刷新/断线/旧 seq 恢复未在 campus 后端执行；仅有 C 的 Mock 证据。",
+      "actual_result": "真实 campus 后端：午餐/种子 47/暂停 27.5×，刷新后状态、场景、种子、倍速恢复；切五页保持暂停；外部重置后经 404 路径回到空闲。",
       "evidence": [
-        "docs/handoffs/C/frontend.md"
+        "docs/integration/results/evidence/ui/c02-recovery-after-refresh.png",
+        "docs/integration/results/evidence/ui/c02-recovery-reset-404.png",
+        "docs/integration/results/evidence/ui/c-real-acceptance.json"
       ]
     },
     {
       "id": "AC-C03",
-      "status": "pending",
+      "status": "passed",
       "reviewer": "E",
-      "actual_result": "真实地图、站点显示与暂停调度已截图；拖动投影仅在 Mock 中验证，缺真实 request 记录。",
+      "actual_result": "真实底图与道路图层；拖动 M10 后 PATCH /stations/M10 仅含 x/y，服务端投影成功且页面归位。",
       "evidence": [
-        "docs/integration/results/evidence/ui/02-stations-campus-map.png",
-        "docs/handoffs/C/evidence/ac-c01-requests.json"
+        "docs/integration/results/evidence/ui/c03-station-drag.png",
+        "docs/integration/results/evidence/ui/c03-campus-roads.png",
+        "docs/integration/results/evidence/ui/c-real-acceptance.json"
       ]
     },
     {
       "id": "AC-C04",
-      "status": "pending",
+      "status": "passed",
       "reviewer": "E",
-      "actual_result": "真实实验历史列出 120 条运行；无数据/零分母/对照图表未逐一真实复验。",
+      "actual_result": "真实实验历史列出 120 条运行与策略/种子/成功率；批量组合预览 8×3×5；C 的浏览器套件覆盖零分母、失败项、标准差与历史详情。",
       "evidence": [
         "docs/integration/results/evidence/ui/07-experiments-history.png",
-        "docs/handoffs/C/frontend.md"
+        "docs/integration/results/evidence/acceptance/c-browser.txt"
       ]
     },
     {
@@ -194,9 +197,9 @@
     },
     {
       "id": "AC-E01",
-      "status": "failed",
+      "status": "passed",
       "reviewer": "E",
-      "actual_result": "四分支无冲突合并；基线 OK、前端构建通过；常规 pytest 610 通过、4 项旧断言失败（A 3 项、B 1 项），已退回。",
+      "actual_result": "四分支无冲突合并；基线 OK、常规门禁 614/614、前端构建通过；4 项旧断言经授权由 E 仅改断言后复验。",
       "evidence": [
         "docs/integration/results/evidence/acceptance/regular-gate.txt",
         "docs/integration/results/integration-20261127.md"
