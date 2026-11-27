@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-已提供六人并行开发文档、v1公共契约、虚拟测试数据、后端与前端启动骨架、验证脚本和CI。**业务功能尚未实现，正式校园地图和调查数据尚未提交。** 骨架数据不是仿真结果。
+六名成员并行开发已由E串行集成到main：后端仿真引擎、调度与实验、前端五页面、正式校园地图与数据、联调测试与验收均已交付并复验；120组正式对照实验（8场景×3策略×5种子）成功完成。课程材料（论文/答辩PPT）由F交付于docs/deliverables，组号与成员姓名待团队确认后回填。
 
 分发契约为1.1.0。完整步骤见个人任务书；逐项完成标准见[验收矩阵](docs/13-验收矩阵.md)，交接按[handoff模板](docs/handoffs/TEMPLATE.md)。文件归属以10中的唯一表为准。
 
@@ -41,7 +41,7 @@ npm ci
 npm run dev
 ```
 
-页面 http://localhost:5173 ，API文档 http://localhost:8000/docs 。Vite代理/api、/assets、/ws到8000。当前只有健康检查、开发元信息、虚拟地图资源API，其余明确501。
+页面 http://localhost:5173 ，API文档 http://localhost:8000/docs 。Vite代理/api、/assets、/ws到8000。完整REST与WebSocket接口见API文档。
 
 ## 检查
 
