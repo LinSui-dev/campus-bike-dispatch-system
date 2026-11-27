@@ -34,6 +34,7 @@
 | 正式实验 | 8 × 3 × 5 = 120 | **120/120 成功，0 失败**，见 [实验报告](experiments-120.md) |
 | 真实前端五页面 | Vite Mock 关闭，接 campus 后端 | 9 步、0 错误；截图见 `evidence/ui/` |
 | C 模块浏览器套件 | `npm --prefix frontend test`（Edge） | **6/6 通过**（Mock 场景 + 真实 HTTP 兼容检查），日志见 `evidence/acceptance/c-browser.txt` |
+| 正式门禁 | `scripts/check.ps1 -Acceptance` | 常规 614 通过、验收 7 通过；**仅因 AC-F01 pending 在证据检查处失败**，日志见 `evidence/acceptance/acceptance-gate.txt` |
 
 ## 3 旧断言更新（用户授权 E 代为修改，仅改测试断言）
 
