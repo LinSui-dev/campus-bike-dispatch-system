@@ -1,0 +1,245 @@
+{
+  "contract_version": "1.1.0",
+  "commit": "e4c2417256cc1faf0a704bfe3c1a73435c31c1e4",
+  "items": [
+    {
+      "id": "AC-A01",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "真实 campus 后端新建站点只传 x/y，返回 D 投影的 road_edge_id/road_offset；非法坐标 400/422 且未落库。",
+      "evidence": [
+        "tests/acceptance/test_system.py",
+        "docs/integration/results/evidence/acceptance/pytest-acceptance.txt"
+      ]
+    },
+    {
+      "id": "AC-A02",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "真实 campus 交互运行 30 分钟完成，290 辆车守恒；空站失败、骑行到货与首次归还成功由内核与验收测试覆盖。",
+      "evidence": [
+        "tests/acceptance/test_system.py",
+        "docs/handoffs/A/evidence/owner-a.txt"
+      ]
+    },
+    {
+      "id": "AC-A03",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "A 模块满站改道/等待策略单元与合法 waiting 初态测试通过；真实 campus 路网用于调度路径。",
+      "evidence": [
+        "docs/handoffs/A/evidence/owner-a.txt",
+        "docs/handoffs/A/后端与仿真交接.md"
+      ]
+    },
+    {
+      "id": "AC-A04",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "真实交互调度创建运输任务并预留，重复 request_id 不重复扣减；完成后调度量与成本非零。",
+      "evidence": [
+        "tests/acceptance/test_system.py",
+        "docs/integration/results/evidence/acceptance/pytest-acceptance.txt"
+      ]
+    },
+    {
+      "id": "AC-A05",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "A 模块固定种子、暂停/倍速、终点边界与幂等测试在集成分支全部通过；UI 真实暂停后 sim_time 不推进。",
+      "evidence": [
+        "docs/handoffs/A/evidence/owner-a.txt",
+        "docs/integration/results/evidence/ui/04-control-paused.png"
+      ]
+    },
+    {
+      "id": "AC-A06",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "A 模块 stop/reset 保存与丢弃、保存失败重试、异常重启测试通过；C 的重置三选项与请求日志覆盖取消不发请求。",
+      "evidence": [
+        "docs/handoffs/A/evidence/owner-a.txt",
+        "docs/handoffs/C/evidence/ac-c01-requests.json"
+      ]
+    },
+    {
+      "id": "AC-A07",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "真实第二运行返回 409 BUSY；停止后槽释放可再启动。",
+      "evidence": [
+        "tests/acceptance/test_system.py",
+        "docs/integration/results/evidence/acceptance/pytest-acceptance.txt"
+      ]
+    },
+    {
+      "id": "AC-A08",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "A 模块历史快照、指标与任务在删除站点后仍完整；E 真实运行保存后可查询历史。",
+      "evidence": [
+        "docs/handoffs/A/evidence/owner-a.txt",
+        "docs/integration/results/evidence/acceptance/pytest-acceptance.txt"
+      ]
+    },
+    {
+      "id": "AC-B01",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "B 模块预测 21 项通过：空站潜在需求、在途一次入队、运输不记为还车、输入不变。",
+      "evidence": [
+        "docs/handoffs/B/dispatch-experiments.md",
+        "docs/integration/results/evidence/acceptance/pytest-acceptance.txt"
+      ]
+    },
+    {
+      "id": "AC-B02",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "B 模块供需 33 项通过：非负半数向上取整、clip、supply/demand 约束与 none 同口径偏差。",
+      "evidence": [
+        "docs/handoffs/B/dispatch-experiments.md",
+        "docs/integration/results/evidence/acceptance/pytest-acceptance.txt"
+      ]
+    },
+    {
+      "id": "AC-B03",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "B 模块策略 417 项通过：最小费用流与穷举最优一致、预算约束、贪心可复现且存在非最优反例。",
+      "evidence": [
+        "docs/handoffs/B/dispatch-experiments.md",
+        "docs/integration/results/evidence/acceptance/pytest-acceptance.txt"
+      ]
+    },
+    {
+      "id": "AC-B04",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "真实 campus 批量 120/120 成功；聚合均值/样本标准差/有效 n 正确，失败项与顺序规则由 B 模块测试覆盖。",
+      "evidence": [
+        "docs/integration/results/experiments-120.md",
+        "tests/acceptance/test_system.py",
+        "docs/integration/results/evidence/acceptance/pytest-acceptance.txt"
+      ]
+    },
+    {
+      "id": "AC-C01",
+      "status": "pending",
+      "reviewer": "E",
+      "actual_result": "真实五页面、启动/暂停已截图；重置三选项与保存失败重试仅 Mock 证据，缺真实 campus 复验。",
+      "evidence": [
+        "docs/integration/results/evidence/ui/04-control-paused.png",
+        "docs/handoffs/C/evidence/ac-c01-requests.json"
+      ]
+    },
+    {
+      "id": "AC-C02",
+      "status": "pending",
+      "reviewer": "E",
+      "actual_result": "真实刷新/断线/旧 seq 恢复未在 campus 后端执行；仅有 C 的 Mock 证据。",
+      "evidence": [
+        "docs/handoffs/C/frontend.md"
+      ]
+    },
+    {
+      "id": "AC-C03",
+      "status": "pending",
+      "reviewer": "E",
+      "actual_result": "真实地图、站点显示与暂停调度已截图；拖动投影仅在 Mock 中验证，缺真实 request 记录。",
+      "evidence": [
+        "docs/integration/results/evidence/ui/02-stations-campus-map.png",
+        "docs/handoffs/C/evidence/ac-c01-requests.json"
+      ]
+    },
+    {
+      "id": "AC-C04",
+      "status": "pending",
+      "reviewer": "E",
+      "actual_result": "真实实验历史列出 120 条运行；无数据/零分母/对照图表未逐一真实复验。",
+      "evidence": [
+        "docs/integration/results/evidence/ui/07-experiments-history.png",
+        "docs/handoffs/C/frontend.md"
+      ]
+    },
+    {
+      "id": "AC-D01",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "真实路网 M10→M13 266.43、E01→E04 297.14、M08↔E01 829.47 米与 D 证据一致；14 站两两可达。",
+      "evidence": [
+        "tests/acceptance/test_system.py",
+        "docs/integration/results/evidence/acceptance/pytest-acceptance.txt"
+      ]
+    },
+    {
+      "id": "AC-D02",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "A 的真实站点 API 调用 D 的路网投影：合法坐标标准化、图外坐标拒绝且不落库。",
+      "evidence": [
+        "tests/acceptance/test_system.py",
+        "docs/handoffs/D/network-map.md"
+      ]
+    },
+    {
+      "id": "AC-D03",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "正式 campus profile 加载 14 站（主11/东3）、8 场景、容量 565/初始 290；8 场景 OD 全部可路由。",
+      "evidence": [
+        "docs/integration/results/integration-20261127.md",
+        "tests/acceptance/test_system.py"
+      ]
+    },
+    {
+      "id": "AC-E01",
+      "status": "failed",
+      "reviewer": "E",
+      "actual_result": "四分支无冲突合并；基线 OK、前端构建通过；常规 pytest 610 通过、4 项旧断言失败（A 3 项、B 1 项），已退回。",
+      "evidence": [
+        "docs/integration/results/evidence/acceptance/regular-gate.txt",
+        "docs/integration/results/integration-20261127.md"
+      ]
+    },
+    {
+      "id": "AC-E02",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "真实 A/B/D+C（Mock 关闭）五页面 9 步 0 错误；health implemented、无 501、交互运行守恒、批量真实调度。",
+      "evidence": [
+        "docs/integration/results/evidence/ui/ui-acceptance.json",
+        "docs/integration/results/evidence/ui/05-dispatch-real.png",
+        "tests/acceptance/test_system.py"
+      ]
+    },
+    {
+      "id": "AC-E03",
+      "status": "passed",
+      "reviewer": "E",
+      "actual_result": "campus 8 场景×3 策略×5 种子 = 120/120 成功、0 失败，n=5，120 个 run_id 唯一。",
+      "evidence": [
+        "docs/integration/results/experiments-120.md",
+        "docs/integration/results/evidence/experiments/batch-120-result.json"
+      ]
+    },
+    {
+      "id": "AC-F01",
+      "status": "pending",
+      "reviewer": "E",
+      "actual_result": "F 论文未交付（docs/f-delivery 不存在），无法核对页数与真实性。",
+      "evidence": [
+        "docs/deliverables/README.md"
+      ]
+    },
+    {
+      "id": "AC-F02",
+      "status": "pending",
+      "reviewer": "E",
+      "actual_result": "F 答辩 PPT、页码/讲述人/评分表未交付。",
+      "evidence": [
+        "docs/deliverables/README.md"
+      ]
+    }
+  ]
+}
