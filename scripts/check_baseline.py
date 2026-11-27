@@ -86,7 +86,7 @@ def main():
     assert state["vehicles"]["total"] == sum(s["initial_stock"] for s in stations)
     assert state["vehicles"]["total"] == sum(state["vehicles"][k] for k in ["parked", "riding", "waiting", "transporting"])
     batch = load("contracts/examples/batch_request.json")
-    assert len(batch["scenario_ids"]) * len(batch["algorithms"]) * len(batch["seeds"]) == 60
+    assert len(batch["scenario_ids"]) * len(batch["algorithms"]) * len(batch["seeds"]) == 120
     assert all(0 <= t < batch["params"]["duration_min"] * 60 and t % batch["params"]["step_sec"] == 0 for t in batch["dispatch_times_sec"])
     config = load("data/fixtures/default_config.json")
     assert config["scenario_id"] in {s["id"] for s in scenarios}
@@ -102,7 +102,7 @@ def main():
         for target in re.findall(r"\]\(([^)]+)\)", file.read_text(encoding="utf-8")):
             if "://" not in target and not target.startswith("#"):
                 assert (file.parent / target.split("#")[0]).exists(), f"broken link: {file}: {target}"
-    print("Baseline OK: fixture references/connectivity/periods, conservation example, 60 combinations, Python syntax, local links")
+    print("Baseline OK: fixture references/connectivity/periods, conservation example, 120 combinations, Python syntax, local links")
 
 
 if __name__ == "__main__":

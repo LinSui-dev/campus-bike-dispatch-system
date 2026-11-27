@@ -118,4 +118,8 @@ D 模块最新结果为 **21 项通过、0 项失败**。场景生成命令实�
 
 ## 8 E 接收结论
 
-复验提交、命令、结果、证据路径及 accepted / returned 结论由 E 复验后填写。
+- 复验提交：`fcad17aceda8fbb3209207d181da53ec161c76fb`；在 `integrate/abcd-20261127` 合并后执行 `pytest backend/tests/owner_d`、`pytest tests/acceptance -m acceptance`，并以 `DATA_PROFILE=campus` 启动真实后端。
+- 通过项与证据：D 模块 21 项通过；审阅包 14 站（主 11/东 3）、8 场景、容量 565/初始 290 通过 A 的 Schema 与跨字段校验；M10→M13 266.43 米、E01→E04 297.14 米、M08↔E01 829.47 米复验一致；8 场景 OD 全部可路由。经用户授权，E 将审阅包 6 个文件提升到 `data/campus/` 作为正式 profile（字段与内容未改）。证据见 `tests/acceptance/test_system.py`、`docs/integration/results/integration-20261127.md`。
+- 结论：accepted（D 的路网、数据与审阅包按正式口径复验通过；正式 profile 的提升由 E 按用户授权执行）。
+- 遗留：D 的 12 站/4 场景旧描述与 docs/04、13 的文字更新由 F 负责；本结论不代替 F 的文档同步。
+- docs/integration/results中的综合记录路径：`docs/integration/results/integration-20261127.md`。

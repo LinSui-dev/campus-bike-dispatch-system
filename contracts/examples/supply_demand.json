@@ -1,5 +1,5 @@
 {
-  "estimator_version": "fluid-v1",
+  "estimator_version": "fluid-v2",
   "now_sec": 0,
   "horizon_sec": 1800,
   "stations": [

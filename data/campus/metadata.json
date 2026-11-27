@@ -1,0 +1,10 @@
+{
+  "profile": "campus",
+  "image_file": "campus_map.png",
+  "width": 4500,
+  "height": 3163,
+  "network_version": "campus-review-v1",
+  "synthetic": false,
+  "snap_tolerance_px": 40,
+  "source": "审阅包 · 校方手绘资料、OpenStreetMap 与用户确认"
+}

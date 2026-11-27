@@ -2,9 +2,13 @@
   "request_id": "example-batch",
   "scenario_ids": [
     "morning",
+    "morning-dismissal",
     "lunch",
-    "evening",
-    "offpeak"
+    "afternoon-class",
+    "afternoon-dismissal",
+    "dinner",
+    "evening-class",
+    "evening"
   ],
   "algorithms": [
     "none",

@@ -1,0 +1,50 @@
+{
+  "base": "http://127.0.0.1:15175",
+  "started_at": "2026-11-27T08:52:48.710Z",
+  "steps": [
+    {
+      "step": "01-overview-campus",
+      "file": "docs/integration/results/evidence/ui/01-overview-campus.png"
+    },
+    {
+      "step": "02-stations-campus-map",
+      "file": "docs/integration/results/evidence/ui/02-stations-campus-map.png"
+    },
+    {
+      "step": "03-control-config",
+      "file": "docs/integration/results/evidence/ui/03-control-config.png"
+    },
+    {
+      "step": "start-and-pause-real-run",
+      "status": "已暂停"
+    },
+    {
+      "step": "04-control-paused",
+      "file": "docs/integration/results/evidence/ui/04-control-paused.png"
+    },
+    {
+      "step": "manual-dispatch-real",
+      "status": "clicked"
+    },
+    {
+      "step": "05-dispatch-real",
+      "file": "docs/integration/results/evidence/ui/05-dispatch-real.png"
+    },
+    {
+      "step": "06-experiments-batch-form",
+      "file": "docs/integration/results/evidence/ui/06-experiments-batch-form.png"
+    },
+    {
+      "step": "07-experiments-history",
+      "file": "docs/integration/results/evidence/ui/07-experiments-history.png"
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "runtime": {
+    "mode": "interactive",
+    "run_id": "8c78e401-f72e-49ba-be9e-4f28cbf9c8f0",
+    "batch_id": null
+  },
+  "finished_at": "2026-11-27T08:53:00.964Z"
+}

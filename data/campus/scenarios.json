@@ -1,0 +1,886 @@
+[
+  {
+    "id": "morning",
+    "name": "早课",
+    "start_minute": 450,
+    "duration_min": 30,
+    "description": "课程合成需求。宿舍到教学楼，含双向跨校区上课和少量图书馆自习。",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "M04",
+        "destination_id": "M13",
+        "rate_per_min": 0.2,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M16",
+        "rate_per_min": 0.16,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M08",
+        "rate_per_min": 0.17,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M10",
+        "rate_per_min": 0.18,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M18",
+        "rate_per_min": 0.11,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "E04",
+        "rate_per_min": 0.09,
+        "periods": []
+      },
+      {
+        "origin_id": "E01",
+        "destination_id": "E04",
+        "rate_per_min": 0.24,
+        "periods": []
+      },
+      {
+        "origin_id": "E03",
+        "destination_id": "E04",
+        "rate_per_min": 0.2,
+        "periods": []
+      },
+      {
+        "origin_id": "E01",
+        "destination_id": "M16",
+        "rate_per_min": 0.1,
+        "periods": []
+      },
+      {
+        "origin_id": "E03",
+        "destination_id": "M10",
+        "rate_per_min": 0.08,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M06",
+        "rate_per_min": 0.04,
+        "periods": []
+      },
+      {
+        "origin_id": "E03",
+        "destination_id": "M06",
+        "rate_per_min": 0.025,
+        "periods": []
+      }
+    ]
+  },
+  {
+    "id": "morning-dismissal",
+    "name": "上午下课",
+    "start_minute": 590,
+    "duration_min": 60,
+    "description": "课程合成需求。教学楼到宿舍、教学楼之间换课，并有少量流向图书馆。",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "M13",
+        "destination_id": "M04",
+        "rate_per_min": 0.15,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M16",
+        "destination_id": "M04",
+        "rate_per_min": 0.12,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M08",
+        "destination_id": "M04",
+        "rate_per_min": 0.12,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M10",
+        "destination_id": "E03",
+        "rate_per_min": 0.07,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M16",
+        "destination_id": "E01",
+        "rate_per_min": 0.06,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "M04",
+        "rate_per_min": 0.06,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "E01",
+        "rate_per_min": 0.14,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "E03",
+        "rate_per_min": 0.12,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M13",
+        "destination_id": "M08",
+        "rate_per_min": 0.1,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M10",
+        "destination_id": "M16",
+        "rate_per_min": 0.1,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M18",
+        "destination_id": "M10",
+        "rate_per_min": 0.07,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M08",
+        "destination_id": "M06",
+        "rate_per_min": 0.04,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M13",
+        "destination_id": "M06",
+        "rate_per_min": 0.04,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "M06",
+        "rate_per_min": 0.025,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 40,
+            "multiplier": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lunch",
+    "name": "午餐",
+    "start_minute": 690,
+    "duration_min": 80,
+    "description": "课程合成需求。教学楼和宿舍流向明湖餐厅、留园餐厅和东区食堂接入点。",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "M13",
+        "destination_id": "M02",
+        "rate_per_min": 0.12,
+        "periods": []
+      },
+      {
+        "origin_id": "M16",
+        "destination_id": "M02",
+        "rate_per_min": 0.12,
+        "periods": []
+      },
+      {
+        "origin_id": "M08",
+        "destination_id": "M02",
+        "rate_per_min": 0.08,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M02",
+        "rate_per_min": 0.08,
+        "periods": []
+      },
+      {
+        "origin_id": "M10",
+        "destination_id": "M21",
+        "rate_per_min": 0.12,
+        "periods": []
+      },
+      {
+        "origin_id": "M18",
+        "destination_id": "M21",
+        "rate_per_min": 0.09,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M21",
+        "rate_per_min": 0.05,
+        "periods": []
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "E01",
+        "rate_per_min": 0.18,
+        "periods": []
+      },
+      {
+        "origin_id": "E03",
+        "destination_id": "E01",
+        "rate_per_min": 0.12,
+        "periods": []
+      },
+      {
+        "origin_id": "M06",
+        "destination_id": "M02",
+        "rate_per_min": 0.04,
+        "periods": []
+      },
+      {
+        "origin_id": "M06",
+        "destination_id": "M21",
+        "rate_per_min": 0.04,
+        "periods": []
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "M02",
+        "rate_per_min": 0.025,
+        "periods": []
+      }
+    ]
+  },
+  {
+    "id": "afternoon-class",
+    "name": "午课",
+    "start_minute": 810,
+    "duration_min": 40,
+    "description": "课程合成需求。宿舍到教学楼、教学楼之间换课，含双向跨校区和图书馆出行。",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "M04",
+        "destination_id": "M13",
+        "rate_per_min": 0.15,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M10",
+        "rate_per_min": 0.14,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M08",
+        "rate_per_min": 0.12,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "E04",
+        "rate_per_min": 0.07,
+        "periods": []
+      },
+      {
+        "origin_id": "E01",
+        "destination_id": "E04",
+        "rate_per_min": 0.19,
+        "periods": []
+      },
+      {
+        "origin_id": "E03",
+        "destination_id": "E04",
+        "rate_per_min": 0.17,
+        "periods": []
+      },
+      {
+        "origin_id": "E01",
+        "destination_id": "M16",
+        "rate_per_min": 0.08,
+        "periods": []
+      },
+      {
+        "origin_id": "E03",
+        "destination_id": "M18",
+        "rate_per_min": 0.07,
+        "periods": []
+      },
+      {
+        "origin_id": "M13",
+        "destination_id": "M10",
+        "rate_per_min": 0.08,
+        "periods": []
+      },
+      {
+        "origin_id": "M08",
+        "destination_id": "M16",
+        "rate_per_min": 0.07,
+        "periods": []
+      },
+      {
+        "origin_id": "M10",
+        "destination_id": "M06",
+        "rate_per_min": 0.04,
+        "periods": []
+      },
+      {
+        "origin_id": "M06",
+        "destination_id": "M18",
+        "rate_per_min": 0.035,
+        "periods": []
+      }
+    ]
+  },
+  {
+    "id": "afternoon-dismissal",
+    "name": "下午下课",
+    "start_minute": 960,
+    "duration_min": 20,
+    "description": "课程合成需求。教学楼到宿舍、教学楼之间换课，并有少量图书馆出行。",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "M13",
+        "destination_id": "M04",
+        "rate_per_min": 0.17,
+        "periods": []
+      },
+      {
+        "origin_id": "M10",
+        "destination_id": "M04",
+        "rate_per_min": 0.15,
+        "periods": []
+      },
+      {
+        "origin_id": "M08",
+        "destination_id": "M04",
+        "rate_per_min": 0.12,
+        "periods": []
+      },
+      {
+        "origin_id": "M16",
+        "destination_id": "E01",
+        "rate_per_min": 0.09,
+        "periods": []
+      },
+      {
+        "origin_id": "M18",
+        "destination_id": "E03",
+        "rate_per_min": 0.08,
+        "periods": []
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "M04",
+        "rate_per_min": 0.07,
+        "periods": []
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "E01",
+        "rate_per_min": 0.18,
+        "periods": []
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "E03",
+        "rate_per_min": 0.15,
+        "periods": []
+      },
+      {
+        "origin_id": "M13",
+        "destination_id": "M16",
+        "rate_per_min": 0.09,
+        "periods": []
+      },
+      {
+        "origin_id": "M08",
+        "destination_id": "M10",
+        "rate_per_min": 0.08,
+        "periods": []
+      },
+      {
+        "origin_id": "M16",
+        "destination_id": "M06",
+        "rate_per_min": 0.045,
+        "periods": []
+      },
+      {
+        "origin_id": "M18",
+        "destination_id": "M06",
+        "rate_per_min": 0.04,
+        "periods": []
+      }
+    ]
+  },
+  {
+    "id": "dinner",
+    "name": "晚餐",
+    "start_minute": 1020,
+    "duration_min": 90,
+    "description": "课程合成需求。教学楼和宿舍流向三个就餐接入点。",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "M13",
+        "destination_id": "M02",
+        "rate_per_min": 0.12,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M16",
+        "destination_id": "M02",
+        "rate_per_min": 0.1,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M08",
+        "destination_id": "M02",
+        "rate_per_min": 0.09,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M02",
+        "rate_per_min": 0.09,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M10",
+        "destination_id": "M21",
+        "rate_per_min": 0.12,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M18",
+        "destination_id": "M21",
+        "rate_per_min": 0.1,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M21",
+        "rate_per_min": 0.07,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "E01",
+        "rate_per_min": 0.17,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "E03",
+        "destination_id": "E01",
+        "rate_per_min": 0.12,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M06",
+        "destination_id": "M02",
+        "rate_per_min": 0.04,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M06",
+        "destination_id": "M21",
+        "rate_per_min": 0.04,
+        "periods": [
+          {
+            "start_min": 30,
+            "end_min": 70,
+            "multiplier": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "evening-class",
+    "name": "晚课",
+    "start_minute": 1110,
+    "duration_min": 30,
+    "description": "课程合成需求。餐厅和宿舍到教学楼，含双向跨校区通学和少量自习。",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "M02",
+        "destination_id": "M13",
+        "rate_per_min": 0.12,
+        "periods": []
+      },
+      {
+        "origin_id": "M02",
+        "destination_id": "M16",
+        "rate_per_min": 0.1,
+        "periods": []
+      },
+      {
+        "origin_id": "M21",
+        "destination_id": "M10",
+        "rate_per_min": 0.13,
+        "periods": []
+      },
+      {
+        "origin_id": "M21",
+        "destination_id": "M18",
+        "rate_per_min": 0.1,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "M08",
+        "rate_per_min": 0.11,
+        "periods": []
+      },
+      {
+        "origin_id": "M04",
+        "destination_id": "E04",
+        "rate_per_min": 0.06,
+        "periods": []
+      },
+      {
+        "origin_id": "E01",
+        "destination_id": "E04",
+        "rate_per_min": 0.18,
+        "periods": []
+      },
+      {
+        "origin_id": "E03",
+        "destination_id": "E04",
+        "rate_per_min": 0.14,
+        "periods": []
+      },
+      {
+        "origin_id": "E01",
+        "destination_id": "M16",
+        "rate_per_min": 0.07,
+        "periods": []
+      },
+      {
+        "origin_id": "E03",
+        "destination_id": "M10",
+        "rate_per_min": 0.06,
+        "periods": []
+      },
+      {
+        "origin_id": "M02",
+        "destination_id": "M06",
+        "rate_per_min": 0.045,
+        "periods": []
+      },
+      {
+        "origin_id": "M21",
+        "destination_id": "M06",
+        "rate_per_min": 0.035,
+        "periods": []
+      }
+    ]
+  },
+  {
+    "id": "evening",
+    "name": "返寝",
+    "start_minute": 1250,
+    "duration_min": 80,
+    "description": "课程合成需求。教学区和图书馆流向宿舍，含双向跨校区返寝。",
+    "is_preset": true,
+    "od_demands": [
+      {
+        "origin_id": "M13",
+        "destination_id": "M04",
+        "rate_per_min": 0.18,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M16",
+        "destination_id": "M04",
+        "rate_per_min": 0.16,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M08",
+        "destination_id": "M04",
+        "rate_per_min": 0.14,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M10",
+        "destination_id": "M04",
+        "rate_per_min": 0.15,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M18",
+        "destination_id": "M04",
+        "rate_per_min": 0.1,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "E01",
+        "rate_per_min": 0.2,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "E03",
+        "rate_per_min": 0.17,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M16",
+        "destination_id": "E01",
+        "rate_per_min": 0.09,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M10",
+        "destination_id": "E03",
+        "rate_per_min": 0.08,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "E04",
+        "destination_id": "M04",
+        "rate_per_min": 0.07,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M06",
+        "destination_id": "M04",
+        "rate_per_min": 0.065,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      },
+      {
+        "origin_id": "M06",
+        "destination_id": "E03",
+        "rate_per_min": 0.035,
+        "periods": [
+          {
+            "start_min": 20,
+            "end_min": 60,
+            "multiplier": 0
+          }
+        ]
+      }
+    ]
+  }
+]
