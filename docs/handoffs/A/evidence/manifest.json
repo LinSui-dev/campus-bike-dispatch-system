@@ -1,0 +1,27 @@
+{
+  "tested_code_sha": "813826c2e91637fe4848ffc3aa998ef5cabe2b24",
+  "baseline_sha": "398d38435ca508450c0de866a0c3537169a26851",
+  "contract_version": "1.1.0",
+  "python": "3.12.16",
+  "node": "24.15.0",
+  "module_tests": {
+    "passed": 67,
+    "failed": 0
+  },
+  "regular_gate": {
+    "passed": 99,
+    "exit_code": 0,
+    "scope": "module and baseline, not system acceptance"
+  },
+  "acceptance_gate": {
+    "exit_code": 1,
+    "business_tests_collected": 0,
+    "business_pytest_exit_code": 5,
+    "status": "not_passed"
+  },
+  "real_B_D_integration": "pending",
+  "formal_campus_experiments": "not_run",
+  "remote_ci": "not_run",
+  "pushed": false,
+  "test_doubles": "explicit injection only in backend/tests/owner_a; production uses real ports"
+}
