@@ -20,6 +20,13 @@ const saving = ref(false)
 const error = ref('')
 const notice = ref('')
 const locked = computed(() => run.busy || run.pending || saving.value)
+const session = computed(() => run.runtime.mode === 'interactive' ? run.state : null)
+const shownInput = computed(() => session.value ? {
+  scenario_id: session.value.context.scenario_id,
+  seed: session.value.context.seed,
+  algorithm: session.value.algorithm,
+  params: session.value.context.params,
+} : config.draft)
 const clone = <T,>(data: T): T => JSON.parse(JSON.stringify(data))
 
 function selectScenario(id: string) {
@@ -120,19 +127,25 @@ function remove() {
   <p v-if="error && !removing" class="banner error" role="alert">{{ error }}</p>
   <p v-if="notice" class="banner" role="status">{{ notice }}</p>
   <section class="panel form-panel">
-    <header class="section-head"><div><h2>运行配置</h2><p>选择已保存配置可载入场景、参数、种子和策略。</p></div></header>
+    <header class="section-head"><div><h2>运行配置</h2>
+      <p>{{ session ? '显示本次运行的初始配置。' : '选择已保存配置可载入场景、参数、种子和策略。' }}</p>
+    </div></header>
     <fieldset class="fields fields-4" :disabled="locked">
-      <label class="field">已保存配置<select v-model="savedId" @change="loadConfig">
+      <label v-if="!session" class="field">已保存配置<select v-model="savedId" @change="loadConfig">
         <option value="">自定义</option><option v-for="item in config.configs" :key="item.id" :value="item.id">{{ item.name }}</option></select></label>
-      <label class="field">运行场景<select v-model="config.draft.scenario_id" @change="chooseRunScenario">
-        <option value="" disabled>选择场景</option>
-        <option v-for="item in config.scenarios" :key="item.id" :value="item.id">{{ item.name }}</option></select></label>
-      <label class="field">随机种子<input v-model.number="config.draft.seed" type="number" min="0" max="4294967295" step="1" /></label>
-      <label class="field">调度策略<select v-model="config.draft.algorithm">
+      <label class="field">运行场景<select v-model="shownInput.scenario_id" @change="chooseRunScenario">
+        <option v-if="session" :value="session.context.scenario_id">{{ session.context.scenario_name }}</option>
+        <template v-else>
+          <option value="" disabled>选择场景</option>
+          <option v-for="item in config.scenarios" :key="item.id" :value="item.id">{{ item.name }}</option>
+        </template>
+      </select></label>
+      <label class="field">随机种子<input v-model.number="shownInput.seed" type="number" min="0" max="4294967295" step="1" /></label>
+      <label class="field">调度策略<select v-model="shownInput.algorithm">
         <option v-for="item in algorithms" :key="item" :value="item">{{ algorithmNames[item] }}</option></select></label>
     </fieldset>
-    <ParamsFields v-model="config.draft.params" :disabled="locked" />
-    <div class="form-footer">
+    <ParamsFields v-model="shownInput.params" :disabled="locked" />
+    <div v-if="!session" class="form-footer">
       <label class="field">配置名称<input v-model="configName" maxlength="128" :disabled="locked" /></label>
       <div class="toolbar">
         <button :disabled="locked || !savedId" @click="saveConfig(false)">更新配置</button>
