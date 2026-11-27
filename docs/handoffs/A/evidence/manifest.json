@@ -22,6 +22,10 @@
   "real_B_D_integration": "pending",
   "formal_campus_experiments": "not_run",
   "remote_ci": "not_run",
-  "pushed": false,
-  "test_doubles": "explicit injection only in backend/tests/owner_a; production uses real ports"
+  "pushed": true,
+  "test_doubles": "explicit injection only in backend/tests/owner_a; production uses real ports",
+  "push_authorization": "用户于2026-11-27在本会话明确要求推送",
+  "verified_delivery_commit": "09f7d6807e1e7d149a8358babdfa9913944e5a61",
+  "remote_branch": "refs/heads/feat/a-engine",
+  "final_remote_head": "Provided in the final delivery message after pushing this record"
 }
