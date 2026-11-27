@@ -1,0 +1,322 @@
+[
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/map"
+  },
+  {
+    "method": "GET",
+    "path": "/roads"
+  },
+  {
+    "method": "GET",
+    "path": "/stations"
+  },
+  {
+    "method": "GET",
+    "path": "/scenarios"
+  },
+  {
+    "method": "GET",
+    "path": "/configs"
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "POST",
+    "path": "/scenarios",
+    "body": {
+      "name": "C 自测自定义场景",
+      "start_minute": 420,
+      "duration_min": 120,
+      "description": "",
+      "od_demands": [
+        {
+          "origin_id": "s1",
+          "destination_id": "s2",
+          "rate_per_min": 0,
+          "periods": [
+            {
+              "start_min": 0,
+              "end_min": 1,
+              "multiplier": 1
+            }
+          ]
+        }
+      ],
+      "id": "03b77b56-fcdd-41cc-9ece-2a2c0a0f68be",
+      "is_preset": false
+    }
+  },
+  {
+    "method": "PATCH",
+    "path": "/scenarios/03b77b56-fcdd-41cc-9ece-2a2c0a0f68be",
+    "body": {
+      "name": "C 自测更新场景",
+      "start_minute": 420,
+      "duration_min": 120,
+      "description": ""
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "PUT",
+    "path": "/scenarios/03b77b56-fcdd-41cc-9ece-2a2c0a0f68be/od",
+    "body": {
+      "od_demands": [
+        {
+          "origin_id": "s1",
+          "destination_id": "s2",
+          "rate_per_min": 0.25,
+          "periods": [
+            {
+              "start_min": 0,
+              "end_min": 1,
+              "multiplier": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/configs",
+    "body": {
+      "scenario_id": "03b77b56-fcdd-41cc-9ece-2a2c0a0f68be",
+      "params": {
+        "duration_min": 120,
+        "step_sec": 60,
+        "ride_speed_kmh": 12,
+        "dispatch_speed_kmh": 10,
+        "speed": 60,
+        "horizon_min": 30,
+        "safety_stock": 5,
+        "max_dispatch": 50
+      },
+      "seed": 42,
+      "algorithm": "none",
+      "id": "40447544-f515-4364-ad5a-516065955b5c",
+      "name": "C 自测配置"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "PATCH",
+    "path": "/configs/40447544-f515-4364-ad5a-516065955b5c",
+    "body": {
+      "scenario_id": "03b77b56-fcdd-41cc-9ece-2a2c0a0f68be",
+      "params": {
+        "duration_min": 120,
+        "step_sec": 60,
+        "ride_speed_kmh": 12,
+        "dispatch_speed_kmh": 10,
+        "speed": 60,
+        "horizon_min": 30,
+        "safety_stock": 5,
+        "max_dispatch": 50
+      },
+      "seed": 43,
+      "algorithm": "none",
+      "name": "C 自测配置"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs",
+    "body": {
+      "scenario_id": "03b77b56-fcdd-41cc-9ece-2a2c0a0f68be",
+      "params": {
+        "duration_min": 120,
+        "step_sec": 60,
+        "ride_speed_kmh": 12,
+        "dispatch_speed_kmh": 10,
+        "speed": 60,
+        "horizon_min": 30,
+        "safety_stock": 5,
+        "max_dispatch": 50
+      },
+      "seed": 43,
+      "algorithm": "none",
+      "request_id": "70a40cd4-f591-4d40-a3ef-5713c3ade5d2"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs",
+    "body": {
+      "scenario_id": "03b77b56-fcdd-41cc-9ece-2a2c0a0f68be",
+      "params": {
+        "duration_min": 120,
+        "step_sec": 60,
+        "ride_speed_kmh": 12,
+        "dispatch_speed_kmh": 10,
+        "speed": 60,
+        "horizon_min": 30,
+        "safety_stock": 5,
+        "max_dispatch": 50
+      },
+      "seed": 43,
+      "algorithm": "none",
+      "request_id": "70a40cd4-f591-4d40-a3ef-5713c3ade5d2"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/48fa89bd-a6f3-4a6c-a0cf-03285b172c3a/state"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/48fa89bd-a6f3-4a6c-a0cf-03285b172c3a/control",
+    "body": {
+      "action": "pause"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs/48fa89bd-a6f3-4a6c-a0cf-03285b172c3a/control",
+    "body": {
+      "action": "speed",
+      "value": 25
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs/48fa89bd-a6f3-4a6c-a0cf-03285b172c3a/control",
+    "body": {
+      "action": "resume"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs/48fa89bd-a6f3-4a6c-a0cf-03285b172c3a/control",
+    "body": {
+      "action": "reset",
+      "save": true
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs/48fa89bd-a6f3-4a6c-a0cf-03285b172c3a/control",
+    "body": {
+      "action": "reset",
+      "save": true
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs",
+    "body": {
+      "scenario_id": "03b77b56-fcdd-41cc-9ece-2a2c0a0f68be",
+      "params": {
+        "duration_min": 120,
+        "step_sec": 60,
+        "ride_speed_kmh": 12,
+        "dispatch_speed_kmh": 10,
+        "speed": 60,
+        "horizon_min": 30,
+        "safety_stock": 5,
+        "max_dispatch": 50
+      },
+      "seed": 43,
+      "algorithm": "none",
+      "request_id": "430a150a-446d-4259-9d78-bb76b3d8736d"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/3ef2894a-d47c-4d01-b872-aefde8c724ad/state"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/3ef2894a-d47c-4d01-b872-aefde8c724ad/control",
+    "body": {
+      "action": "pause"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs/3ef2894a-d47c-4d01-b872-aefde8c724ad/control",
+    "body": {
+      "action": "reset",
+      "save": false
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs",
+    "body": {
+      "scenario_id": "03b77b56-fcdd-41cc-9ece-2a2c0a0f68be",
+      "params": {
+        "duration_min": 120,
+        "step_sec": 60,
+        "ride_speed_kmh": 12,
+        "dispatch_speed_kmh": 10,
+        "speed": 60,
+        "horizon_min": 30,
+        "safety_stock": 5,
+        "max_dispatch": 50
+      },
+      "seed": 43,
+      "algorithm": "none",
+      "request_id": "bcdc42a2-77f5-4d2f-87ec-da7ac5d3f105"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/1fa62157-c8e1-455f-8075-c77074c334fe/state"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/1fa62157-c8e1-455f-8075-c77074c334fe/control",
+    "body": {
+      "action": "stop"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs/1fa62157-c8e1-455f-8075-c77074c334fe/control",
+    "body": {
+      "action": "stop"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/1fa62157-c8e1-455f-8075-c77074c334fe/state"
+  },
+  {
+    "method": "DELETE",
+    "path": "/configs/40447544-f515-4364-ad5a-516065955b5c"
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "DELETE",
+    "path": "/scenarios/03b77b56-fcdd-41cc-9ece-2a2c0a0f68be"
+  },
+  {
+    "method": "GET",
+    "path": "/runs"
+  },
+  {
+    "method": "GET",
+    "path": "/runs"
+  }
+]

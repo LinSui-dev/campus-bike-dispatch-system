@@ -1,0 +1,183 @@
+[
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/map"
+  },
+  {
+    "method": "GET",
+    "path": "/roads"
+  },
+  {
+    "method": "GET",
+    "path": "/stations"
+  },
+  {
+    "method": "GET",
+    "path": "/scenarios"
+  },
+  {
+    "method": "GET",
+    "path": "/configs"
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "POST",
+    "path": "/stations",
+    "body": {
+      "id": "7527ccf3-02d0-4927-bd6a-6e65a9f17eb9",
+      "name": "C 自测站点",
+      "campus": "main",
+      "zone": "测试区域",
+      "x": 175,
+      "y": 210,
+      "capacity": 5,
+      "initial_stock": 0,
+      "active": true
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "PATCH",
+    "path": "/stations/7527ccf3-02d0-4927-bd6a-6e65a9f17eb9",
+    "body": {
+      "name": "C 自测站点",
+      "campus": "main",
+      "zone": "测试区域",
+      "x": 175,
+      "y": 200,
+      "capacity": 5,
+      "initial_stock": 5,
+      "active": true
+    }
+  },
+  {
+    "method": "PATCH",
+    "path": "/stations/s1",
+    "body": {
+      "x": 132.8843719391297,
+      "y": 216.68458147469022
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "PATCH",
+    "path": "/stations/s1",
+    "body": {
+      "x": 132.8616336100869,
+      "y": 342.8190437627474
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "DELETE",
+    "path": "/stations/7527ccf3-02d0-4927-bd6a-6e65a9f17eb9?clear_related_od=false"
+  },
+  {
+    "method": "POST",
+    "path": "/runs",
+    "body": {
+      "scenario_id": "morning",
+      "params": {
+        "duration_min": 120,
+        "step_sec": 60,
+        "ride_speed_kmh": 12,
+        "dispatch_speed_kmh": 10,
+        "speed": 60,
+        "horizon_min": 30,
+        "safety_stock": 5,
+        "max_dispatch": 50
+      },
+      "seed": 42,
+      "algorithm": "greedy",
+      "request_id": "2cdc94b3-074e-4656-9549-ba299caae0e0"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/state"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/control",
+    "body": {
+      "action": "pause"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/supply-demand"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/dispatch",
+    "body": {
+      "request_id": "b4ed5a62-c206-4051-9af6-f9f2e7d8e979"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/supply-demand"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/dispatch",
+    "body": {
+      "request_id": "b4ed5a62-c206-4051-9af6-f9f2e7d8e979"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/state"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/control",
+    "body": {
+      "action": "resume"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/supply-demand"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/control",
+    "body": {
+      "action": "reset",
+      "save": false
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/9e962b60-d6aa-4e37-be19-df6ceaed4126/supply-demand"
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "DELETE",
+    "path": "/stations/s2?clear_related_od=true"
+  },
+  {
+    "method": "GET",
+    "path": "/scenarios"
+  }
+]

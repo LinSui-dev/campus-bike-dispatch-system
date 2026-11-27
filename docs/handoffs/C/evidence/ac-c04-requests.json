@@ -1,0 +1,212 @@
+[
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/map"
+  },
+  {
+    "method": "GET",
+    "path": "/roads"
+  },
+  {
+    "method": "GET",
+    "path": "/stations"
+  },
+  {
+    "method": "GET",
+    "path": "/scenarios"
+  },
+  {
+    "method": "GET",
+    "path": "/configs"
+  },
+  {
+    "method": "POST",
+    "path": "/runs",
+    "body": {
+      "scenario_id": "morning",
+      "params": {
+        "duration_min": 120,
+        "step_sec": 60,
+        "ride_speed_kmh": 12,
+        "dispatch_speed_kmh": 10,
+        "speed": 60,
+        "horizon_min": 30,
+        "safety_stock": 5,
+        "max_dispatch": 50
+      },
+      "seed": 42,
+      "algorithm": "none",
+      "request_id": "ab29b329-1e1a-41a2-b79d-247eeb0bf5c0"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/eeea7223-0f5e-4fc4-ac0f-77980647b743/state"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/eeea7223-0f5e-4fc4-ac0f-77980647b743/control",
+    "body": {
+      "action": "pause"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/eeea7223-0f5e-4fc4-ac0f-77980647b743/supply-demand"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/eeea7223-0f5e-4fc4-ac0f-77980647b743/dispatch",
+    "body": {
+      "request_id": "1332cb82-0780-45f4-bede-4ddca3e510b4"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/eeea7223-0f5e-4fc4-ac0f-77980647b743/supply-demand"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/eeea7223-0f5e-4fc4-ac0f-77980647b743/state"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/eeea7223-0f5e-4fc4-ac0f-77980647b743/control",
+    "body": {
+      "action": "reset",
+      "save": false
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/eeea7223-0f5e-4fc4-ac0f-77980647b743/supply-demand"
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/runs"
+  },
+  {
+    "method": "GET",
+    "path": "/runs"
+  },
+  {
+    "method": "POST",
+    "path": "/batches",
+    "body": {
+      "scenario_ids": [
+        "morning"
+      ],
+      "algorithms": [
+        "none",
+        "greedy"
+      ],
+      "seeds": [
+        42,
+        43
+      ],
+      "params": {
+        "duration_min": 120,
+        "step_sec": 60,
+        "ride_speed_kmh": 12,
+        "dispatch_speed_kmh": 10,
+        "speed": 60,
+        "horizon_min": 30,
+        "safety_stock": 5,
+        "max_dispatch": 50
+      },
+      "dispatch_times_sec": [
+        0,
+        900
+      ],
+      "request_id": "ffae8926-9602-4aca-a8f8-10307f7d91b1"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/batches/ffae8926-9602-4aca-a8f8-10307f7d91b1"
+  },
+  {
+    "method": "GET",
+    "path": "/batches/ffae8926-9602-4aca-a8f8-10307f7d91b1"
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/map"
+  },
+  {
+    "method": "GET",
+    "path": "/roads"
+  },
+  {
+    "method": "GET",
+    "path": "/stations"
+  },
+  {
+    "method": "GET",
+    "path": "/scenarios"
+  },
+  {
+    "method": "GET",
+    "path": "/configs"
+  },
+  {
+    "method": "GET",
+    "path": "/runs"
+  },
+  {
+    "method": "GET",
+    "path": "/batches/ffae8926-9602-4aca-a8f8-10307f7d91b1"
+  },
+  {
+    "method": "GET",
+    "path": "/batches/ffae8926-9602-4aca-a8f8-10307f7d91b1"
+  },
+  {
+    "method": "GET",
+    "path": "/batches/ffae8926-9602-4aca-a8f8-10307f7d91b1"
+  },
+  {
+    "method": "GET",
+    "path": "/batches/ffae8926-9602-4aca-a8f8-10307f7d91b1"
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/batches/ffae8926-9602-4aca-a8f8-10307f7d91b1"
+  },
+  {
+    "method": "GET",
+    "path": "/runs"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/700d5892-82e4-4a21-b8f5-a03a5e0b98d5"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/700d5892-82e4-4a21-b8f5-a03a5e0b98d5/metrics"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/700d5892-82e4-4a21-b8f5-a03a5e0b98d5/tasks"
+  },
+  {
+    "method": "GET",
+    "path": "/batches/ffae8926-9602-4aca-a8f8-10307f7d91b1"
+  }
+]

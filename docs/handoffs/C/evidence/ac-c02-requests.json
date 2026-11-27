@@ -1,0 +1,137 @@
+[
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/map"
+  },
+  {
+    "method": "GET",
+    "path": "/roads"
+  },
+  {
+    "method": "GET",
+    "path": "/stations"
+  },
+  {
+    "method": "GET",
+    "path": "/scenarios"
+  },
+  {
+    "method": "GET",
+    "path": "/configs"
+  },
+  {
+    "method": "POST",
+    "path": "/runs",
+    "body": {
+      "scenario_id": "lunch",
+      "params": {
+        "duration_min": 120,
+        "step_sec": 60,
+        "ride_speed_kmh": 12,
+        "dispatch_speed_kmh": 10,
+        "speed": 60,
+        "horizon_min": 30,
+        "safety_stock": 5,
+        "max_dispatch": 50
+      },
+      "seed": 47,
+      "algorithm": "none",
+      "request_id": "193688be-c72a-49e8-84e3-4936e6f49bb1"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/state"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/control",
+    "body": {
+      "action": "pause"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/control",
+    "body": {
+      "action": "speed",
+      "value": 27.5
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/map"
+  },
+  {
+    "method": "GET",
+    "path": "/roads"
+  },
+  {
+    "method": "GET",
+    "path": "/stations"
+  },
+  {
+    "method": "GET",
+    "path": "/scenarios"
+  },
+  {
+    "method": "GET",
+    "path": "/configs"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/state"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/supply-demand"
+  },
+  {
+    "method": "GET",
+    "path": "/runs"
+  },
+  {
+    "method": "POST",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/control",
+    "body": {
+      "action": "speed",
+      "value": 37.25
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/state"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/state"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/state"
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/state"
+  },
+  {
+    "method": "GET",
+    "path": "/runtime"
+  },
+  {
+    "method": "GET",
+    "path": "/runs/7a02ac0f-11d7-4a55-8560-467ee81d14ec/state"
+  }
+]
